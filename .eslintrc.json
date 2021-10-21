@@ -4,19 +4,15 @@
         "es2021": true
     },
     "extends": [
-        "plugin:react/recommended",
-        "airbnb"
+        "airbnb-base",
+        "prettier"
     ],
+    "plugins": ["prettier"],
     "parserOptions": {
-        "ecmaFeatures": {
-            "jsx": true
-        },
         "ecmaVersion": 12,
-        "sourceType": "module"
+        "sourceType": "module",
+        "parser": "@babel/eslint-parser"
     },
-    "plugins": [
-        "react"
-    ],
     "rules": {
+      "prettier/prettier": ["error"]
     }
-}
