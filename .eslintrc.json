@@ -1,11 +1,13 @@
 {
     "env": {
         "browser": true,
-        "es2021": true
+        "commonJS": true,
+        "es6":true
     },
     "extends": [
         "airbnb-base",
-        "prettier"
+        "prettier",
+        "react-app"
     ],
     "plugins": ["prettier"],
     "parserOptions": {
@@ -16,3 +18,4 @@
     "rules": {
       "prettier/prettier": ["error"]
     }
+}
