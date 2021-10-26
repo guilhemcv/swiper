@@ -1,3 +1,4 @@
+import "./swipe.css";
 import React from "react";
 import MenuBurger from "../components/MenuBurger/MenuBurger";
 

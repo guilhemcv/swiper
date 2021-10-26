@@ -1,3 +1,4 @@
+import "./map.css";
 import React from "react";
 import MenuBurger from "../components/MenuBurger/MenuBurger";
 

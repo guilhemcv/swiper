@@ -1,8 +1,8 @@
 import "./App.css";
-import Accueil from "./container/Accueil";
-import Favoris from "./container/Favoris";
-import Map from "./container/Map";
-import Swipe from "./container/Swipe";
+import Accueil from "./container/accueil";
+import Favoris from "./container/favoris";
+import Map from "./container/map";
+import Swipe from "./container/swipe";
 
 function App() {
   return (

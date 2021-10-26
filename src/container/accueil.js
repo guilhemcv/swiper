@@ -1,3 +1,4 @@
+import "./accueil.css";
 import React from "react";
 import MenuBurger from "../components/MenuBurger/MenuBurger";
 
