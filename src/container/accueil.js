@@ -1,6 +1,7 @@
 import "./accueil.css";
 import React from "react";
 import MenuBurger from "../components/MenuBurger/MenuBurger";
+import Footer from "../components/Footer/Footer";
 
 function Accueil() {
   return (
@@ -23,7 +24,7 @@ function Accueil() {
       {/* ---------------------------------------------------- */}
 
       {/* Footer ---------------------------------------------- */}
-
+      <Footer />
       {/* ---------------------------------------------------- */}
     </div>
   );
