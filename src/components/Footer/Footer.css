@@ -48,7 +48,7 @@ a {
     background: linear-gradient(to bottom right, #4AADEB, #0AA2FF);
     display: flex;
     justify-content: space-around;
-    margin: 0;
+    margin: 0 auto;
     align-items: center;
     border-radius: 1rem;
     color: white;
@@ -74,6 +74,10 @@ a {
     font-size: 0.6rem;
 }
 
+.footer-legal {
+    background-color: red;
+}
+
 
 @media screen and (min-width: 800px){
 
@@ -91,6 +95,10 @@ a {
         
     }
 
+    .footer-meteo {
+        margin: 0;
+    }
+
     .footer-mention {
         width: 30rem;
         display: flex;
@@ -102,5 +110,31 @@ a {
         justify-content: space-around;
         align-items: center;
     }
+
+     /* DEBUT POPUP */
+
+
+    .popup-content {
+        margin: auto;
+        background: rgb(255, 255, 255);
+        width: 50%;
+        padding: 5px;
+      }
+      .popup-arrow {
+        color: rgb(255, 255, 255);
+      }
+      [role='tooltip'].popup-content {
+        width: 800px;
+        box-shadow: rgba(0, 0, 0, 0.16) 0px 0px 3px;
+        overflow: scroll;
+      }
+      
+      .popup-overlay {
+        background: rgba(0, 0, 0, 0.5);
+      }
+      [data-popup='tooltip'].popup-overlay {
+        background: transparent;
+      }
+      /* FIN POPUP */
 }
     

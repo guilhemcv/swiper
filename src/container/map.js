@@ -1,6 +1,7 @@
 import "./map.css";
 import React from "react";
 import MenuBurger from "../components/MenuBurger/MenuBurger";
+import Footer from "../components/Footer/Footer";
 
 function Map() {
   return (
@@ -15,7 +16,7 @@ function Map() {
       {/* ---------------------------------------------------- */}
 
       {/* Footer --------------------------------- */}
-
+      <Footer />
       {/* ---------------------------------------------------- */}
     </div>
   );

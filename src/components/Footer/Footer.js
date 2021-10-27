@@ -38,10 +38,7 @@ function Footer() {
       <div className="footer-bas">
         <div className="footer-mention">
           <a href="politique.html">
-            <p>Mentions légales</p>
-          </a>
-          <a href="politique.html">
-            <p>Politique de confidentialité</p>
+            <p>Mentions légales / Politiques de confidentialité</p>
           </a>
         </div>
         <p className="footer-copyright">Copyright</p>
