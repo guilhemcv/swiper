@@ -68,6 +68,10 @@ input:checked + #label-burger span:last-child {
   height: 0%;
   background: rgba(74, 173, 235, 0.5);
   backdrop-filter: blur(50px);
+  -webkit-background: rgba(74, 173, 235, 0.5);
+  -webkit-backdrop-filter: blur(50px);
+  -moz-background: rgba(74, 173, 235, 0.5);
+  -moz-backdrop-filter: blur(50px);
   z-index: 900;
   transition: 0.5s;
   transition-delay: 0.5s;
@@ -110,29 +114,6 @@ input:checked ~ #nav-header ul li {
 
 #nav-header a:hover {
   text-decoration: underline;
-}
-
-.header {
-  opacity: 0;
-  transition: opacity 1s;
-}
-
-.header-fixe {
-  opacity: 1;
-  position: fixed;
-  background-color: #fff;
-  width: 100vw;
-  height: 8rem;
-  z-index: 99;
-}
-
-.header-fixe-top {
-  opacity: 1;
-  position: fixed;
-  width: 100vw;
-  height: 8rem;
-  background-color: #fff;
-  z-index: 99;
 }
 
 /*----------------------------------

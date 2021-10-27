@@ -6,7 +6,6 @@ function Favoris() {
   return (
     <div className="favoris">
       {/* Menu et Navigation --------------------------------- */}
-      <MenuBurger />
 
       {/* ---------------------------------------------------- */}
 

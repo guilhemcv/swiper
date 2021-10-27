@@ -1,7 +1,6 @@
 {
     "env": {
         "browser": true,
-        "commonJS": true,
         "es6":true
     },
     "extends": [
