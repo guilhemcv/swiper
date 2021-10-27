@@ -1,8 +1,69 @@
-/*                    CARTE              */ 
+/*                    CARTE                                                */ 
 
+
+/*                   MOBILE FIRST                               */
 h2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   text-align: center;
+  margin-bottom :20px;
 }
 p{
+  display: flex;
+  justify-content: center;
   text-align: justify;
+  width: 100%;
+  margin-bottom :20px;
+}
+.carte{
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+  margin-right : auto ;
+  margin-left: auto;
+  padding-top: 2px;
+  padding-bottom: 2px;
+}
+
+/*                      DESKTOP                      */
+
+
+@media screen and (min-width : 800px) {
+  .carte{
+    display: flex;
+    flex-direction: row;
+    display: flex;
+    margin-top: 60px;
+    padding-left: 0px;
+    padding-right: 0px;
+  }
+  h2{
+    display: flex;
+    flex-direction: row;
+  }
+  .info{
+    display: block;
+    width: 100%;
+    border-radius:solid 2px;
+    margin-left: 20px;
+    margin-right: 20px;
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+  .info p{
+    display: flex;
+   text-align: justify;
+   align-content: center;
+   justify-content: center;
+  }
+  .fonctionnement{
+    display: block;
+    border-radius:solid 2px;
+    width: 100%;
+    margin-left: 20px;
+    margin-right: 20px;
+    padding-left: 5px;
+    padding-right: 5px;
+  }
 }
