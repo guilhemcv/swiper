@@ -1,8 +1,17 @@
 @import url('https://fonts.googleapis.com/css2?family=Amaranth:ital,wght@0,400;0,700;1,400&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 
+* {
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    text-decoration: none;
+}
+
 html {
-    font-size: 62,5%; /* permet de donner la valeur de 10px à 1rem */
+    font-size: 62.5%; /* permet de donner la valeur de 10px à 1rem */
 }
 
 body {

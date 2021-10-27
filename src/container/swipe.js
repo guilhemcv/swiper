@@ -6,7 +6,6 @@ function Swipe() {
   return (
     <div className="swipe">
       {/* Menu et Navigation --------------------------------- */}
-      <MenuBurger />
 
       {/* ---------------------------------------------------- */}
 

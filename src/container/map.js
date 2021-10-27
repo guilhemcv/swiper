@@ -6,7 +6,6 @@ function Map() {
   return (
     <div className="map">
       {/* Menu et Navigation --------------------------------- */}
-      <MenuBurger />
 
       {/* ---------------------------------------------------- */}
 
