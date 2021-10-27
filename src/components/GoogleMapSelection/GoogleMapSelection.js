@@ -1,29 +1,24 @@
 import React from "react";
-import GoogleMap from "../GoogleMap/GoogleMap";
 import "./GoogleMapSelection.css";
 
 function GoogleMapSelection() {
   return (
     <div className="selection">
       <div className="selection-recherche">
-        <label forHtml="name">Rechercher une adresse :</label>
+        <label forHtml="name">
+          <h4>Rechercher une adresse :</h4>
+        </label>
         <br />
-        <input
-          className="input-recherche"
-          type="text"
-          id="name"
-          name="name"
-          size="30"
-        />
+        <input className="input-recherche" type="text" id="name" name="name" />
       </div>
       <br />
       <br />
       <br />
-      <div>
+      <div className="inputLabel">
         <input className="input" type="checkbox" id="parking" name="parking" />
         <label for="parking">Parkings</label>
       </div>
-      <div>
+      <div className="inputLabel">
         <input
           className="input"
           type="checkbox"
@@ -32,11 +27,11 @@ function GoogleMapSelection() {
         />
         <label for="restaurant">Restaurants</label>
       </div>
-      <div>
+      <div className="inputLabel">
         <input className="input" type="checkbox" id="sport" name="sport" />
         <label for="sport">Sport et loisirs</label>
       </div>
-      <div>
+      <div className="inputLabel">
         <input
           className="input"
           type="checkbox"
@@ -45,7 +40,7 @@ function GoogleMapSelection() {
         />
         <label for="culturel">Lieux culturels</label>
       </div>
-      <div>
+      <div className="inputLabel">
         <input className="input" type="checkbox" id="cinemas" name="cinemas" />
         <label for="cinemas">Cinémas</label>
       </div>
