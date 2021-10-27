@@ -25,8 +25,9 @@ function MarkerParking() {
     <img src={img} width="70px" alt="restaurant"></img>
   </div>;
 }
-
+const key = process.env.REACT_APP_API_KEY;
 class GoogleMap extends Component {
+
   static defaultProps = {
     center: {
       lat: 47.212369,
@@ -40,7 +41,7 @@ class GoogleMap extends Component {
       // Important! Always set the container height explicitly
       <div className="googlemap">
         <GoogleMapReact
-          bootstrapURLKeys={{ key: "AIzaSyAvATmVZLKn5v6qbfj0xHzHRVeqqr4cvdA" }}
+          bootstrapURLKeys={{ key }}
           defaultCenter={this.props.center}
           defaultZoom={this.props.zoom}
         >
