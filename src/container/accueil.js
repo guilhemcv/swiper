@@ -7,7 +7,7 @@ function Accueil() {
     <div className="accueil">
       {/* Menu et Navigation --------------------------------- */}
       <MenuBurger />
-      <p>TEST</p>
+
       {/* ---------------------------------------------------- */}
 
       {/* Header (image accueil et phrase d'accroche) -------- */}

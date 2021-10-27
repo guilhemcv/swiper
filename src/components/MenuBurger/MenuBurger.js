@@ -2,17 +2,10 @@ import React from "react";
 import "./MenuBurger.css";
 
 function MenuBurger() {
-  const [check, setCheck] = React.useState("");
-
   return (
     <div className="header">
-      <input
-        id="burger"
-        type="checkbox"
-        checked={check}
-        onChange={() => setCheck(check === "checked" ? "" : "checked")}
-      />
-      <label id="label-burger" htmlFor="burger" className={check}>
+      <input id="burger" type="checkbox" />
+      <label id="label-burger" htmlFor="burger">
         <span id="burger-top"></span>
         <span id="burger-middle"></span>
         <span id="burger-bottom"></span>
