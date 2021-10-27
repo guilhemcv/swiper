@@ -23,7 +23,11 @@
 /*----------------------------------
         CSS Guilhem
 ----------------------------------*/
-
+.selectionAndMap {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+}
 
 
 
