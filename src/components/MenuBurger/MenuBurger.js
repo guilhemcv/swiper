@@ -1,4 +1,9 @@
 import React from "react";
+import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
+import Accueil from "../../container/accueil";
+import Swipe from "../../container/swipe";
+import Carte from "../../container/map";
+import Favoris from "../../container/favoris";
 import "./MenuBurger.css";
 
 function MenuBurger() {
@@ -11,22 +16,41 @@ function MenuBurger() {
         <span id="burger-bottom"></span>
       </label>
 
-      <nav id="nav-header">
-        <ul>
-          <li>
-            <a href="pages/evenements.html">_Événements</a>
-          </li>
-          <li>
-            <a href="pages/workplace.html">_Workplace</a>
-          </li>
-          <li>
-            <a href="pages/jobs.html">_Jobs</a>
-          </li>
-          <li>
-            <a href="pages/contact.html">_Contact</a>
-          </li>
-        </ul>
-      </nav>
+      <Router>
+        <div>
+          <nav>
+            <ul>
+              <li>
+                <Link to="/">Accueil</Link>
+              </li>
+              <li>
+                <Link to="/swipe">Swipe</Link>
+              </li>
+              <li>
+                <Link to="/carte">Carte</Link>
+              </li>
+              <li>
+                <Link to="/favoris">Favoris</Link>
+              </li>
+            </ul>
+          </nav>
+
+          <Switch>
+            <Route exact path="/">
+              <Accueil />
+            </Route>
+            <Route exact path="/swipe">
+              <Swipe />
+            </Route>
+            <Route exact path="/carte">
+              <Carte />
+            </Route>
+            <Route exact path="/favoris">
+              <Favoris />
+            </Route>
+          </Switch>
+        </div>
+      </Router>
     </div>
   );
 }
