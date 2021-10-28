@@ -30,3 +30,69 @@ h2{
     margin-bottom: 20px;
 }
 /*                               DESKTOP                               */
+
+@media screen and (min-width:800px) {
+  h2{
+    text-align:left;
+    position: relative;
+    left: 40px;
+    margin-top: 50px;
+  }
+  
+ 
+  .avis{
+    display: inline;
+    text-align: center;
+    position: relative;
+    left: 40px;
+}
+.avis1{
+  float: left;
+  width:45%;
+  display: inline;
+  border: 1px solid white;
+  background-color: white;
+  border-radius: 10%;
+  border-radius: 10%;
+  margin-right: 2%;
+  box-shadow: 10px 5px 5px grey;
+}
+.avis2{
+  float: left;
+  width:45%;
+  display: inline;
+  border: 1px solid white;
+  border-radius: 10%;
+  margin-right: 2%;
+  background-color: white;
+  box-shadow: 10px 5px 5px grey;
+}
+.avis3{
+  float: left;
+  width:45%;
+  display: inline;
+  border: 1px solid white;
+  background-color: white;
+  border-radius: 10%;
+  margin-right: 2%;
+  box-shadow: 10px 5px 5px grey;
+}
+.avis4{
+  float: left;
+  width:45%;
+  display: inline;
+  border: 1px solid white;
+  background-color: white;
+  border-radius: 10%;
+  margin-right: 2%;
+  box-shadow: 10px 5px 5px grey;
+}
+.photo {
+  float: left;
+  padding: 5%;
+}
+.avis p{
+  text-align: center;
+  padding : 10%;
+}
+}
