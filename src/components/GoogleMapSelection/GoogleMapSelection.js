@@ -3,7 +3,7 @@ import "./GoogleMapSelection.css";
 
 function GoogleMapSelection() {
   return (
-    <div className="selection">
+    <div>
       <div className="selection-recherche">
         <label forHtml="name">
           <h4>Rechercher une adresse :</h4>
@@ -11,9 +11,7 @@ function GoogleMapSelection() {
         <br />
         <input className="input-recherche" type="text" id="name" name="name" />
       </div>
-      <br />
-      <br />
-      <br />
+      <div className="selection"></div>
       <div className="inputLabel">
         <input className="input" type="checkbox" id="parking" name="parking" />
         <label for="parking">Parkings</label>
