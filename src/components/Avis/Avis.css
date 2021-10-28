@@ -1,14 +1,32 @@
+/*                                MOBILE FIRST                               */
+
+h2{
+  text-align: center;
+  margin-top: 58px;
+}
+
 .avis{
     display: flex;
-    justify-content: space-around;  
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    margin-right: 15px;
+    margin-left: 15px; 
 }
 
 .photo {
-    border-radius: 50%;
-    width: 50%;
+    border-radius: 100px;
+    width: 20%;
     filter:drop-shadow(2px 4px 4px #030303);
+    margin-bottom: 20px;
   }
 
 .avis1, .avis2, .avis3, .avis4{
-    
+    text-align: center;
+    margin-top: 20px;
+    padding-top: 5px;
+    font-style: italic;
+    width: 100%;
+    margin-bottom: 20px;
 }
+/*                               DESKTOP                               */
