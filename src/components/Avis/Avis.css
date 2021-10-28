@@ -1,0 +1,14 @@
+.avis{
+    display: flex;
+    justify-content: space-around;  
+}
+
+.photo {
+    border-radius: 50%;
+    width: 50%;
+    filter:drop-shadow(2px 4px 4px #030303);
+  }
+
+.avis1, .avis2, .avis3, .avis4{
+    
+}

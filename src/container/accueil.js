@@ -1,6 +1,7 @@
 import "./accueil.css";
 import React from "react";
 import MenuBurger from "../components/MenuBurger/MenuBurger";
+import Avis from "../components/Avis/Avis";
 
 function Accueil() {
   return (
@@ -19,6 +20,7 @@ function Accueil() {
       {/* ---------------------------------------------------- */}
 
       {/* Espace cartes textes + images ---------------------- */}
+      <Avis />
 
       {/* ---------------------------------------------------- */}
 
