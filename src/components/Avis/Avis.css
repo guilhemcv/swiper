@@ -36,7 +36,7 @@ h2{
     height: auto;
   }
   
-  h2{
+  .titre h2{
     text-align:left;
     position: relative;
     left: 40px;
@@ -50,11 +50,9 @@ h2{
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-around;
-  /*   position: relative; */
     left: 40px;
 }
 .avis1{
-  /* float: left; */
   display: flex;
   align-items: center;
   justify-content: center;  

@@ -2,20 +2,6 @@
 
 
 /*                   MOBILE FIRST                               */
-/* h2 {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  margin-bottom :20px;
-}
-p{
-  display: flex;
-  justify-content: center;
-  text-align: justify;
-  width: 100%;
-  margin-bottom :20px;
-} */
 .carte{
   display: flex;
   flex-direction: column;
@@ -24,6 +10,10 @@ p{
   margin-left: auto;
   padding-top: 2px;
   padding-bottom: 2px;
+}
+.carte h2{
+  margin-bottom: 20px;
+  margin-top: 10px;
 }
 
 /*                      DESKTOP                      */
@@ -36,14 +26,16 @@ p{
     justify-content: space-around;
     margin-top: 60px;
     margin-bottom: 6rem;
-    padding-left: 0px;
-    padding-right: 0px;
+    padding-left: 2px;
+    padding-right: 2px;
   }
-  .titre-carte{
-    margin: 0;
+  .carte h2{
     text-align: center;
-
-  } 
+    margin: 0;
+    width:25rem;
+    margin-right: auto;
+    margin-left: auto;
+  }
   .info{
     display: flex;
     flex-direction: column;
@@ -56,16 +48,9 @@ p{
     border-radius:3rem;
     background-color: white;
     box-shadow: 1px 5px 5px grey;
-/*     margin-left: 20px;
-    margin-right: 20px; */
     padding: 2rem;
+    margin-right: 2rem;
   }
-/*   .info p{
-    display: flex;
-   text-align: justify;
-   align-content: center;
-   justify-content: center;
-  } */
   .fonctionnement{
     display: flex;
     flex-direction: column;
@@ -78,9 +63,7 @@ p{
     border-radius:3rem;
     background-color: white;
     box-shadow: 1px 5px 5px grey;
-
-/*     margin-left: 20px;
-    margin-right: 20px; */
    padding: 2rem;
+   margin-right: 2rem;
   }
 }
