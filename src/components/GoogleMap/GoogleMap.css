@@ -1,0 +1,7 @@
+.googlemap {
+    height: 80vh;
+    width: 70%;
+    margin: 10rem auto;
+    display: flex;
+    justify-content: right;
+  }
