@@ -3,6 +3,7 @@ import React from "react";
 import MenuBurger from "../components/MenuBurger/MenuBurger";
 import GoogleMap from "../components/GoogleMap/GoogleMap";
 import GoogleMapSelection from "../components/GoogleMapSelection/GoogleMapSelection";
+import Footer from "../components/Footer/Footer";
 
 function Map() {
   return (
@@ -19,7 +20,7 @@ function Map() {
       {/* ---------------------------------------------------- */}
 
       {/* Footer --------------------------------- */}
-
+      <Footer />
       {/* ---------------------------------------------------- */}
     </div>
   );
