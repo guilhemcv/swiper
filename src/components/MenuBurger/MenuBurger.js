@@ -1,9 +1,5 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
-import Accueil from "../../container/accueil";
-import Swipe from "../../container/swipe";
-import Carte from "../../container/map";
-import Favoris from "../../container/favoris";
 import "./MenuBurger.css";
 
 function MenuBurger() {
@@ -34,21 +30,6 @@ function MenuBurger() {
               </li>
             </ul>
           </nav>
-
-          <Switch>
-            <Route exact path="/">
-              <Accueil />
-            </Route>
-            <Route exact path="/swipe">
-              <Swipe />
-            </Route>
-            <Route exact path="/carte">
-              <Carte />
-            </Route>
-            <Route exact path="/favoris">
-              <Favoris />
-            </Route>
-          </Switch>
         </div>
       </Router>
     </div>
