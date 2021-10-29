@@ -7,9 +7,9 @@ import Swipe from "./container/swipe";
 function App() {
   return (
     <div className="App">
-      {/*       <Accueil />
+      <Accueil />
       <Swipe />
-      <Map /> */}
+      <Map />
       <Favoris />
     </div>
   );
