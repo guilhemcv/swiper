@@ -99,7 +99,7 @@ input:checked + #label-burger span:last-child {
   transition-delay: 0s;
 }
 
-#nav-header ul li a {
+#nav-header ul li .a {
   text-decoration: none;
   color: white;
   font-weight: 300;
@@ -118,7 +118,7 @@ input:checked ~ #nav-header ul li {
   transition-delay: 0.5s;
 }
 
-#nav-header a:hover {
+#nav-header .a:hover {
   text-decoration: underline;
 }
 
