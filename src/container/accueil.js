@@ -2,6 +2,7 @@ import "./accueil.css";
 import React from "react";
 import MenuBurger from "../components/MenuBurger/MenuBurger";
 import Avis from "../components/Avis/Avis";
+import Carte from "../components/Carte/Carte";
 
 function Accueil() {
   return (
@@ -16,6 +17,7 @@ function Accueil() {
       {/* ---------------------------------------------------- */}
 
       {/* Espace cartes texte uniquement --------------------- */}
+      <Carte />
 
       {/* ---------------------------------------------------- */}
 
