@@ -1,6 +1,7 @@
 import "./accueil.css";
 import React from "react";
 import MenuBurger from "../components/MenuBurger/MenuBurger";
+import Footer from "../components/Footer/Footer";
 import Avis from "../components/Avis/Avis";
 import Carte from "../components/Carte/Carte";
 
@@ -27,7 +28,7 @@ function Accueil() {
       {/* ---------------------------------------------------- */}
 
       {/* Footer ---------------------------------------------- */}
-
+      <Footer />
       {/* ---------------------------------------------------- */}
     </div>
   );
