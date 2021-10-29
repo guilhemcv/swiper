@@ -6,7 +6,7 @@ function MenuBurger() {
   return (
     <div className="header">
       <input id="burger" type="checkbox" />
-      <label id="label-burger" for="burger">
+      <label id="label-burger" htmlFor="burger">
         <span id="burger-top"></span>
         <span id="burger-middle"></span>
         <span id="burger-bottom"></span>

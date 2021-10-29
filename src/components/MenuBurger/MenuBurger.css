@@ -113,7 +113,6 @@ input:checked ~ #nav-header ul li {
 }
 
 .header {
-  opacity: 0;
   transition: opacity 1s;
 }
 
