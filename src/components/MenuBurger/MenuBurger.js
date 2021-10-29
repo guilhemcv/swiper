@@ -5,7 +5,7 @@ function MenuBurger() {
   return (
     <div className="header">
       <input id="burger" type="checkbox" />
-      <label id="label-burger" for="burger">
+      <label id="label-burger" htmlFor="burger">
         <span id="burger-top"></span>
         <span id="burger-middle"></span>
         <span id="burger-bottom"></span>
@@ -14,16 +14,13 @@ function MenuBurger() {
       <nav id="nav-header">
         <ul>
           <li>
-            <a href="pages/evenements.html">_Événements</a>
+            <a href="pages/evenements.html">Swipe</a>
           </li>
           <li>
-            <a href="pages/workplace.html">_Workplace</a>
+            <a href="pages/workplace.html">Carte</a>
           </li>
           <li>
-            <a href="pages/jobs.html">_Jobs</a>
-          </li>
-          <li>
-            <a href="pages/contact.html">_Contact</a>
+            <a href="pages/jobs.html">Favoris</a>
           </li>
         </ul>
       </nav>
