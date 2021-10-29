@@ -2,7 +2,7 @@
 
 
 /*                   MOBILE FIRST                               */
-h2 {
+/* h2 {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -15,7 +15,7 @@ p{
   text-align: justify;
   width: 100%;
   margin-bottom :20px;
-}
+} */
 .carte{
   display: flex;
   flex-direction: column;
@@ -33,41 +33,54 @@ p{
   .carte{
     display: flex;
     flex-direction: row;
-    display: flex;
+    justify-content: space-around;
     margin-top: 60px;
+    margin-bottom: 6rem;
     padding-left: 0px;
     padding-right: 0px;
   }
-  h2{
-    display: flex;
-    flex-direction: row;
-  }
+  .titre-carte{
+    margin: 0;
+    text-align: center;
+
+  } 
   .info{
-    display: block;
-    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    align-content: center;
+    justify-content: space-evenly;
+    width: 45rem;
+    height: 10rem;
     border : 1px solid white;
-    border-radius:10%;
+    border-radius:3rem;
     background-color: white;
-    margin-left: 20px;
-    margin-right: 20px;
-    padding-left: 5px;
-    padding-right: 5px;
+    box-shadow: 1px 5px 5px grey;
+/*     margin-left: 20px;
+    margin-right: 20px; */
+    padding: 2rem;
   }
-  .info p{
+/*   .info p{
     display: flex;
    text-align: justify;
    align-content: center;
    justify-content: center;
-  }
+  } */
   .fonctionnement{
-    display: block;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    align-content: center;
+    justify-content: space-evenly;
+    width: 45rem;
+    height: 10rem;
     border : 1px solid white;
-    border-radius:10%;
+    border-radius:3rem;
     background-color: white;
-    width: 100%;
-    margin-left: 20px;
-    margin-right: 20px;
-    padding-left: 5px;
-    padding-right: 5px;
+    box-shadow: 1px 5px 5px grey;
+
+/*     margin-left: 20px;
+    margin-right: 20px; */
+   padding: 2rem;
   }
 }

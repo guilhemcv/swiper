@@ -4,13 +4,13 @@ import Images from "./Images/coralie.png";
 
 function Avis() {
   return (
-    <div>
+    <div className="carte-avis">
       <div className="titre">
         <h2>Ils parlent de nous</h2>
       </div>
       <div className="avis">
         <div className="avis1">
-          <img src={Images} alt="Portrait Coralie" class="photo" />
+          <img src={Images} alt="Portrait Coralie" className="photo" />
           <p>
             J'adore utiliser Swiper pour organiser mes week-ends! Je ne peux
             plus m'en passer!!

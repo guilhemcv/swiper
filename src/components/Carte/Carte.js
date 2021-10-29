@@ -5,7 +5,7 @@ function Carte() {
   return (
     <div className="carte">
       <div className="info">
-        <h2> A quoi ça sert ? </h2>
+        <h2 className="titre-carte"> A quoi ça sert ? </h2>
         <p>
           "On fait quoi ce week-end ?" T'en as marre de cette question ?! Pas de
           panique ! Swiper est là pour toi! Tu retouveras des propostions
@@ -16,7 +16,7 @@ function Carte() {
         </p>
       </div>
       <div className="fonctionnement">
-        <h2> Comment ça fonctionne ? </h2>
+        <h2 className="titre-carte"> Comment ça fonctionne ? </h2>
         <p>
           Tu peux commencer par créer un compte.Ensuite tu peux te diriger vers
           la page Swipe et sélectionner la catégorie qui t'intéresse : une

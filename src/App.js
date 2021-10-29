@@ -8,9 +8,9 @@ function App() {
   return (
     <div className="App">
       <Accueil />
-      <Swipe />
+      {/*  <Swipe />
       <Map />
-      <Favoris />
+      <Favoris /> */}
     </div>
   );
 }
