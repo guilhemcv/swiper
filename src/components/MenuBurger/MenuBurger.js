@@ -14,13 +14,19 @@ function MenuBurger() {
       <nav id="nav-header">
         <ul>
           <li>
-            <a href="pages/evenements.html">Swipe</a>
+            <a href="pages/evenements.html">
+              <h3>Swipe</h3>
+            </a>
           </li>
           <li>
-            <a href="pages/workplace.html">Carte</a>
+            <a href="pages/workplace.html">
+              <h3>Carte</h3>
+            </a>
           </li>
           <li>
-            <a href="pages/jobs.html">Favoris</a>
+            <a href="pages/jobs.html">
+              <h3>Favoris</h3>
+            </a>
           </li>
         </ul>
       </nav>
