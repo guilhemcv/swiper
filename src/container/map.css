@@ -34,6 +34,7 @@
 @media screen and (min-width:900px) {
         .selectionAndMap {
                 display: flex;
+                flex-direction: row;
                 align-items: left;
                 justify-content: flex-start;
         }
