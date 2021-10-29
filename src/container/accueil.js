@@ -1,13 +1,11 @@
 /* eslint-disable import/no-cycle */
 import "./accueil.css";
 import React from "react";
-import MenuBurger from "../components/MenuBurger/MenuBurger";
 
 function Accueil() {
   return (
     <div className="accueil">
       {/* Menu et Navigation --------------------------------- */}
-      <MenuBurger />
       <h1>page accueil</h1>
       {/* ---------------------------------------------------- */}
 

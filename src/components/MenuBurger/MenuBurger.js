@@ -4,14 +4,14 @@ import "./MenuBurger.css";
 
 function MenuBurger() {
   return (
-    <div className="header">
-      <input id="burger" type="checkbox" />
-      <label id="label-burger" htmlFor="burger">
-        <span id="burger-top"></span>
-        <span id="burger-middle"></span>
-        <span id="burger-bottom"></span>
-      </label>
-      <Router>
+    <Router>
+      <div>
+        <input id="burger" type="checkbox" />
+        <label id="label-burger" htmlFor="burger">
+          <span id="burger-top"></span>
+          <span id="burger-middle"></span>
+          <span id="burger-bottom"></span>
+        </label>
         <nav id="nav-header">
           <ul>
             <li>
@@ -20,18 +20,24 @@ function MenuBurger() {
               </Link>
             </li>
             <li>
-              <Link to="/swipe">Swipe</Link>
+              <Link to="/swipe" className="a">
+                Swipe
+              </Link>
             </li>
             <li>
-              <Link to="/carte">Carte</Link>
+              <Link to="/map" className="a">
+                Carte
+              </Link>
             </li>
             <li>
-              <Link to="/favoris">Favoris</Link>
+              <Link to="/favoris" className="a">
+                Favoris
+              </Link>
             </li>
           </ul>
         </nav>
-      </Router>
-    </div>
+      </div>
+    </Router>
   );
 }
 

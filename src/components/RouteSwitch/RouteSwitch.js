@@ -7,24 +7,14 @@ import Favoris from "../../container/favoris";
 
 function RouteSwitch() {
   return (
-    <div>
-      <Router>
-        <Switch>
-          <Route exact path="/">
-            <Accueil />
-          </Route>
-          <Route path="/swipe">
-            <Swipe />
-          </Route>
-          <Route path="/map">
-            <Map />
-          </Route>
-          <Route path="/favoris">
-            <Favoris />
-          </Route>
-        </Switch>
-      </Router>
-    </div>
+    <Router>
+      <Switch>
+        <Route path="/swipe" component={Swipe} />
+        <Route path="/map" component={Map} />
+        <Route path="/favoris" component={Favoris} />
+        <Route exact path="/" component={Accueil} />
+      </Switch>
+    </Router>
   );
 }
 

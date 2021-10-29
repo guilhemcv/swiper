@@ -1,12 +1,12 @@
 import "./favoris.css";
 import React from "react";
-import MenuBurger from "../components/MenuBurger/MenuBurger";
 
 function Favoris() {
   return (
     <div className="favoris">
       {/* Menu et Navigation --------------------------------- */}
-      <MenuBurger />
+
+      <h1>Page favoris</h1>
       {/* ---------------------------------------------------- */}
 
       {/* Corps favoris --------------------------------- */}
