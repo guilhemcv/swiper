@@ -7,10 +7,10 @@ import Swipe from "./container/swipe";
 function App() {
   return (
     <div className="App">
-      <Accueil />
-      <Swipe />
+      {/*       <Accueil />
+      <Swipe /> */}
       <Map />
-      <Favoris />
+      {/*       <Favoris /> */}
     </div>
   );
 }
