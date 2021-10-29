@@ -38,8 +38,7 @@ h2{
   
   .titre h2{
     text-align:left;
-    position: relative;
-    left: 40px;
+    margin-left: 40px;
     margin-top: 50px;
   }
   
