@@ -27,14 +27,18 @@ function MarkerParking() {
 
   /* Fetch parking de Nantes */
   function getParking() {
+    const parkingCoordonate = [];
     axios
       .get(
         "https://data.nantesmetropole.fr/api/records/1.0/search/?dataset=244400404_parkings-publics-nantes-disponibilites&q=&rows=20&facet=grp_nom&facet=grp_statut"
       )
       .then((response) => {
         const myData = response.data;
-        setParking(myData);
-        console.log(myData);
+        setParking(myData.records);
+        for (let i = 0; i < myData.records.length; i += 1) {
+          parkingCoordonate.push(myData.records[i].geometry.coordinates);
+        }
+        console.log(parkingCoordonate);
       });
   }
   useEffect(() => getParking(), []);
