@@ -1,12 +1,14 @@
-import React, { Component } from "react";
+import React, { Component, useState, useEffect } from "react";
 import GoogleMapReact from "google-map-react";
+import axios from "axios";
 import "./GoogleMap.css";
 import img from "./Chefs_Hat_6.png";
 import imgpark from "./Parking_8.png";
 
-const AnyReactComponent = ({ text }) => <div>{text}</div>;
+/* API Google */
 const key = process.env.REACT_APP_API_KEY;
 
+/* Marker pour les restaurants */
 function MarkerRestaurant() {
   return (
     <div
@@ -19,7 +21,24 @@ function MarkerRestaurant() {
   );
 }
 
+/* Marker pour les parkings */
 function MarkerParking() {
+  const [parking, setParking] = useState([]);
+
+  /* Fetch parking de Nantes */
+  function getParking() {
+    axios
+      .get(
+        "https://data.nantesmetropole.fr/api/records/1.0/search/?dataset=244400404_parkings-publics-nantes-disponibilites&q=&rows=20&facet=grp_nom&facet=grp_statut"
+      )
+      .then((response) => {
+        const myData = response.data;
+        setParking(myData);
+        console.log(myData);
+      });
+  }
+  useEffect(() => getParking(), []);
+
   return (
     <div
       style={{
@@ -31,7 +50,9 @@ function MarkerParking() {
   );
 }
 
+/* fonction affichage de la Google Map */
 class GoogleMap extends Component {
+  /* Définir le center de la carte par défaut */
   static defaultProps = {
     center: {
       lat: 47.212369,
@@ -44,7 +65,11 @@ class GoogleMap extends Component {
     return (
       <div className="googlemap">
         <GoogleMapReact
-          bootstrapURLKeys={{ key }}
+          bootstrapURLKeys={
+            {
+              /* key */
+            }
+          }
           defaultCenter={this.props.center}
           defaultZoom={this.props.zoom}
         >
@@ -56,7 +81,6 @@ class GoogleMap extends Component {
           <MarkerParking lat={47.21235} lng={-1.556} />
           <MarkerParking lat={47.2} lng={-1.56} />
           <MarkerParking lat={47.21} lng={-1.567} />
-          <AnyReactComponent lat={59.955413} lng={30.337844} text="My Marker" />
         </GoogleMapReact>
       </div>
     );
