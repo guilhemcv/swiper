@@ -24,10 +24,11 @@ function MarkerRestaurant() {
 /* Marker pour les parkings */
 function MarkerParking() {
   const [parking, setParking] = useState([]);
+  const [parkingCoordinateLng, setParkingCoordinateLng] = useState([]);
+  const [parkingCoordinateLat, setParkingCoordinateLat] = useState([]);
 
   /* Fetch parking de Nantes */
   function getParking() {
-    const parkingCoordonate = [];
     axios
       .get(
         "https://data.nantesmetropole.fr/api/records/1.0/search/?dataset=244400404_parkings-publics-nantes-disponibilites&q=&rows=20&facet=grp_nom&facet=grp_statut"
@@ -36,9 +37,16 @@ function MarkerParking() {
         const myData = response.data;
         setParking(myData.records);
         for (let i = 0; i < myData.records.length; i += 1) {
-          parkingCoordonate.push(myData.records[i].geometry.coordinates);
+          setParkingCoordinateLat(
+            parkingCoordinateLat.push(myData.records[i].fields.location)
+          );
+          setParkingCoordinateLng(
+            parkingCoordinateLng.push(myData.records[i].fields.location)
+          );
+          /*  parkingCoordinateLng.push(myData.records[i].fields.location);
+          parkingCoordinateLat.push(myData.records[i].fields.location); */
         }
-        console.log(parkingCoordonate);
+        console.log(parkingCoordinateLng, parkingCoordinateLat);
       });
   }
   useEffect(() => getParking(), []);
@@ -77,12 +85,10 @@ class GoogleMap extends Component {
           defaultCenter={this.props.center}
           defaultZoom={this.props.zoom}
         >
-          <MarkerRestaurant lat={47.212369} lng={-1.55} />
+          {/* <MarkerRestaurant lat={47.212369} lng={-1.55} />
           <MarkerRestaurant lat={47.21} lng={-1.5545} />
           <MarkerRestaurant lat={47.2} lng={-1.55231} />
-          <MarkerRestaurant lat={47.2165} lng={-1.5552} />
-          <MarkerParking lat={47.225} lng={-1.5552} />
-          <MarkerParking lat={47.21235} lng={-1.556} />
+          <MarkerRestaurant lat={47.2165} lng={-1.5552} /> */}
           <MarkerParking lat={47.2} lng={-1.56} />
           <MarkerParking lat={47.21} lng={-1.567} />
         </GoogleMapReact>
