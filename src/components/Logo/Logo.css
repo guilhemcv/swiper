@@ -1,0 +1,25 @@
+.titre-logo {
+  display: none;
+}
+
+.img-logo {
+  position: absolute;
+  z-index: 1;
+  width: 8rem;
+  padding-left: 1rem;
+  padding-top: 0.2rem;
+  display: flex;
+
+}
+
+@media screen and (min-width: 800px) {
+  .titre-logo {
+    position: absolute;
+    z-index: 1;
+    padding-left: 1rem;
+    display:flex;
+}
+  .img-logo {
+    display: none;
+  }
+}
