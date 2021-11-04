@@ -3,7 +3,7 @@ import "./Footer.css";
 import facebook from "./facebook.png";
 import instagram from "./instagram.png";
 import twitter from "./twitter.png";
-import nuage from "./icone-de-nuage.png";
+import OpenWeather from "../OpenWeather/OpenWeather";
 
 function Footer() {
   return (
@@ -27,13 +27,7 @@ function Footer() {
             <img className="footer-logo" src={twitter} alt="logo twitter" />
           </a>
         </div>
-        <div className="footer-meteo">
-          <div className="footer-meteo-titre">
-            <h3>Nantes</h3>
-            <h3>22°</h3>
-          </div>
-          <img className="footer-image-meteo" src={nuage} alt="logo nuage" />
-        </div>
+        <OpenWeather />
       </div>
       <div className="footer-bas">
         <div className="footer-mention">
