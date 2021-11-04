@@ -9,7 +9,7 @@ import imgpark from "./Parking_8.png";
 const key = process.env.REACT_APP_API_KEY;
 
 /* Marker pour les restaurants */
-function MarkerRestaurant() {
+/* function MarkerRestaurant() {
   return (
     <div
       style={{
@@ -19,7 +19,7 @@ function MarkerRestaurant() {
       <img src={img} width="70px" alt="restaurant"></img>
     </div>
   );
-}
+} */
 
 /* Marker pour les parkings */
 function MarkerParking() {
