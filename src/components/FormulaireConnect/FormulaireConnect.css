@@ -1,0 +1,70 @@
+.login {
+  position: absolute;
+  width: 380px;
+  height: 580px;
+  left: 570px;
+  top: 120px;
+  background: #FFFFFF;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
+  border-radius: 30px;
+}
+
+.loginTitle {
+  position: absolute;
+  width: 2010px;
+  height: 35px;
+  left: 650px;
+  top: 205px;
+
+  font-family: Amaranth;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 30px;
+  line-height: 35px;
+  text-align: center;
+  color: #0AA2FF;
+}
+
+.inputEmail {
+  position: absolute;
+  width: 295px;
+  height: 54px;
+
+border: 2px solid #000000;
+box-sizing: border-box;
+border-radius: 15px;
+}
+
+.paraEmail {
+  position: absolute;
+  width: 230px;
+  height: 25px;
+  font-family: Amaranth;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 20px;
+  line-height: 20px;
+  color: #CFCFCF;
+}
+
+.btnClass {
+  position: absolute;
+  width: 200px;
+  height: 35px;
+  background: linear-gradient(0deg, rgba(74, 173, 235, 0.5), rgba(74, 173, 235, 0.5)), #0AA2FF;
+  border-radius: 15px;
+}
+
+.btnSubmit {
+  position: absolute;
+  width: 124px;
+  height: 15px;
+  font-family: Amaranth;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 25px;
+  line-height: 30px;
+  text-align: center;
+  color: #FFFFFF;
+}
+
