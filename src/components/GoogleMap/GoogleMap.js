@@ -44,8 +44,7 @@ class GoogleMap extends React.Component {
   }
 
   componentDidMount() {
-    //axios
-    this.setState({ markers: []})
+    this.setState({ markers: [] });
   }
 
   /* Définir le center de la carte par défaut */
