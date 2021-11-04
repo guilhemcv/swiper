@@ -3,8 +3,8 @@ import React from "react";
 import GoogleMapReact from "google-map-react";
 import axios from "axios";
 import "./GoogleMap.css";
-import img from "./Chefs_Hat_6.png";
-import imgpark from "./Parking_8.png";
+import imageParcs from "./parks.png";
+import imageParking from "./Parking_8.png";
 
 /* API Google */
 const key = process.env.REACT_APP_API_KEY;
@@ -17,7 +17,7 @@ function MarkerParc() {
         transform: "translate(-50%, -50%)",
       }}
     >
-      <img src={img} width="70px" alt="restaurant"></img>
+      <img src={imageParcs} width="70px" alt="restaurant"></img>
     </div>
   );
 }
@@ -30,7 +30,7 @@ function MarkerParking() {
         transform: "translate(-50%, -50%)",
       }}
     >
-      <img src={imgpark} width="70px" alt="restaurant"></img>
+      <img src={imageParking} width="70px" alt="restaurant"></img>
     </div>
   );
 }
@@ -48,7 +48,7 @@ class GoogleMap extends React.Component {
   componentDidMount() {
     axios
       .get(
-        "https://data.nantesmetropole.fr/api/records/1.0/search/?dataset=244400404_parkings-publics-nantes-disponibilites&q=&rows=20&facet=grp_nom&facet=grp_statut"
+        "https://data.nantesmetropole.fr/api/records/1.0/search/?dataset=244400404_parkings-publics-nantes&q=&rows=100&facet=libcategorie&facet=libtype&facet=acces_pmr&facet=service_velo&facet=stationnement_velo&facet=stationnement_velo_securise&facet=moyen_paiement"
       )
       .then((response) => {
         console.log(response.data);
@@ -61,7 +61,7 @@ class GoogleMap extends React.Component {
       });
     axios
       .get(
-        "https://data.nantesmetropole.fr/api/records/1.0/search/?dataset=244400404_parcs-jardins-nantes&q=&facet=libtype&facet=gardien&facet=jeux_enfants&facet=pataugeoire&facet=sanitaires&facet=sanitaires_handicapes&facet=chiens_autorises&facet=jardin_clos&facet=abris&facet=point_eau_potable&facet=table_pique_nique"
+        "https://data.nantesmetropole.fr/api/records/1.0/search/?dataset=244400404_parcs-jardins-nantes&q=&rows=100&facet=libtype&facet=gardien&facet=jeux_enfants&facet=pataugeoire&facet=sanitaires&facet=sanitaires_handicapes&facet=chiens_autorises&facet=jardin_clos&facet=abris&facet=point_eau_potable&facet=table_pique_nique"
       )
       .then((response) => {
         const parcData = response.data.records.map(
