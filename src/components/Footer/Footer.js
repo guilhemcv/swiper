@@ -1,9 +1,9 @@
 import React from "react";
 import "./Footer.css";
-import facebook from "./facebook.png";
-import instagram from "./instagram.png";
-import twitter from "./twitter.png";
-import nuage from "./icone-de-nuage.png";
+import facebook from "../../Assets/Images/facebook.png";
+import instagram from "../../Assets/Images/instagram.png";
+import twitter from "../../Assets/Images/twitter.png";
+import nuage from "../../Assets/Images/icone-de-nuage.png";
 
 function Footer() {
   return (
