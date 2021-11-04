@@ -1,5 +1,5 @@
 /* eslint-disable prefer-destructuring */
-import React, { Component, useState, useEffect } from "react";
+import React from "react";
 import GoogleMapReact from "google-map-react";
 import axios from "axios";
 import "./GoogleMap.css";
@@ -10,7 +10,7 @@ import imgpark from "./Parking_8.png";
 const key = process.env.REACT_APP_API_KEY;
 
 /* Marker pour les restaurants */
-/* function MarkerRestaurant() {
+function MarkerParc() {
   return (
     <div
       style={{
@@ -20,7 +20,7 @@ const key = process.env.REACT_APP_API_KEY;
       <img src={img} width="70px" alt="restaurant"></img>
     </div>
   );
-} */
+}
 
 /* Marker pour les parkings */
 function MarkerParking() {
@@ -35,15 +35,13 @@ function MarkerParking() {
   );
 }
 
-let parkingLat = 0;
-let parkingLng = 0;
-
 /* fonction affichage de la Google Map */
 class GoogleMap extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      markers: [],
+      markersParking: [],
+      markersParc: [],
     };
   }
 
@@ -53,15 +51,27 @@ class GoogleMap extends React.Component {
         "https://data.nantesmetropole.fr/api/records/1.0/search/?dataset=244400404_parkings-publics-nantes-disponibilites&q=&rows=20&facet=grp_nom&facet=grp_statut"
       )
       .then((response) => {
-        const myData = response.data;
         console.log(response.data);
-        for (let i = 0; i < myData.records.length; i += 1) {
-          parkingLat = myData.records[i].fields.location[0];
-          parkingLng = myData.records[i].fields.location[1];
-          console.log(parkingLat, parkingLng);
-        }
+        const parkingData = response.data.records.map(
+          (record) => record.fields.location
+        );
+        this.setState({
+          markersParking: parkingData,
+        });
       });
-    this.setState({ markers: [] });
+    axios
+      .get(
+        "https://data.nantesmetropole.fr/api/records/1.0/search/?dataset=244400404_parcs-jardins-nantes&q=&facet=libtype&facet=gardien&facet=jeux_enfants&facet=pataugeoire&facet=sanitaires&facet=sanitaires_handicapes&facet=chiens_autorises&facet=jardin_clos&facet=abris&facet=point_eau_potable&facet=table_pique_nique"
+      )
+      .then((response) => {
+        const parcData = response.data.records.map(
+          (record) => record.fields.location
+        );
+        this.setState({
+          markersParc: parcData,
+        });
+        console.log(parcData);
+      });
   }
 
   /* Définir le center de la carte par défaut */
@@ -74,6 +84,19 @@ class GoogleMap extends React.Component {
   };
 
   render() {
+    let googleMarkersParking = [];
+    if (this.state.markersParking.length > 0) {
+      googleMarkersParking = this.state.markersParking.map((marker) =>
+        marker ? <MarkerParking lat={marker[0]} lng={marker[1]} /> : <div></div>
+      );
+    }
+    let googleMarkersParc = [];
+    if (this.state.markersParc.length > 0) {
+      googleMarkersParc = this.state.markersParc.map((marker) =>
+        marker ? <MarkerParc lat={marker[0]} lng={marker[1]} /> : <div></div>
+      );
+    }
+    console.log(googleMarkersParking);
     return (
       <div className="googlemap">
         <GoogleMapReact
@@ -89,7 +112,8 @@ class GoogleMap extends React.Component {
           <MarkerRestaurant lat={47.21} lng={-1.5545} />
           <MarkerRestaurant lat={47.2} lng={-1.55231} />
           <MarkerRestaurant lat={47.2165} lng={-1.5552} /> */}
-          <MarkerParking lat={47.21} lng={-1.55} />
+          {googleMarkersParking}
+          {googleMarkersParc}
           {/* <MarkerParking lat={47.21} lng={-1.567} /> */}
         </GoogleMapReact>
       </div>
