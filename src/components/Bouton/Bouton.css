@@ -1,0 +1,36 @@
+.buttonConnection {
+  position: relative;
+  /*align-items: center;*/
+  width: 295px;
+  height: 55px;
+  left: 50px;
+  top: 500px;
+  border: 2px solid #FFFFFF;
+  box-sizing: border-box;
+  border-radius: 15px;
+  font-size: 25px;
+  line-height: 30px;
+}
+
+.buttonCompte {
+  position: relative;
+  width: 295px;
+  height: 55px;
+  left: 50px;
+  top: 500px;
+  background: linear-gradient(0deg, rgba(74, 173, 235, 0.5), rgba(74, 173, 235, 0.5)), #0AA2FF;
+  border-radius: 15px;
+  font-size: 25px;
+  line-height: 30px;
+  color: #FFFFFF;
+
+}
+
+.buttonClick {
+  font-family: Amaranth;
+  font-style: normal;
+  font-weight: bold;
+  text-align: center;
+  cursor: pointer;
+
+}
