@@ -23,34 +23,6 @@ const key = process.env.REACT_APP_API_KEY;
 
 /* Marker pour les parkings */
 function MarkerParking() {
-  const [parking, setParking] = useState([]);
-  const [parkingCoordinateLng, setParkingCoordinateLng] = useState([]);
-  const [parkingCoordinateLat, setParkingCoordinateLat] = useState([]);
-
-  /* Fetch parking de Nantes */
-  function getParking() {
-    axios
-      .get(
-        "https://data.nantesmetropole.fr/api/records/1.0/search/?dataset=244400404_parkings-publics-nantes-disponibilites&q=&rows=20&facet=grp_nom&facet=grp_statut"
-      )
-      .then((response) => {
-        const myData = response.data;
-        setParking(myData.records);
-        for (let i = 0; i < myData.records.length; i += 1) {
-          setParkingCoordinateLat(
-            parkingCoordinateLat.push(myData.records[i].fields.location)
-          );
-          setParkingCoordinateLng(
-            parkingCoordinateLng.push(myData.records[i].fields.location)
-          );
-          /*  parkingCoordinateLng.push(myData.records[i].fields.location);
-          parkingCoordinateLat.push(myData.records[i].fields.location); */
-        }
-        console.log(parkingCoordinateLng, parkingCoordinateLat);
-      });
-  }
-  useEffect(() => getParking(), []);
-
   return (
     <div
       style={{
@@ -63,7 +35,19 @@ function MarkerParking() {
 }
 
 /* fonction affichage de la Google Map */
-class GoogleMap extends Component {
+class GoogleMap extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      markers: [],
+    };
+  }
+
+  componentDidMount() {
+    //axios
+    this.setState({ markers: []})
+  }
+
   /* Définir le center de la carte par défaut */
   static defaultProps = {
     center: {
