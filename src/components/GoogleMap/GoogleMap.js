@@ -1,3 +1,4 @@
+/* eslint-disable prefer-destructuring */
 import React, { Component, useState, useEffect } from "react";
 import GoogleMapReact from "google-map-react";
 import axios from "axios";
@@ -36,8 +37,6 @@ function MarkerParking() {
 
 let parkingLat = 0;
 let parkingLng = 0;
-let parkingLatFin = 0;
-let parkingLngFin = 0;
 
 /* fonction affichage de la Google Map */
 class GoogleMap extends React.Component {
@@ -57,9 +56,9 @@ class GoogleMap extends React.Component {
         const myData = response.data;
         console.log(response.data);
         for (let i = 0; i < myData.records.length; i += 1) {
-          parkingLat = myData.records[i].fields.location;
-          parkingLng = myData.records[i].fields.location;
-          console.log(parkingLat[0], parkingLng[1]);
+          parkingLat = myData.records[i].fields.location[0];
+          parkingLng = myData.records[i].fields.location[1];
+          console.log(parkingLat, parkingLng);
         }
       });
     this.setState({ markers: [] });
@@ -90,7 +89,7 @@ class GoogleMap extends React.Component {
           <MarkerRestaurant lat={47.21} lng={-1.5545} />
           <MarkerRestaurant lat={47.2} lng={-1.55231} />
           <MarkerRestaurant lat={47.2165} lng={-1.5552} /> */}
-          <MarkerParking lat={{ parkingLat }} lng={parkingLng} />
+          <MarkerParking lat={47.21} lng={-1.55} />
           {/* <MarkerParking lat={47.21} lng={-1.567} /> */}
         </GoogleMapReact>
       </div>
