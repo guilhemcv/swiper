@@ -34,6 +34,11 @@ function MarkerParking() {
   );
 }
 
+let parkingLat = 0;
+let parkingLng = 0;
+let parkingLatFin = 0;
+let parkingLngFin = 0;
+
 /* fonction affichage de la Google Map */
 class GoogleMap extends React.Component {
   constructor(props) {
@@ -44,6 +49,19 @@ class GoogleMap extends React.Component {
   }
 
   componentDidMount() {
+    axios
+      .get(
+        "https://data.nantesmetropole.fr/api/records/1.0/search/?dataset=244400404_parkings-publics-nantes-disponibilites&q=&rows=20&facet=grp_nom&facet=grp_statut"
+      )
+      .then((response) => {
+        const myData = response.data;
+        console.log(response.data);
+        for (let i = 0; i < myData.records.length; i += 1) {
+          parkingLat = myData.records[i].fields.location;
+          parkingLng = myData.records[i].fields.location;
+          console.log(parkingLat[0], parkingLng[1]);
+        }
+      });
     this.setState({ markers: [] });
   }
 
@@ -72,8 +90,8 @@ class GoogleMap extends React.Component {
           <MarkerRestaurant lat={47.21} lng={-1.5545} />
           <MarkerRestaurant lat={47.2} lng={-1.55231} />
           <MarkerRestaurant lat={47.2165} lng={-1.5552} /> */}
-          <MarkerParking lat={47.2} lng={-1.56} />
-          <MarkerParking lat={47.21} lng={-1.567} />
+          <MarkerParking lat={{ parkingLat }} lng={parkingLng} />
+          {/* <MarkerParking lat={47.21} lng={-1.567} /> */}
         </GoogleMapReact>
       </div>
     );
