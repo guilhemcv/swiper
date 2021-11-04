@@ -1,20 +1,37 @@
 import "./favoris.css";
 import React from "react";
+import MenuBurger from "../components/MenuBurger/MenuBurger";
+import Footer from "../components/Footer/Footer";
+import CarteRestaurant from "../components/CarteRestaurant/CarteRestaurant";
+import CarteCinema from "../components/CarteCinema/CarteCinema";
+import Logo from "../components/Logo/Logo";
 
 function Favoris() {
   return (
     <div className="favoris">
       {/* Menu et Navigation --------------------------------- */}
 
-      <h1>Page favoris</h1>
       {/* ---------------------------------------------------- */}
 
       {/* Corps favoris --------------------------------- */}
-
+      <div className="restaurant">
+        <h1 className="titre-favoris">Restaurants</h1>
+        <CarteRestaurant />
+        <CarteRestaurant />
+        <CarteRestaurant />
+      </div>
+      <div className="cinema">
+        <h1 className="titre-favoris">Cinémas</h1>
+        <CarteCinema />
+        <CarteCinema />
+        <CarteCinema />
+      </div>
       {/* ---------------------------------------------------- */}
 
       {/* Footer --------------------------------- */}
-
+      <div className="footer-favoris">
+        <Footer />
+      </div>
       {/* ---------------------------------------------------- */}
     </div>
   );

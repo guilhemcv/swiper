@@ -1,6 +1,8 @@
 /* eslint-disable import/no-cycle */
 import "./swipe.css";
 import React from "react";
+import MenuBurger from "../components/MenuBurger/MenuBurger";
+import Footer from "../components/Footer/Footer";
 
 function Swipe() {
   return (
@@ -15,7 +17,7 @@ function Swipe() {
       {/* ---------------------------------------------------- */}
 
       {/* Footer --------------------------------- */}
-
+      <Footer />
       {/* ---------------------------------------------------- */}
     </div>
   );
