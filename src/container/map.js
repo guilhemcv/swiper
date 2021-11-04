@@ -7,7 +7,6 @@ import GoogleMapSelection from "../components/GoogleMapSelection/GoogleMapSelect
 import Footer from "../components/Footer/Footer";
 import Logo from "../components/Logo/Logo";
 
-
 function Map() {
   return (
     <div className="map">
@@ -18,7 +17,7 @@ function Map() {
       {/* Carte + sélection catégorie --------------------------------- */}
       <div className="selectionAndMap">
         <GoogleMapSelection />
-        <GoogleMap />
+        {/* <GoogleMap /> */}
       </div>
       {/* ---------------------------------------------------- */}
 
