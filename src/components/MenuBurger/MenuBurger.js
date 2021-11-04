@@ -15,12 +15,12 @@ function MenuBurger() {
         <nav id="nav-header">
           <ul>
             <li>
-              <Link to="/" className="a">
+              <Link to="/" className="a" htmlFor="burger">
                 Accueil
               </Link>
             </li>
             <li>
-              <Link to="/swipe" className="a">
+              <Link to="/swipe" className="a" htmlFor="burger">
                 Swipe
               </Link>
             </li>
