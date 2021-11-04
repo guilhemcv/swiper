@@ -4,6 +4,7 @@ import Accueil from "./container/accueil";
 import Favoris from "./container/favoris";
 import Map from "./container/map";
 import Swipe from "./container/swipe";
+import NotFound from "./components/NotFound/NotFound";
 import "./components/MenuBurger/MenuBurger.css";
 
 function App() {
@@ -47,6 +48,7 @@ function App() {
           <Route path="/map" component={Map} />
           <Route path="/favoris" component={Favoris} />
           <Route exact path="/" component={Accueil} />
+          <Route component={NotFound} />
         </Switch>
       </Router>
     </div>
