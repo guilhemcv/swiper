@@ -1,3 +1,4 @@
+/* eslint-disable import/no-cycle */
 import "./map.css";
 import React from "react";
 import MenuBurger from "../components/MenuBurger/MenuBurger";
@@ -6,10 +7,12 @@ import GoogleMapSelection from "../components/GoogleMapSelection/GoogleMapSelect
 import Footer from "../components/Footer/Footer";
 import Logo from "../components/Logo/Logo";
 
+
 function Map() {
   return (
     <div className="map">
       {/* Menu et Navigation --------------------------------- */}
+
       {/* ---------------------------------------------------- */}
 
       {/* Carte + sélection catégorie --------------------------------- */}

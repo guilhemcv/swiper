@@ -1,3 +1,4 @@
+/* eslint-disable import/no-cycle */
 import "./accueil.css";
 import React from "react";
 import MenuBurger from "../components/MenuBurger/MenuBurger";
