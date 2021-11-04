@@ -5,12 +5,14 @@ import "./App.css";
 // import Swipe from "./container/swipe";
 import MenuBurger from "./components/MenuBurger/MenuBurger";
 import RouteSwitch from "./components/Switch/Switch";
+import ButtonClick from "./components/Bouton/Bouton";
 
 function App() {
   return (
     <div className="App">
       <MenuBurger />
       <RouteSwitch />
+      <ButtonClick />
     </div>
   );
 }
