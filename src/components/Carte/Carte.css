@@ -2,20 +2,6 @@
 
 
 /*                   MOBILE FIRST                               */
-h2 {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  margin-bottom :20px;
-}
-p{
-  display: flex;
-  justify-content: center;
-  text-align: justify;
-  width: 100%;
-  margin-bottom :20px;
-}
 .carte{
   display: flex;
   flex-direction: column;
@@ -25,6 +11,10 @@ p{
   padding-top: 2px;
   padding-bottom: 2px;
 }
+.carte h2{
+  margin-bottom: 20px;
+  margin-top: 10px;
+}
 
 /*                      DESKTOP                      */
 
@@ -33,41 +23,47 @@ p{
   .carte{
     display: flex;
     flex-direction: row;
-    display: flex;
+    justify-content: space-around;
     margin-top: 60px;
-    padding-left: 0px;
-    padding-right: 0px;
+    margin-bottom: 6rem;
+    padding-left: 2px;
+    padding-right: 2px;
   }
-  h2{
-    display: flex;
-    flex-direction: row;
+  .carte h2{
+    text-align: center;
+    margin: 0;
+    width:25rem;
+    margin-right: auto;
+    margin-left: auto;
   }
   .info{
-    display: block;
-    width: 100%;
-    border : 1px solid white;
-    border-radius:10%;
-    background-color: white;
-    margin-left: 20px;
-    margin-right: 20px;
-    padding-left: 5px;
-    padding-right: 5px;
-  }
-  .info p{
     display: flex;
-   text-align: justify;
-   align-content: center;
-   justify-content: center;
+    flex-direction: column;
+    align-items: flex-start;
+    align-content: center;
+    justify-content: space-evenly;
+    width: 45rem;
+    height: 10rem;
+    border : 1px solid white;
+    border-radius:3rem;
+    background-color: white;
+    box-shadow: 1px 5px 5px grey;
+    padding: 2rem;
+    margin-right: 2rem;
   }
   .fonctionnement{
-    display: block;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    align-content: center;
+    justify-content: space-evenly;
+    width: 45rem;
+    height: 10rem;
     border : 1px solid white;
-    border-radius:10%;
+    border-radius:3rem;
     background-color: white;
-    width: 100%;
-    margin-left: 20px;
-    margin-right: 20px;
-    padding-left: 5px;
-    padding-right: 5px;
+    box-shadow: 1px 5px 5px grey;
+   padding: 2rem;
+   margin-right: 2rem;
   }
 }

@@ -1,0 +1,78 @@
+
+h3 {
+    text-align: center;
+    text-decoration: underline;
+}
+
+.barreRecherche {
+    height: 40rem;
+    margin-top: 10rem;
+}
+
+.selection {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 80%;
+    height: 30rem;
+    margin-top: 1rem;
+    margin-bottom: -7rem;
+    margin-right: auto;
+    margin-left: auto;
+    padding: 1rem;
+    background-color: white;
+    border-radius: 2rem;
+    font-size: 2rem;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.selection-recherche {
+    margin-bottom: 2rem;
+    width: 42rem;
+    margin: 0 auto;
+    text-align: center;
+    
+}
+
+.input-recherche {
+    margin-top: 2rem ;
+    text-align: center;
+    border-radius: 20px;
+    height: 4rem;
+    width: 42rem;
+    border: none;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+
+}
+
+.input {
+    margin-right: 2rem;
+    margin-left: 8rem;
+}
+
+.inputLabel {
+    margin: 1rem 0;
+}
+
+@media screen and (min-width: 900px) {
+    .selection {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        width: 40rem;
+        height: 30rem;
+        margin: 5rem;
+        padding: 1rem;
+        background-color: white;
+        border-radius: 2rem;
+        font-size: 2rem;
+        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    }
+
+    .barreRecherche {
+        height: 40rem;
+        margin: 10rem auto;
+    }
+    
+    
+}

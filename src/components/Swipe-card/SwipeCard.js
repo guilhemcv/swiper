@@ -1,33 +1,60 @@
-import React, { useState, useMemo, useRef } from "react";
-// import TinderCard from '../react-tinder-card/index'
+import React, { useState, useMemo, useRef, useEffect } from "react";
 import TinderCard from "react-tinder-card";
+import "./SwipeCard.css";
+import axios from "axios";
 
 const db = [
   {
-    name: "Richard Hendricks",
-    url: "https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=774&q=80",
+    name: "Musée D'art",
+    url: "https://images.unsplash.com/photo-1518998053901-5348d3961a04?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1548&q=80",
   },
   {
-    name: "Erlich Bachman",
-    url: "https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=774&q=80",
+    name: "Musée d'Histoire Naturelle",
+    url: "https://images.unsplash.com/photo-1518998053901-5348d3961a04?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1548&q=80",
   },
   {
-    name: "Monica Hall",
-    url: "https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=774&q=80",
+    name: "Musée Jules Verne",
+    url: "https://images.unsplash.com/photo-1518998053901-5348d3961a04?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1548&q=80",
   },
   {
-    name: "Jared Dunn",
-    url: "https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=774&q=80",
+    name: "Musée du château",
+    url: "https://images.unsplash.com/photo-1518998053901-5348d3961a04?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1548&q=80",
   },
   {
-    name: "Dinesh Chugtai",
-    url: "https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=774&q=80",
+    name: "Musée des Machines",
+    url: "https://images.unsplash.com/photo-1518998053901-5348d3961a04?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1548&q=80",
   },
 ];
 
 function Advanced() {
-  const [currentIndex, setCurrentIndex] = useState(db.length - 1);
+  const [newPlace, setNewPlace] = useState([]);
+  const [currentIndex, setCurrentIndex] = useState(newPlace.length - 1);
   const [lastDirection, setLastDirection] = useState();
+  const canGoBack = currentIndex < newPlace.length - 1;
+  const canGoBackRef = useRef(canGoBack);
+  const canSwipe = currentIndex >= 0;
+
+  useEffect(() => {
+    getPlace();
+
+    async function getPlace() {
+      // Send the request
+      axios
+        .get(
+          "https://data.loire-atlantique.fr/api/records/1.0/search/?dataset=793866443_chateaux-monuments-musees-entreprises-et-artisanat-loire-atlantique&q=&rows=5&exclude.type_1=Artisanat&exclude.type_1=Coll%C3%A9giale&exclude.type_1=Mus%C3%A9e+prive"
+        )
+        // Extract the DATA from the received response
+        .then((response) => response.data)
+        // Use this data to update the state
+        .then((data) => {
+          setNewPlace(data.records);
+          canGoBackRef.current = currentIndex < db.length - 1;
+        });
+    }
+  }, []);
+  console.log(newPlace);
+  console.log(canGoBack);
+
   // used for outOfFrame closure
   const currentIndexRef = useRef(currentIndex);
 
@@ -43,10 +70,6 @@ function Advanced() {
     setCurrentIndex(val);
     currentIndexRef.current = val;
   };
-
-  const canGoBack = currentIndex < db.length - 1;
-
-  const canSwipe = currentIndex >= 0;
 
   // set last direction and decrease current index
   const swiped = (direction, nameToDelete, index) => {
@@ -78,22 +101,25 @@ function Advanced() {
   };
 
   return (
-    <div>
+    <div className="swipe-card">
       <div className="cardContainer">
-        {db.map((character, index) => (
+        {db.map((place, index) => (
           <TinderCard
             ref={childRefs[index]}
             className="swipe"
-            key={character.name}
-            onSwipe={(dir) => swiped(dir, character.name, index)}
-            onCardLeftScreen={() => outOfFrame(character.name, index)}
+            key={place.recordid}
+            onSwipe={(dir) => swiped(dir, place.name, index)}
+            onCardLeftScreen={() => outOfFrame(place.name, index)}
             preventSwipe={["up", "down"]}
           >
             <div
-              style={{ backgroundImage: `url(${character.url})` }}
+              //   style={{ backgroundImage: `url(${place.url})` }}
+              style={{
+                backgroundImage: `url("https://images.unsplash.com/photo-1518998053901-5348d3961a04?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1548&q=80")`,
+              }}
               className="card"
             >
-              <h3>{character.name}</h3>
+              <h3>{place.name}</h3>
             </div>
           </TinderCard>
         ))}
@@ -103,28 +129,28 @@ function Advanced() {
           style={{ backgroundColor: !canSwipe && "#c3c4d3" }}
           onClick={() => swipe("left")}
         >
-          Swipe left!
+          Swipe à gauche !
         </button>
         <button
           style={{ backgroundColor: !canGoBack && "#c3c4d3" }}
           onClick={() => goBack()}
         >
-          Undo swipe!
+          Annuler swipe!
         </button>
         <button
           style={{ backgroundColor: !canSwipe && "#c3c4d3" }}
           onClick={() => swipe("right")}
         >
-          Swipe right!
+          Swipe à droite !
         </button>
       </div>
       {lastDirection ? (
         <h2 key={lastDirection} className="infoText">
-          You swiped {lastDirection}
+          Vous avez swipe à {lastDirection}
         </h2>
       ) : (
         <h2 className="infoText">
-          Swipe a card or press a button to get Restore Card button visible!
+          Swipez pour faire apparaître le bouton annuler
         </h2>
       )}
     </div>

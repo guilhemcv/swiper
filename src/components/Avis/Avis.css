@@ -1,6 +1,6 @@
 /*                                MOBILE FIRST                               */
 
-h2{
+.h2{
   text-align: center;
   margin-top: 58px;
 }
@@ -32,60 +32,69 @@ h2{
 /*                               DESKTOP                               */
 
 @media screen and (min-width:800px) {
-  h2{
+  .carte-avis {
+    height: auto;
+  }
+  
+  .titre h2{
     text-align:left;
-    position: relative;
-    left: 40px;
+    margin-left: 40px;
     margin-top: 50px;
   }
   
  
   .avis{
-    display: inline;
+    display: flex;
     text-align: center;
-    position: relative;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
     left: 40px;
 }
 .avis1{
-  float: left;
-  width:45%;
-  display: inline;
+  display: flex;
+  align-items: center;
+  justify-content: center;  
+  align-content: space-around;
+  width: 35rem;
   border: 1px solid white;
   background-color: white;
-  border-radius: 10%;
-  border-radius: 10%;
+  border-radius: 3rem;
   margin-right: 2%;
-  box-shadow: 10px 5px 5px grey;
+  box-shadow: 1px 5px 5px grey;
 }
 .avis2{
-  float: left;
-  width:45%;
-  display: inline;
+  display: flex;
+  align-items: center;
+  justify-content: center;  
+  width: 35rem;
   border: 1px solid white;
-  border-radius: 10%;
-  margin-right: 2%;
   background-color: white;
-  box-shadow: 10px 5px 5px grey;
+  border-radius: 3rem;
+  margin-right: 2%;
+  box-shadow: 1px 5px 5px grey;
 }
 .avis3{
-  float: left;
-  width:45%;
-  display: inline;
+  display: flex;
+  align-items: center;
+  justify-content: center;  
+  width: 35rem;
   border: 1px solid white;
   background-color: white;
-  border-radius: 10%;
+  border-radius: 3rem;
   margin-right: 2%;
-  box-shadow: 10px 5px 5px grey;
+  box-shadow: 1px 5px 5px grey;
 }
 .avis4{
-  float: left;
-  width:45%;
-  display: inline;
+  display: flex;
+  align-items: center;
+  justify-content: center;  
+  width: 35rem;
   border: 1px solid white;
   background-color: white;
-  border-radius: 10%;
+  border-radius: 3rem;
   margin-right: 2%;
-  box-shadow: 10px 5px 5px grey;
+  box-shadow: 1px 5px 5px grey;
 }
 .photo {
   float: left;

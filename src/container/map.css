@@ -23,6 +23,22 @@
 /*----------------------------------
         CSS Guilhem
 ----------------------------------*/
+.selectionAndMap {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+}
+
+
+@media screen and (min-width:900px) {
+        .selectionAndMap {
+                display: flex;
+                flex-direction: row;
+                align-items: flex-start;
+                justify-content: flex-start;
+        }
+}
 
 
 
