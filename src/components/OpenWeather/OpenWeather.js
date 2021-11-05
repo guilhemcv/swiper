@@ -45,10 +45,7 @@ function OpenWeather() {
         </div>
         {/* Affichage de l'icône */}
         {sky != null ? (
-          <img
-            src="http://openweathermap.org/img/w/${sky}
-            @2x.png"
-          />
+          <img src={`http://openweathermap.org/img/wn/${sky}@2x.png`} />
         ) : (
           ""
         )}
