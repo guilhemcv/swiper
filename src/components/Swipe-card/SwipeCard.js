@@ -6,33 +6,33 @@ import axios from "axios";
 const db = [
   {
     name: "Musée D'art",
-    url: "https://images.unsplash.com/photo-1518998053901-5348d3961a04?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1548&q=80",
+    url: "https://images.unsplash.com/photo-1572953109213-3be62398eb95?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1770&q=80",
   },
   {
     name: "Musée d'Histoire Naturelle",
-    url: "https://images.unsplash.com/photo-1518998053901-5348d3961a04?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1548&q=80",
+    url: "https://images.unsplash.com/photo-1513038630932-13873b1a7f29?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80",
   },
   {
     name: "Musée Jules Verne",
-    url: "https://images.unsplash.com/photo-1518998053901-5348d3961a04?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1548&q=80",
+    url: "https://alivreouvertdotnet.files.wordpress.com/2016/07/musee-jules-verne-2.jpg",
   },
   {
     name: "Musée du château",
-    url: "https://images.unsplash.com/photo-1518998053901-5348d3961a04?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1548&q=80",
+    url: "https://images.unsplash.com/photo-1554907984-15263bfd63bd?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1770&q=80",
   },
   {
     name: "Musée des Machines",
-    url: "https://images.unsplash.com/photo-1518998053901-5348d3961a04?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1548&q=80",
+    url: "https://images.unsplash.com/photo-1630348637723-25d84aac0dd9?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=774&q=80",
   },
 ];
 
 function Advanced() {
   const [newPlace, setNewPlace] = useState([]);
-  const [currentIndex, setCurrentIndex] = useState(newPlace.length - 1);
+  const [currentIndex, setCurrentIndex] = useState(db.length - 1);
   const [lastDirection, setLastDirection] = useState();
-  const canGoBack = currentIndex < newPlace.length - 1;
-  const canGoBackRef = useRef(canGoBack);
-  const canSwipe = currentIndex >= 0;
+  //   const canGoBack = currentIndex < newPlace.length - 1;
+  //   const canGoBackRef = useRef(canGoBack);
+  //   const canSwipe = currentIndex >= 0;
 
   useEffect(() => {
     getPlace();
@@ -48,12 +48,11 @@ function Advanced() {
         // Use this data to update the state
         .then((data) => {
           setNewPlace(data.records);
-          canGoBackRef.current = currentIndex < db.length - 1;
+          // canGoBackRef.current = currentIndex < db.length - 1;
         });
     }
   }, []);
   console.log(newPlace);
-  console.log(canGoBack);
 
   // used for outOfFrame closure
   const currentIndexRef = useRef(currentIndex);
@@ -70,6 +69,10 @@ function Advanced() {
     setCurrentIndex(val);
     currentIndexRef.current = val;
   };
+
+  const canGoBack = currentIndex < db.length - 1;
+
+  const canSwipe = currentIndex >= 0;
 
   // set last direction and decrease current index
   const swiped = (direction, nameToDelete, index) => {
@@ -107,16 +110,13 @@ function Advanced() {
           <TinderCard
             ref={childRefs[index]}
             className="swipe"
-            key={place.recordid}
+            key={place.name}
             onSwipe={(dir) => swiped(dir, place.name, index)}
             onCardLeftScreen={() => outOfFrame(place.name, index)}
             preventSwipe={["up", "down"]}
           >
             <div
-              //   style={{ backgroundImage: `url(${place.url})` }}
-              style={{
-                backgroundImage: `url("https://images.unsplash.com/photo-1518998053901-5348d3961a04?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1548&q=80")`,
-              }}
+              style={{ backgroundImage: `url(${place.url})` }}
               className="card"
             >
               <h3>{place.name}</h3>
