@@ -1,7 +1,18 @@
 .googlemap {
+  height: 80vh;
+  width: 80%;
+  margin: 10rem auto;
+  display: flex;
+  justify-content: right;
+}
+
+@media screen and (min-width : 900px) {
+
+.googlemap {
     height: 80vh;
     width: 70%;
-    margin: 10rem auto;
+    margin: 10rem 10rem 10rem auto;
     display: flex;
     justify-content: right;
   }
+}
