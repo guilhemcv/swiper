@@ -6,7 +6,7 @@ function GoogleMapSelection() {
     <div className="barreRecherche">
       <div className="selection-recherche">
         <label forHtml="name">
-          <h3>Rechercher une adresse :</h3>
+          <h3 className="mapselection-titre">Rechercher une adresse :</h3>
         </label>
         <br />
         <input className="input-recherche" type="text" id="name" name="name" />

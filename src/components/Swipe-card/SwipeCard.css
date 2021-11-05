@@ -1,18 +1,14 @@
-#root {
-    text-align: center;
-    display: flex;
-    justify-content: center;
+ #root {
     width: 100vw;
     min-height: 100vh;
     overflow: hidden;
-  }
+  } 
 
   .swipe-card {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-top: 10rem;
   }
 
   /* .app>div {
@@ -42,6 +38,7 @@
     width: 90vw;
     max-width: 260px;
     height: 300px;
+    margin-top: 10rem;
   }
 
   .card {
