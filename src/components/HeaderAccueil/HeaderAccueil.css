@@ -10,14 +10,16 @@ h1 {
     background-repeat: no-repeat;
     background-size: cover;
     filter: blur(5px);
-
     height: 100vh;
 }
+
 
 .header-text-mobile {
     position: absolute;
     top: 30vh;
     margin-left: 2rem;
+    padding-left: 20rem;
+
 
 }
 
@@ -28,9 +30,10 @@ h1 {
 @media screen and (min-width:800px) {
     
 
-h1 {
-    font-size: 7rem;
+.titre-bureau {
+    font-size: 10rem;
     color: white;
+    padding-left: 35rem;
 }
 .header-text-desktop {
     display: block;
