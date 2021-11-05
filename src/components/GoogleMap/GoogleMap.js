@@ -17,7 +17,7 @@ function MarkerParc() {
         transform: "translate(-50%, -50%)",
       }}
     >
-      <img src={imageParcs} width="70px" alt="restaurant"></img>
+      <img src={imageParcs} width="30px" alt="restaurant"></img>
     </div>
   );
 }
@@ -30,7 +30,7 @@ function MarkerParking() {
         transform: "translate(-50%, -50%)",
       }}
     >
-      <img src={imageParking} width="70px" alt="restaurant"></img>
+      <img src={imageParking} width="30px" alt="restaurant"></img>
     </div>
   );
 }
