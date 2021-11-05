@@ -6,6 +6,7 @@
   justify-content: right;
 }
 
+
 @media screen and (min-width : 900px) {
 
 .googlemap {
@@ -15,4 +16,12 @@
     display: flex;
     justify-content: right;
   }
+
+.marker:hover {
+  transform: scale(1.5);
+  cursor: pointer;
+  padding-bottom: 10px;
+  z-index: 9999;
+  transition: 0.1s;
+}
 }

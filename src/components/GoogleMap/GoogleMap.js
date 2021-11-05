@@ -19,7 +19,7 @@ function MarkerParc() {
         transform: "translate(-50%, -50%)",
       }}
     >
-      <img src={imageParcs} width="35px" alt="parc"></img>
+      <img className="marker" src={imageParcs} width="35px" alt="parc"></img>
     </div>
   );
 }
@@ -32,7 +32,12 @@ function MarkerParking() {
         transform: "translate(-50%, -50%)",
       }}
     >
-      <img src={imageParking} width="35px" alt="parking"></img>
+      <img
+        className="marker"
+        src={imageParking}
+        width="35px"
+        alt="parking"
+      ></img>
     </div>
   );
 }
@@ -45,7 +50,7 @@ function MarkerMusee() {
         transform: "translate(-50%, -50%)",
       }}
     >
-      <img src={imageMusee} width="35px" alt="musee"></img>
+      <img className="marker" src={imageMusee} width="35px" alt="musee"></img>
     </div>
   );
 }
@@ -57,7 +62,7 @@ function MarkerCinema() {
         transform: "translate(-50%, -50%)",
       }}
     >
-      <img src={imageCinema} width="35px" alt="musee"></img>
+      <img className="marker" src={imageCinema} width="35px" alt="musee"></img>
     </div>
   );
 }
@@ -69,80 +74,18 @@ function MarkerRestaurant() {
         transform: "translate(-50%, -50%)",
       }}
     >
-      <img src={imageRestaurant} width="35px" alt="musee"></img>
+      <img
+        className="marker"
+        src={imageRestaurant}
+        width="35px"
+        alt="musee"
+      ></img>
     </div>
   );
 }
 
 /* fonction affichage de la Google Map */
 class GoogleMap extends React.Component {
-  /*   constructor(props) {
-    super(props);
-    this.state = {
-      markersParking: [],
-      markersParc: [],
-      markersMusee: [],
-      markersCinema: [],
-      animation: 2,
-    }; 
-  } */
-
-  /* 
-  //UseEffect pour affichage des markers sur la Google Map
-  */
-
-  /*   componentDidMount() {
-    axios
-      .get(
-        "https://data.nantesmetropole.fr/api/records/1.0/search/?dataset=244400404_parkings-publics-nantes&q=&rows=100&facet=libcategorie&facet=libtype&facet=acces_pmr&facet=service_velo&facet=stationnement_velo&facet=stationnement_velo_securise&facet=moyen_paiement"
-      )
-      .then((response) => {
-        console.log(response.data);
-        const parkingData = response.data.records.map(
-          (record) => record.fields.location
-        );
-        this.setState({
-          markersParking: parkingData,
-        });
-      });
-    axios
-      .get(
-        "https://data.nantesmetropole.fr/api/records/1.0/search/?dataset=244400404_parcs-jardins-nantes&q=&rows=100&facet=libtype&facet=gardien&facet=jeux_enfants&facet=pataugeoire&facet=sanitaires&facet=sanitaires_handicapes&facet=chiens_autorises&facet=jardin_clos&facet=abris&facet=point_eau_potable&facet=table_pique_nique"
-      )
-      .then((response) => {
-        const parcData = response.data.records.map(
-          (record) => record.fields.location
-        );
-        this.setState({
-          markersParc: parcData,
-        });
-      });
-    axios
-      .get(
-        "https://data.opendatasoft.com/api/records/1.0/search/?dataset=244400404_equipements-publics-nantes-metropole%40nantesmetropole&q=&rows=100&facet=theme&facet=categorie&facet=type&facet=commune&refine.categorie=Mus%C3%A9e%2C+Ch%C3%A2teau&refine.commune=Nantes"
-      )
-      .then((response) => {
-        const museeData = response.data.records.map(
-          (record) => record.fields.geo_shape.coordinates
-        );
-        this.setState({
-          markersMusee: museeData,
-        });
-      });
-    axios
-      .get(
-        "https://data.opendatasoft.com/api/records/1.0/search/?dataset=244400404_equipements-publics-nantes-metropole%40nantesmetropole&q=&rows=100&facet=theme&facet=categorie&facet=type&facet=commune&refine.categorie=Mus%C3%A9e%2C+Ch%C3%A2teau&refine.commune=Nantes"
-      )
-      .then((response) => {
-        const cinemaData = response.data.records.map(
-          (record) => record.fields.geo_shape.coordinates
-        );
-        this.setState({
-          markersCinema: cinemaData,
-        });
-      });
-  } */
-
   /* Définir le center de la carte par défaut */
   static defaultProps = {
     center: {
@@ -192,11 +135,12 @@ class GoogleMap extends React.Component {
       <div className="googlemap">
         <GoogleMapReact
           options={(map) => ({ mapTypeId: map.MapTypeId.HYBRID })}
-          /*           bootstrapURLKeys={{
+          /* bootstrapURLKeys={{
             key,
           }} */
           defaultCenter={this.props.center}
           defaultZoom={this.props.zoom}
+          onClick={() => console.log("le clic fonctionne")}
         >
           {googleMarkersParking}
           {googleMarkersParc}
