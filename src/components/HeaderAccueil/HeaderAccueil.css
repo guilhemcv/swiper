@@ -33,13 +33,13 @@ h1 {
 .titre-bureau {
     font-size: 10rem;
     color: white;
-    padding-left: 20rem;
 }
 .header-text-desktop {
     display: block;
     position: absolute;
     top: 30vh;
-    margin-left: 2rem;
+    width: 100%;
+    text-align: center;
 
 }
 
