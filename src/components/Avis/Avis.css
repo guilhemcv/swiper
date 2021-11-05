@@ -15,7 +15,7 @@
 }
 
 .photo {
-    border-radius: 100px;
+    border-radius: 200px;
     width: 20%;
     filter:drop-shadow(2px 4px 4px #030303);
     margin-bottom: 20px;
