@@ -3,7 +3,7 @@ import React from "react";
 import GoogleMapReact from "google-map-react";
 import axios from "axios";
 import "./GoogleMap.css";
-import imageParcs from "./parks.png";
+import imageParcs from "./park.png";
 import imageParking from "./Parking.png";
 import imageMusee from "./Musee.png";
 
@@ -18,7 +18,7 @@ function MarkerParc() {
         transform: "translate(-50%, -50%)",
       }}
     >
-      <img src={imageParcs} width="30px" alt="parc"></img>
+      <img src={imageParcs} width="35px" alt="parc"></img>
     </div>
   );
 }
@@ -31,7 +31,7 @@ function MarkerParking() {
         transform: "translate(-50%, -50%)",
       }}
     >
-      <img src={imageParking} width="30px" alt="parking"></img>
+      <img src={imageParking} width="35px" alt="parking"></img>
     </div>
   );
 }
@@ -44,7 +44,7 @@ function MarkerMusee() {
         transform: "translate(-50%, -50%)",
       }}
     >
-      <img src={imageMusee} width="30px" alt="musee"></img>
+      <img src={imageMusee} width="35px" alt="musee"></img>
     </div>
   );
 }
