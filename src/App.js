@@ -2,7 +2,6 @@ import "./App.css";
 import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
 import React from "react";
 import Logo from "./components/Logo/Logo";
-import MenuBurger from "./components/MenuBurger/MenuBurger";
 import Accueil from "./container/accueil";
 import Favoris from "./container/favoris";
 import Map from "./container/map";
@@ -27,7 +26,12 @@ function App() {
           <Logo />
         </Link>
         <div>
-          <input id="burger" type="checkbox" checked={isChecked} />
+          <input
+            id="burger"
+            type="checkbox"
+            checked={isChecked}
+            readOnly={true}
+          />
           <label id="label-burger" htmlFor="burger" onClick={handleIsChecked}>
             <span id="burger-top"></span>
             <span id="burger-middle"></span>

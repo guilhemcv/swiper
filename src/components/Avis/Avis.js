@@ -19,21 +19,21 @@ function Avis() {
           </p>
         </div>
         <div className="avis2">
-          <img src={Lucas} alt="Portrait Lucas" class="photo" />
+          <img src={Lucas} alt="Portrait Lucas" className="photo" />
           <p>
             Grâce à Swiper je re-découvre ma ville tous les week-ends!! Trop
             bien conçu!
           </p>
         </div>
         <div className="avis3">
-          <img src={Guilhem} alt="Portrait Maxime" class="photo" />
+          <img src={Guilhem} alt="Portrait Maxime" className="photo" />
           <p>
             Je l'ai utilisé pour découvrir Nantes: Super appli', très complète!
             Hyper fan!
           </p>
         </div>
         <div className="avis4">
-          <img src={Lucas} alt="Portrait Guilhem" class="photo" />
+          <img src={Lucas} alt="Portrait Guilhem" className="photo" />
           <p>
             Avec notre groupe d'amis, on l'utilise tous les week-ends! On est
             fan!!
