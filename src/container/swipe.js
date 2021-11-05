@@ -1,6 +1,6 @@
 import "./swipe.css";
 import React from "react";
-import MenuBurger from "../components/MenuBurger/MenuBurger";
+
 import Footer from "../components/Footer/Footer";
 
 function Swipe() {

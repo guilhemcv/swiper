@@ -1,10 +1,8 @@
 import "./favoris.css";
 import React from "react";
-import MenuBurger from "../components/MenuBurger/MenuBurger";
 import Footer from "../components/Footer/Footer";
 import CarteRestaurant from "../components/CarteRestaurant/CarteRestaurant";
 import CarteCinema from "../components/CarteCinema/CarteCinema";
-import Logo from "../components/Logo/Logo";
 
 function Favoris() {
   return (

@@ -4,25 +4,19 @@ import "./FormulaireConnect.css";
 function Login() {
   return (
     <div className="login">
-      <h2 className="logintitle">Je me connecte !</h2>
+      <h2 className="loginTitle">Je me connecte !</h2>
       <p className="paraText">
         Connectez-vous avec votre compte pour bénificier de vos favoris et
         d'autres paramètres sur tous vos appareils
       </p>
       <form>
-        <label className="classEmail">
-          <p className="paraEmail">Adresse e-mail</p>
-          <input type="email" />
-        </label>
-        <label className="classMdp">
-          <p className="paraMdp">Mot de passe</p>
-          <input type="password" />
-        </label>
-        <div className="btnClass">
-          <button className="btnSubmit" type="submit">
-            Connection
-          </button>
-        </div>
+        <label className="classEmail">Adresse e-mail :</label>
+        <input className="paraEmail" type="email" />
+        <label className="classMdp">Mot de passe :</label>
+        <input className="inputMdp" type="password" />
+        <button className="btnSubmit" type="submit">
+          Connection
+        </button>
       </form>
     </div>
   );
