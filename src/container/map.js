@@ -17,7 +17,7 @@ function Map() {
       {/* Carte + sélection catégorie --------------------------------- */}
       <div className="selectionAndMap">
         <GoogleMapSelection />
-        {/* <GoogleMap /> */}
+        <GoogleMap />
       </div>
       {/* ---------------------------------------------------- */}
 
