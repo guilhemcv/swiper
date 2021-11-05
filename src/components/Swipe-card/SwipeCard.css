@@ -1,7 +1,7 @@
 #root {
-    /* text-align: center;
+    text-align: center;
     display: flex;
-    justify-content: center; */
+    justify-content: center;
     width: 100vw;
     min-height: 100vh;
     overflow: hidden;
@@ -12,6 +12,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin-top: 10rem;
   }
 
   /* .app>div {
@@ -70,6 +71,7 @@
     bottom: 0;
     margin: 10px;
     color: #fff;
+    text-decoration: none;
   }
 
   .infoText {

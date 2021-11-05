@@ -41,13 +41,14 @@ function Advanced() {
       // Send the request
       axios
         .get(
-          "https://data.loire-atlantique.fr/api/records/1.0/search/?dataset=793866443_chateaux-monuments-musees-entreprises-et-artisanat-loire-atlantique&q=&rows=5&exclude.type_1=Artisanat&exclude.type_1=Coll%C3%A9giale&exclude.type_1=Mus%C3%A9e+prive"
+          "https://data.loire-atlantique.fr/api/records/1.0/search/?dataset=793866443_chateaux-monuments-musees-entreprises-et-artisanat-loire-atlantique&q=&rows=10&exclude.type_1=Artisanat&exclude.type_1=Coll%C3%A9giale&exclude.type_1=Mus%C3%A9e+prive"
         )
         // Extract the DATA from the received response
         .then((response) => response.data)
         // Use this data to update the state
         .then((data) => {
           setNewPlace(data.records);
+          // setCurrentIndex(data.records - 1);
           // canGoBackRef.current = currentIndex < db.length - 1;
         });
     }

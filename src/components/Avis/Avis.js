@@ -1,8 +1,8 @@
 import React from "react";
 import "./Avis.css";
-import Coralie from "./Images/coralie.png";
-import Lucas from "./Images/lucas.png";
-import Guilhem from "./Images/guilhem.png";
+import Coralie from "../../Assets/Images/coralie.png";
+import Lucas from "../../Assets/Images/lucas.png";
+import Guilhem from "../../Assets/Images/guilhem.png";
 
 function Avis() {
   return (
