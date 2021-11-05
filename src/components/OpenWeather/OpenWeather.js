@@ -1,29 +1,36 @@
 import React, { useEffect } from "react";
 import axios from "axios";
-import clouds from "../Footer/icone-de-nuage.png";
-import rain from "../Footer/icone-de-pluie.png";
-import clearSky from "../Footer/icone-de-soleil.png";
+import env from "react-dotenv";
 
+const key = env.REACT_METEO_API_KEY;
 function OpenWeather() {
   const [temp, setTemp] = React.useState(null);
+  {
+    /* initialisation de la temp à null par défaut */
+  }
   const [sky, setSky] = React.useState(null);
-  const weatherImg = {
-    Clouds: { clouds },
-    Rain: { rain },
-    ClearSky: { clearSky },
-  };
+  {
+    /* initialisation description du temps à null par défaut */
+  }
 
   useEffect(() => {
-    console.log("hello");
+    {
+      /* Affichage de l'API */
+    }
     axios
       .get(
-        "http://api.openweathermap.org/data/2.5/weather?q=Nantes,fr&APPID=2aed266dbd13eb51768f8ca86b3086ae&units=metric"
+        `http://api.openweathermap.org/data/2.5/weather?q=Nantes,fr&APPID=${key}&units=metric`
       )
       .then((response) => response.data)
       .then((data) => {
         setTemp(data.main.temp);
-        console.log(temp);
+        {
+          /* mise à jour de la temp en temps réel */
+        }
         setSky(data.weather[0].icon);
+        {
+          /* icône description du temps récupéré */
+        }
         console.log(data.weather[0].icon);
       });
   }, []);
@@ -34,12 +41,13 @@ function OpenWeather() {
         <div className="footer-meteo-titre">
           <h3>Nantes</h3>
           {temp != null ? <h3>{Math.round(temp)} °</h3> : ""}
+          {/* Affichage du temps arrondie a l'entier supp */}
         </div>
+        {/* Affichage de l'icône */}
         {sky != null ? (
           <img
-            src={`http://openweathermap.org/img/wn/{setSky(
-              data.weather[0].icon
-            )}@2x.png`}
+            src="http://openweathermap.org/img/w/${sky}
+            @2x.png"
           />
         ) : (
           ""
