@@ -6,6 +6,7 @@ import "./GoogleMap.css";
 import imageParcs from "./park.png";
 import imageParking from "./Parking.png";
 import imageMusee from "./Musee.png";
+import imageCinema from "./cinema.png";
 
 /* API Google */
 const key = process.env.REACT_APP_API_KEY;
@@ -48,6 +49,18 @@ function MarkerMusee() {
     </div>
   );
 }
+/* Marker pour les cinémas */
+function MarkerCinema() {
+  return (
+    <div
+      style={{
+        transform: "translate(-50%, -50%)",
+      }}
+    >
+      <img src={imageCinema} width="35px" alt="musee"></img>
+    </div>
+  );
+}
 
 /* fonction affichage de la Google Map */
 class GoogleMap extends React.Component {
@@ -57,6 +70,7 @@ class GoogleMap extends React.Component {
       markersParking: [],
       markersParc: [],
       markersMusee: [],
+      markersCinema: [],
     };
   }
 
@@ -105,6 +119,18 @@ class GoogleMap extends React.Component {
           markersMusee: museeData,
         });
       });
+    axios
+      .get(
+        "https://data.opendatasoft.com/api/records/1.0/search/?dataset=244400404_equipements-publics-nantes-metropole%40nantesmetropole&q=&rows=100&facet=theme&facet=categorie&facet=type&facet=commune&refine.categorie=Mus%C3%A9e%2C+Ch%C3%A2teau&refine.commune=Nantes"
+      )
+      .then((response) => {
+        const cinemaData = response.data.records.map(
+          (record) => record.fields.geo_shape.coordinates
+        );
+        this.setState({
+          markersCinema: cinemaData,
+        });
+      });
   }
 
   /* Définir le center de la carte par défaut */
@@ -136,6 +162,12 @@ class GoogleMap extends React.Component {
         marker ? <MarkerMusee lat={marker[1]} lng={marker[0]} /> : <div></div>
       );
     }
+    let googleMarkersCinema = [];
+    if (this.state.markersCinema.length > 0) {
+      googleMarkersCinema = this.state.markersCinema.map((marker) =>
+        marker ? <MarkerCinema lat={marker[1]} lng={marker[0]} /> : <div></div>
+      );
+    }
     return (
       <div className="googlemap">
         <GoogleMapReact
@@ -149,6 +181,7 @@ class GoogleMap extends React.Component {
           {googleMarkersParking}
           {googleMarkersParc}
           {googleMarkersMusee}
+          {googleMarkersCinema}
         </GoogleMapReact>
       </div>
     );
