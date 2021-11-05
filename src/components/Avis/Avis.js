@@ -20,7 +20,7 @@ function Avis() {
           </p>
         </div>
         <div className="avis2">
-          <img src={Lucas} alt="Portrait Lucas" class="photo" />
+          <img src={Lucas} alt="Portrait Lucas" className="photo" />
           <p>
             Grâce à Swiper je re-découvre ma ville tous les week-ends!! Trop
             bien conçu!
