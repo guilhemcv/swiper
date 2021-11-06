@@ -20,7 +20,7 @@ window.env = {
   "HOMEBREW_SHELLENV_PREFIX": "/opt/homebrew",
   "COMMAND_MODE": "unix2003",
   "npm_config_globalconfig": "/usr/local/etc/npmrc",
-  "SSH_AUTH_SOCK": "/private/tmp/com.apple.launchd.MzZg1tdJY4/Listeners",
+  "SSH_AUTH_SOCK": "/private/tmp/com.apple.launchd.HXZdiptZvq/Listeners",
   "__CF_USER_TEXT_ENCODING": "0x1F5:0x0:0x1",
   "npm_execpath": "/usr/local/lib/node_modules/npm/bin/npm-cli.js",
   "PAGER": "less",
