@@ -10,18 +10,19 @@
 @media screen and (min-width : 1024px) {
 
 .googlemap {
-    height: 90vh;
+    height: 80vh;
     width: 100%;
-    margin: 10rem 3rem 0 auto;
+    margin: 10rem 3rem 5rem auto;
     display: flex;
     justify-content: right;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   }
 
 .marker:hover {
   transform: scale(1.5);
   cursor: pointer;
   padding-bottom: 10px;
-  z-index: 9999;
+  z-index: 999;
   transition: 0.1s;
 }
 /* Popup style */
