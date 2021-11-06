@@ -9,7 +9,7 @@ window.env = {
   "HOMEBREW_REPOSITORY": "/opt/homebrew",
   "TMPDIR": "/var/folders/x1/sc3_4jtj54d5fs_8jpjmg7580000gn/T/",
   "npm_config_global_prefix": "/usr/local",
-  "TERM_PROGRAM_VERSION": "1.61.2",
+  "TERM_PROGRAM_VERSION": "1.62.0",
   "NODE_OPTIONS": "--require \"/Users/guilhemseyvet/Library/Application Support/Code/User/workspaceStorage/ee228dec2ffe268abd7622988a53bf0c/ms-vscode.js-debug/bootloader.js\" ",
   "ORIGINAL_XDG_CURRENT_DESKTOP": "undefined",
   "COLOR": "1",

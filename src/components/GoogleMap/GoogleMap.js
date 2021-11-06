@@ -2,11 +2,13 @@
 import React from "react";
 import GoogleMapReact from "google-map-react";
 import "./GoogleMap.css";
+import Popup from "../Popup/Popup";
 import imageParcs from "../../Assets/Images/Markers/park.png";
 import imageParking from "../../Assets/Images/Markers/parking.png";
 import imageMusee from "../../Assets/Images/Markers/musee.png";
 import imageCinema from "../../Assets/Images/Markers/cinema.png";
 import imageRestaurant from "../../Assets/Images/Markers/restaurant.png";
+import customStyles from "./CustomStyle";
 
 /* API Google */
 const key = process.env.REACT_APP_API_KEY;
@@ -86,6 +88,21 @@ function MarkerRestaurant() {
 
 /* fonction affichage de la Google Map */
 class GoogleMap extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      isOpen: false,
+    };
+    this.togglePopup = this.togglePopup.bind(this);
+  }
+
+  /* fonction affichage popup sur map */
+  togglePopup = () => {
+    this.setState((prevState) => ({
+      isOpen: !prevState.isOpen,
+    }));
+  };
+
   /* Définir le center de la carte par défaut */
   static defaultProps = {
     center: {
@@ -134,19 +151,38 @@ class GoogleMap extends React.Component {
     return (
       <div className="googlemap">
         <GoogleMapReact
-          options={(map) => ({ mapTypeId: map.MapTypeId.HYBRID })}
-          /* bootstrapURLKeys={{
+          options={{
+            styles: customStyles,
+          }}
+          /* ptions={(map) => ({ mapTypeId: map.MapTypeId.HYBRID })} */
+          bootstrapURLKeys={{
             key,
-          }} */
+          }}
           defaultCenter={this.props.center}
           defaultZoom={this.props.zoom}
-          onClick={() => console.log("le clic fonctionne")}
+          onClick={() => this.togglePopup()}
         >
           {googleMarkersParking}
           {googleMarkersParc}
           {googleMarkersMusee}
           {googleMarkersCinema}
           {googleMarkersRestaurant}
+          {this.state.isOpen && (
+            <Popup
+              content={
+                <>
+                  <h5>Ceci est la Cigale</h5>
+                  <br />
+                  <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                    do eiusmod tempor incididunt ut labore et dolore magna
+                    aliqua. Ut enim ad minim veniam
+                  </p>
+                </>
+              }
+              handleClose={() => this.togglePopup}
+            />
+          )}
         </GoogleMapReact>
       </div>
     );
