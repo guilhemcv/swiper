@@ -27,11 +27,11 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        justify-content: center;
+        justify-content: flex-start;
 }
 
 
-@media screen and (min-width:900px) {
+@media screen and (min-width:1024px) {
         .selectionAndMap {
                 display: flex;
                 flex-direction: row;

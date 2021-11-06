@@ -154,10 +154,9 @@ class GoogleMap extends React.Component {
           options={{
             styles: customStyles,
           }}
-          /* ptions={(map) => ({ mapTypeId: map.MapTypeId.HYBRID })} */
-          bootstrapURLKeys={{
+          /* bootstrapURLKeys={{
             key,
-          }}
+          }} */
           defaultCenter={this.props.center}
           defaultZoom={this.props.zoom}
           onClick={() => this.togglePopup()}
