@@ -18,49 +18,13 @@ function GoogleMapSelection(props) {
             <input
               className="input"
               type="checkbox"
-              id="parking"
-              name="parking"
-              defaultChecked={props.parkingIsChecked}
-              checked={!props.parkingIsChecked}
-              onChange={props.ParkinghandleOnChange}
+              id="monuments"
+              name="monuments"
+              defaultChecked={props.monumentIsChecked}
+              checked={!props.monumentIsChecked}
+              onChange={props.MonumentHandleOnChange}
             />
-            <label for="parking">Parkings</label>
-          </div>
-          <div className="inputLabel">
-            <input
-              className="input"
-              type="checkbox"
-              id="restaurant"
-              name="restaurant"
-              defaultChecked={props.restaurantIsChecked}
-              checked={!props.restaurantIsChecked}
-              onChange={props.RestaurantHandleOnChange}
-            />
-            <label for="restaurant">Restaurants</label>
-          </div>
-          <div className="inputLabel">
-            <input
-              className="input"
-              type="checkbox"
-              id="sport"
-              name="sport"
-              defaultChecked={props.sportIsChecked}
-              checked={!props.sportIsChecked}
-              onChange={props.SportHandleOnChange}
-            />
-            <label for="sport">Sport</label>
-          </div>
-          <div className="inputLabel">
-            <input
-              className="input"
-              type="checkbox"
-              id="parc"
-              name="parc"
-              defaultChecked={props.parcIsChecked}
-              checked={!props.parcIsChecked}
-              onChange={props.ParcHandleOnChange}
-            />
-            <label for="parc">Parcs et Squares</label>
+            <label for="monuments">Monuments</label>
           </div>
           <div className="inputLabel">
             <input
@@ -73,20 +37,6 @@ function GoogleMapSelection(props) {
               onChange={props.CinemaHandleOnChange}
             />
             <label for="cinemas">Cinémas</label>
-          </div>
-        </div>
-        <div className="selectiondroite">
-          <div className="inputLabel">
-            <input
-              className="input"
-              type="checkbox"
-              id="monuments"
-              name="monuments"
-              defaultChecked={props.monumentIsChecked}
-              checked={!props.monumentIsChecked}
-              onChange={props.MonumentHandleOnChange}
-            />
-            <label for="monuments">Monuments</label>
           </div>
           <div className="inputLabel">
             <input
@@ -104,6 +54,44 @@ function GoogleMapSelection(props) {
             <input
               className="input"
               type="checkbox"
+              id="restaurant"
+              name="restaurant"
+              defaultChecked={props.restaurantIsChecked}
+              checked={!props.restaurantIsChecked}
+              onChange={props.RestaurantHandleOnChange}
+            />
+            <label for="restaurant">Restaurants</label>
+          </div>
+          <div className="inputLabel">
+            <input
+              className="input"
+              type="checkbox"
+              id="parc"
+              name="parc"
+              defaultChecked={props.parcIsChecked}
+              checked={!props.parcIsChecked}
+              onChange={props.ParcHandleOnChange}
+            />
+            <label for="parc">Parcs et Squares</label>
+          </div>
+        </div>
+        <div className="selectiondroite">
+          <div className="inputLabel">
+            <input
+              className="input"
+              type="checkbox"
+              id="sport"
+              name="sport"
+              defaultChecked={props.sportIsChecked}
+              checked={!props.sportIsChecked}
+              onChange={props.SportHandleOnChange}
+            />
+            <label for="sport">Sport</label>
+          </div>
+          <div className="inputLabel">
+            <input
+              className="input"
+              type="checkbox"
               id="piscine"
               name="piscine"
               defaultChecked={props.piscineIsChecked}
@@ -111,6 +99,18 @@ function GoogleMapSelection(props) {
               onChange={props.PiscineHandleOnChange}
             />
             <label for="piscine">Piscines</label>
+          </div>
+          <div className="inputLabel">
+            <input
+              className="input"
+              type="checkbox"
+              id="parking"
+              name="parking"
+              defaultChecked={props.parkingIsChecked}
+              checked={!props.parkingIsChecked}
+              onChange={props.ParkinghandleOnChange}
+            />
+            <label for="parking">Parkings</label>
           </div>
           <div className="inputLabel">
             <input

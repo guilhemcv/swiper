@@ -3,7 +3,7 @@ import React from "react";
 import GoogleMapReact from "google-map-react";
 import "./GoogleMap.css";
 import Popup from "../Popup/Popup";
-import imageParcs from "../../Assets/Images/Markers/park.png";
+import imageParcs from "../../Assets/Images/Markers/parc.png";
 import imageParking from "../../Assets/Images/Markers/parking.png";
 import imageMusee from "../../Assets/Images/Markers/musee.png";
 import imageCinema from "../../Assets/Images/Markers/cinema.png";
@@ -12,6 +12,7 @@ import imageSpectacle from "../../Assets/Images/Markers/spectacle.png";
 import imagePiscine from "../../Assets/Images/Markers/piscine.png";
 import imageBicloo from "../../Assets/Images/Markers/bicloo.png";
 import imageMarguerite from "../../Assets/Images/Markers/voiture.png";
+import imageSport from "../../Assets/Images/Markers/sport.png";
 import customStylesLite from "./CustomStyleLite";
 import customStylesDark from "./CustomStylesDark";
 
@@ -152,6 +153,23 @@ function MarkerMarguerite() {
     </div>
   );
 }
+/* Marker pour le sport de plein air */
+function MarkerSport() {
+  return (
+    <div
+      style={{
+        transform: "translate(-50%, -50%)",
+      }}
+    >
+      <img
+        className="marker"
+        src={imageSport}
+        width="35px"
+        alt="marguerite"
+      ></img>
+    </div>
+  );
+}
 
 /* fonction affichage de la Google Map */
 class GoogleMap extends React.Component {
@@ -247,6 +265,12 @@ class GoogleMap extends React.Component {
         )
       );
     }
+    let googleMarkersSport = [];
+    if (this.props.sport.length > 0) {
+      googleMarkersSport = this.props.sport.map((marker) =>
+        marker ? <MarkerSport lat={marker[1]} lng={marker[0]} /> : <div></div>
+      );
+    }
     return (
       <div className="googlemap">
         <GoogleMapReact
@@ -255,24 +279,21 @@ class GoogleMap extends React.Component {
               ? { styles: customStylesDark }
               : { styles: customStylesLite }
           }
-          bootstrapURLKeys={
-            {
-              /* key, */
-            }
-          }
+          /* bootstrapURLKeys={{ key }} */
           defaultCenter={this.props.center}
           defaultZoom={this.props.zoom}
           onClick={() => this.togglePopup()}
         >
+          {this.props.margueriteIsChecked ? "" : googleMarkersMarguerite}
           {this.props.biclooIsChecked ? "" : googleMarkersBicloo}
           {this.props.parkingIsChecked ? "" : googleMarkersParking}
           {this.props.parcIsChecked ? "" : googleMarkersParc}
-          {this.props.monumentIsChecked ? "" : googleMarkersMusee}
-          {this.props.cinemaIsChecked ? "" : googleMarkersCinema}
-          {this.props.restaurantIsChecked ? "" : googleMarkersRestaurant}
-          {this.props.spectacleIsChecked ? "" : googleMarkersSpectacle}
           {this.props.piscineIsChecked ? "" : googleMarkersPiscine}
-          {this.props.margueriteIsChecked ? "" : googleMarkersMarguerite}
+          {this.props.sportIsChecked ? "" : googleMarkersSport}
+          {this.props.restaurantIsChecked ? "" : googleMarkersRestaurant}
+          {this.props.cinemaIsChecked ? "" : googleMarkersCinema}
+          {this.props.spectacleIsChecked ? "" : googleMarkersSpectacle}
+          {this.props.monumentIsChecked ? "" : googleMarkersMusee}
           {this.state.isOpen && (
             <Popup
               content={

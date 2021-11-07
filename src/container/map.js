@@ -29,8 +29,10 @@ function Map() {
   const [piscine, setPiscine] = useState("");
   const [bicloo, setBicloo] = useState("");
   const [marguerite, setMarguerite] = useState("");
-  const [changeTheme, setChangeTheme] = useState(false);
+  const [sport, setSport] = useState("");
 
+  /* State pour bouton switch de changement theme google map */
+  const [changeTheme, setChangeTheme] = useState(false);
   const ChangeColorTheme = () => {
     setChangeTheme(!changeTheme);
   };
@@ -41,9 +43,6 @@ function Map() {
   };
   const RestaurantHandleOnChange = () => {
     setRestaurantIsChecked(!restaurantIsChecked);
-  };
-  const SportHandleOnChange = () => {
-    setSportIsChecked(!sportIsChecked);
   };
   const ParcHandleOnChange = () => {
     setParcIsChecked(!parcIsChecked);
@@ -66,6 +65,9 @@ function Map() {
   const MargueriteHandleOnChange = () => {
     setMargueriteIsChecked(!margueriteIsChecked);
   };
+  const SportHandleOnChange = () => {
+    setSportIsChecked(!sportIsChecked);
+  };
 
   /* useEffect pour les Fetch des APIS */
   useEffect(() => {
@@ -78,6 +80,7 @@ function Map() {
     getPiscine();
     getBicloo();
     getMarguerite();
+    getSport();
   }, []);
 
   /* Fetch API pour markers parking */
@@ -203,6 +206,19 @@ function Map() {
         setMarguerite(margueriteData);
       });
   };
+  /* Fetch API pour markers marguerite */
+  const getSport = () => {
+    axios
+      .get(
+        "https://data.opendatasoft.com/api/records/1.0/search/?dataset=244400404_equipements-publics-nantes-metropole%40nantesmetropole&q=&rows=100&facet=theme&facet=categorie&facet=type&facet=commune&refine.categorie=Pratique+libre"
+      )
+      .then((response) => {
+        const sportData = response.data.records.map(
+          (record) => record.fields.geo_shape.coordinates
+        );
+        setSport(sportData);
+      });
+  };
 
   return (
     <div className="map">
@@ -264,6 +280,7 @@ function Map() {
           piscine={piscine}
           bicloo={bicloo}
           marguerite={marguerite}
+          sport={sport}
         />
       </div>
       {/* ---------------------------------------------------- */}
