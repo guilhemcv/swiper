@@ -250,12 +250,16 @@ class GoogleMap extends React.Component {
     return (
       <div className="googlemap">
         <GoogleMapReact
-          options={{
-            styles: customStylesDark,
-          }}
-          bootstrapURLKeys={{
-            key,
-          }}
+          options={
+            this.props.changeTheme
+              ? { styles: customStylesDark }
+              : { styles: customStylesLite }
+          }
+          bootstrapURLKeys={
+            {
+              /* key, */
+            }
+          }
           defaultCenter={this.props.center}
           defaultZoom={this.props.zoom}
           onClick={() => this.togglePopup()}

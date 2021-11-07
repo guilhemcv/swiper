@@ -43,10 +43,13 @@ const CustomeStylesDark = [
   },
   {
     featureType: "poi",
-    elementType: "geometry.fill",
+    elementType: "all",
     stylers: [
       {
         color: "#505050",
+      },
+      {
+        visibility: "off",
       },
     ],
   },

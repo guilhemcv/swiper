@@ -1,4 +1,5 @@
 import React from "react";
+import customStylesLite from "../GoogleMap/CustomStyleLite";
 import "./GoogleMapSelection.css";
 
 function GoogleMapSelection(props) {
@@ -136,6 +137,11 @@ function GoogleMapSelection(props) {
             <label for="marguerite">Stations Marguerite</label>
           </div>
         </div>
+      </div>
+      <div className="divbouton">
+        <button className="switchtheme" onClick={props.ChangeColorTheme}>
+          {props.changeTheme ? "Map : theme clair" : "Map : theme sombre"}
+        </button>
       </div>
     </div>
   );

@@ -29,6 +29,11 @@ function Map() {
   const [piscine, setPiscine] = useState("");
   const [bicloo, setBicloo] = useState("");
   const [marguerite, setMarguerite] = useState("");
+  const [changeTheme, setChangeTheme] = useState(false);
+
+  const ChangeColorTheme = () => {
+    setChangeTheme(!changeTheme);
+  };
 
   /* fonction pour changement statut de chaque checkbox */
   const ParkinghandleOnChange = () => {
@@ -224,6 +229,8 @@ function Map() {
           BiclooHandleOnChange={BiclooHandleOnChange}
           margueriteIsChecked={margueriteIsChecked}
           MargueriteHandleOnChange={MargueriteHandleOnChange}
+          changeTheme={changeTheme}
+          ChangeColorTheme={ChangeColorTheme}
         />
         <GoogleMap
           parkingIsChecked={parkingIsChecked}
@@ -246,6 +253,8 @@ function Map() {
           BiclooHandleOnChange={BiclooHandleOnChange}
           margueriteIsChecked={margueriteIsChecked}
           MargueriteHandleOnChange={MargueriteHandleOnChange}
+          changeTheme={changeTheme}
+          ChangeColorTheme={ChangeColorTheme}
           parking={parking}
           parc={parc}
           musee={musee}
