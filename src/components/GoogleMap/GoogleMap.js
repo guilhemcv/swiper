@@ -165,7 +165,7 @@ class GoogleMap extends React.Component {
           onClick={() => this.togglePopup()}
         >
           {this.props.parkingIsChecked ? "" : googleMarkersParking}
-          {this.props.culturelIsChecked ? "" : googleMarkersParc}
+          {this.props.parcIsChecked ? "" : googleMarkersParc}
           {googleMarkersMusee}
           {this.props.cinemaIsChecked ? "" : googleMarkersCinema}
           {this.props.restaurantIsChecked ? "" : googleMarkersRestaurant}

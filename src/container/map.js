@@ -10,7 +10,7 @@ function Map() {
   const [parkingIsChecked, setParkingIsChecked] = useState(false);
   const [restaurantIsChecked, setRestaurantIsChecked] = useState(false);
   const [sportIsChecked, setSportIsChecked] = useState(false);
-  const [culturelIsChecked, setCulturelIsChecked] = useState(false);
+  const [parcIsChecked, setParcIsChecked] = useState(false);
   const [cinemaIsChecked, setCinemaIsChecked] = useState(false);
 
   /* fonction pour changement statut de chaque checkbox */
@@ -23,8 +23,8 @@ function Map() {
   const SportHandleOnChange = () => {
     setSportIsChecked(!sportIsChecked);
   };
-  const CulturelHandleOnChange = () => {
-    setCulturelIsChecked(!culturelIsChecked);
+  const ParcHandleOnChange = () => {
+    setParcIsChecked(!parcIsChecked);
   };
   const CinemaHandleOnChange = () => {
     setCinemaIsChecked(!cinemaIsChecked);
@@ -127,8 +127,8 @@ function Map() {
           RestaurantHandleOnChange={RestaurantHandleOnChange}
           sportIsChecked={sportIsChecked}
           SportHandleOnChange={SportHandleOnChange}
-          culturelIsChecked={culturelIsChecked}
-          CulturelHandleOnChange={CulturelHandleOnChange}
+          parcIsChecked={parcIsChecked}
+          ParcHandleOnChange={ParcHandleOnChange}
           cinemaIsChecked={cinemaIsChecked}
           CinemaHandleOnChange={CinemaHandleOnChange}
         />
@@ -139,8 +139,8 @@ function Map() {
           RestaurantHandleOnChange={RestaurantHandleOnChange}
           sportIsChecked={sportIsChecked}
           SportHandleOnChange={SportHandleOnChange}
-          culturelIsChecked={culturelIsChecked}
-          CulturelHandleOnChange={CulturelHandleOnChange}
+          parcIsChecked={parcIsChecked}
+          ParcHandleOnChange={ParcHandleOnChange}
           cinemaIsChecked={cinemaIsChecked}
           CinemaHandleOnChange={CinemaHandleOnChange}
           parking={parking}
