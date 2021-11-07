@@ -1,7 +1,13 @@
 import React from "react";
 import "./GoogleMapSelection.css";
 
-function GoogleMapSelection() {
+function GoogleMapSelection(props) {
+  console.log(props.parkingIsChecked);
+  console.log(props.restaurantIsChecked);
+  console.log(props.culturelIsChecked);
+  console.log(props.cinemaIsChecked);
+  console.log(props.sportIsChecked);
+
   return (
     <div className="barreRecherche">
       <div className="selection-recherche">
@@ -18,6 +24,8 @@ function GoogleMapSelection() {
             type="checkbox"
             id="parking"
             name="parking"
+            checked={props.parkingIsChecked}
+            onChange={props.ParkinghandleOnChange}
           />
           <label for="parking">Parkings</label>
         </div>
@@ -27,11 +35,20 @@ function GoogleMapSelection() {
             type="checkbox"
             id="restaurant"
             name="restaurant"
+            checked={props.restaurantIsChecked}
+            onChange={props.RestaurantHandleOnChange}
           />
           <label for="restaurant">Restaurants</label>
         </div>
         <div className="inputLabel">
-          <input className="input" type="checkbox" id="sport" name="sport" />
+          <input
+            className="input"
+            type="checkbox"
+            id="sport"
+            name="sport"
+            checked={props.sportIsChecked}
+            onChange={props.SportHandleOnChange}
+          />
           <label for="sport">Sport et loisirs</label>
         </div>
         <div className="inputLabel">
@@ -40,6 +57,8 @@ function GoogleMapSelection() {
             type="checkbox"
             id="culturel"
             name="culturel"
+            checked={props.culturelIsChecked}
+            onChange={props.CulturelHandleOnChange}
           />
           <label for="culturel">Lieux culturels</label>
         </div>
@@ -49,6 +68,8 @@ function GoogleMapSelection() {
             type="checkbox"
             id="cinemas"
             name="cinemas"
+            checked={props.cinemaIsChecked}
+            onChange={props.CinemaHandleOnChange}
           />
           <label for="cinemas">Cinémas</label>
         </div>

@@ -7,6 +7,29 @@ import GoogleMapSelection from "../components/GoogleMapSelection/GoogleMapSelect
 import Footer from "../components/Footer/Footer";
 
 function Map() {
+  const [parkingIsChecked, setParkingIsChecked] = useState(false);
+  const [restaurantIsChecked, setRestaurantIsChecked] = useState(false);
+  const [sportIsChecked, setSportIsChecked] = useState(false);
+  const [culturelIsChecked, setCulturelIsChecked] = useState(false);
+  const [cinemaIsChecked, setCinemaIsChecked] = useState(false);
+
+  /* fonction pour changement statut de chaque checkbox */
+  const ParkinghandleOnChange = () => {
+    setParkingIsChecked(!parkingIsChecked);
+  };
+  const RestaurantHandleOnChange = () => {
+    setRestaurantIsChecked(!restaurantIsChecked);
+  };
+  const SportHandleOnChange = () => {
+    setSportIsChecked(!sportIsChecked);
+  };
+  const CulturelHandleOnChange = () => {
+    setCulturelIsChecked(!culturelIsChecked);
+  };
+  const CinemaHandleOnChange = () => {
+    setCinemaIsChecked(!cinemaIsChecked);
+  };
+
   /* useState pour les Fetch des APIS */
   const [parking, setParking] = useState("");
   const [parc, setParc] = useState("");
@@ -97,8 +120,29 @@ function Map() {
     <div className="map">
       {/* Carte + sélection catégorie --------------------------------- */}
       <div className="selectionAndMap">
-        <GoogleMapSelection />
+        <GoogleMapSelection
+          parkingIsChecked={parkingIsChecked}
+          ParkinghandleOnChange={ParkinghandleOnChange}
+          restaurantIsChecked={restaurantIsChecked}
+          RestaurantHandleOnChange={RestaurantHandleOnChange}
+          sportIsChecked={sportIsChecked}
+          SportHandleOnChange={SportHandleOnChange}
+          culturelIsChecked={culturelIsChecked}
+          CulturelHandleOnChange={CulturelHandleOnChange}
+          cinemaIsChecked={cinemaIsChecked}
+          CinemaHandleOnChange={CinemaHandleOnChange}
+        />
         <GoogleMap
+          parkingIsChecked={parkingIsChecked}
+          ParkinghandleOnChange={ParkinghandleOnChange}
+          restaurantIsChecked={restaurantIsChecked}
+          RestaurantHandleOnChange={RestaurantHandleOnChange}
+          sportIsChecked={sportIsChecked}
+          SportHandleOnChange={SportHandleOnChange}
+          culturelIsChecked={culturelIsChecked}
+          CulturelHandleOnChange={CulturelHandleOnChange}
+          cinemaIsChecked={cinemaIsChecked}
+          CinemaHandleOnChange={CinemaHandleOnChange}
           parking={parking}
           parc={parc}
           musee={musee}

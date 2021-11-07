@@ -30,6 +30,7 @@ function MarkerParc() {
 function MarkerParking() {
   return (
     <div
+      className="markernothover"
       style={{
         transform: "translate(-50%, -50%)",
       }}
@@ -154,18 +155,20 @@ class GoogleMap extends React.Component {
           options={{
             styles: customStyles,
           }}
-          /* bootstrapURLKeys={{
-            key,
-          }} */
+          bootstrapURLKeys={
+            {
+              /* key, */
+            }
+          }
           defaultCenter={this.props.center}
           defaultZoom={this.props.zoom}
           onClick={() => this.togglePopup()}
         >
-          {googleMarkersParking}
-          {googleMarkersParc}
+          {this.props.parkingIsChecked ? "" : googleMarkersParking}
+          {this.props.culturelIsChecked ? "" : googleMarkersParc}
           {googleMarkersMusee}
-          {googleMarkersCinema}
-          {googleMarkersRestaurant}
+          {this.props.cinemaIsChecked ? "" : googleMarkersCinema}
+          {this.props.restaurantIsChecked ? "" : googleMarkersRestaurant}
           {this.state.isOpen && (
             <Popup
               content={

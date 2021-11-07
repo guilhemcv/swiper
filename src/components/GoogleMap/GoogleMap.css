@@ -18,11 +18,16 @@
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   }
 
+.marker {
+  z-index: 0;
+  position: absolute;
+}
+
 .marker:hover {
   transform: scale(1.5);
   cursor: pointer;
   padding-bottom: 10px;
-  z-index: 999;
+  z-index: 9999;
   transition: 0.1s;
 }
 /* Popup style */
