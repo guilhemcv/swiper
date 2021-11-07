@@ -58,22 +58,32 @@
     text-align: left;
 }
 
-@media screen and (min-width: 700px){
+/* @media screen and (min-width: 700px){
     .selection-recherche {
         width: 60%;
     }
     .selection {
         width:50%;    }
 
+} */
+
+@media screen and (max-width: 400px) {
+    .selection{
+        flex-direction: column;
+        height: auto;
+        justify-content: left;
+        align-items: flex-start;
+        justify-content: flex-start;
+    }
 }
 
-@media screen and (min-width: 1024px) {
+@media screen and (min-width: 1300px) {
     .selection {
         display: flex;
         flex-direction: row;
         justify-content: space-around;
         align-items: center;
-        width: 30rem;
+        width: 40rem;
         height: 25rem;
         margin: 5rem auto;
         padding: 1rem;

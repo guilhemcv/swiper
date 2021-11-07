@@ -47,14 +47,14 @@ function GoogleMapSelection(props) {
               checked={!props.sportIsChecked}
               onChange={props.SportHandleOnChange}
             />
-            <label for="sport">Sport et loisirs</label>
+            <label for="sport">Sport</label>
           </div>
           <div className="inputLabel">
             <input
               className="input"
               type="checkbox"
-              id="culturel"
-              name="culturel"
+              id="parc"
+              name="parc"
               defaultChecked={props.parcIsChecked}
               checked={!props.parcIsChecked}
               onChange={props.ParcHandleOnChange}
@@ -79,37 +79,37 @@ function GoogleMapSelection(props) {
             <input
               className="input"
               type="checkbox"
-              id="parking"
-              name="parking"
-              defaultChecked=""
-              checked=""
-              onChange=""
+              id="monuments"
+              name="monuments"
+              defaultChecked={props.monumentIsChecked}
+              checked={!props.monumentIsChecked}
+              onChange={props.MonumentHandleOnChange}
             />
-            <label for="parking">Parkings</label>
+            <label for="monuments">Monuments</label>
           </div>
           <div className="inputLabel">
             <input
               className="input"
               type="checkbox"
-              id="restaurant"
-              name="restaurant"
-              defaultChecked=""
-              checked=""
-              onChange=""
+              id="salledespectacle"
+              name="salledespectacle"
+              defaultChecked={props.spectacleIsChecked}
+              checked={!props.spectacleIsChecked}
+              onChange={props.SpectacleHandleOnChange}
             />
-            <label for="restaurant">Restaurants</label>
+            <label for="restaurant">Spectacles</label>
           </div>
           <div className="inputLabel">
             <input
               className="input"
               type="checkbox"
-              id="sport"
-              name="sport"
-              defaultChecked=""
-              checked=""
-              onChange=""
+              id="piscine"
+              name="piscine"
+              defaultChecked={props.piscineIsChecked}
+              checked={!props.piscineIsChecked}
+              onChange={props.PiscineHandleOnChange}
             />
-            <label for="sport">Sport et loisirs</label>
+            <label for="sport">Piscines</label>
           </div>
           <div className="inputLabel">
             <input

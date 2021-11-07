@@ -8,6 +8,8 @@ import imageParking from "../../Assets/Images/Markers/parking.png";
 import imageMusee from "../../Assets/Images/Markers/musee.png";
 import imageCinema from "../../Assets/Images/Markers/cinema.png";
 import imageRestaurant from "../../Assets/Images/Markers/restaurant.png";
+import imageSpectacle from "../../Assets/Images/Markers/spectacle.png";
+import imagePiscine from "../../Assets/Images/Markers/piscine.png";
 import customStyles from "./CustomStyle";
 
 /* API Google */
@@ -25,7 +27,6 @@ function MarkerParc() {
     </div>
   );
 }
-
 /* Marker pour les parkings */
 function MarkerParking() {
   return (
@@ -44,7 +45,6 @@ function MarkerParking() {
     </div>
   );
 }
-
 /* Marker pour les musées */
 function MarkerMusee() {
   return (
@@ -86,6 +86,40 @@ function MarkerRestaurant() {
     </div>
   );
 }
+/* Marker pour les salles de spectacle */
+function MarkerSpectacle() {
+  return (
+    <div
+      style={{
+        transform: "translate(-50%, -50%)",
+      }}
+    >
+      <img
+        className="marker"
+        src={imageSpectacle}
+        width="35px"
+        alt="spectacle"
+      ></img>
+    </div>
+  );
+}
+/* Marker pour les piscines */
+function MarkerPiscine() {
+  return (
+    <div
+      style={{
+        transform: "translate(-50%, -50%)",
+      }}
+    >
+      <img
+        className="marker"
+        src={imagePiscine}
+        width="35px"
+        alt="spectacle"
+      ></img>
+    </div>
+  );
+}
 
 /* fonction affichage de la Google Map */
 class GoogleMap extends React.Component {
@@ -110,7 +144,7 @@ class GoogleMap extends React.Component {
       lat: 47.212369,
       lng: -1.55,
     },
-    zoom: 14,
+    zoom: 13,
   };
 
   render() {
@@ -118,7 +152,7 @@ class GoogleMap extends React.Component {
     let googleMarkersParking = [];
     if (this.props.parking.length > 0) {
       googleMarkersParking = this.props.parking.map((marker) =>
-        marker ? <MarkerParking lat={marker[0]} lng={marker[1]} /> : <div></div>
+        marker ? <MarkerParking lat={marker[1]} lng={marker[0]} /> : <div></div>
       );
     }
     let googleMarkersParc = [];
@@ -149,6 +183,22 @@ class GoogleMap extends React.Component {
         )
       );
     }
+    let googleMarkersSpectacle = [];
+    if (this.props.spectacle.length > 0) {
+      googleMarkersSpectacle = this.props.spectacle.map((marker) =>
+        marker ? (
+          <MarkerSpectacle lat={marker[1]} lng={marker[0]} />
+        ) : (
+          <div></div>
+        )
+      );
+    }
+    let googleMarkersPiscine = [];
+    if (this.props.piscine.length > 0) {
+      googleMarkersPiscine = this.props.piscine.map((marker) =>
+        marker ? <MarkerPiscine lat={marker[1]} lng={marker[0]} /> : <div></div>
+      );
+    }
     return (
       <div className="googlemap">
         <GoogleMapReact
@@ -166,9 +216,11 @@ class GoogleMap extends React.Component {
         >
           {this.props.parkingIsChecked ? "" : googleMarkersParking}
           {this.props.parcIsChecked ? "" : googleMarkersParc}
-          {googleMarkersMusee}
+          {this.props.monumentIsChecked ? "" : googleMarkersMusee}
           {this.props.cinemaIsChecked ? "" : googleMarkersCinema}
           {this.props.restaurantIsChecked ? "" : googleMarkersRestaurant}
+          {this.props.spectacleIsChecked ? "" : googleMarkersSpectacle}
+          {this.props.piscineIsChecked ? "" : googleMarkersPiscine}
           {this.state.isOpen && (
             <Popup
               content={

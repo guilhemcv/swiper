@@ -5,9 +5,13 @@
   display: flex;
   justify-content: right;
 }
+@media screen and (max-width: 400px) {
+  .googlemap {
+    margin: 10rem auto;
+  }
+}
 
-
-@media screen and (min-width : 1024px) {
+@media screen and (min-width : 1300px) {
 
 .googlemap {
     height: 80vh;
@@ -18,7 +22,7 @@
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   }
 
-.marker {
+.markernothover {
   z-index: 0;
   position: absolute;
 }

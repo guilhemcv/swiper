@@ -31,7 +31,7 @@
 }
 
 
-@media screen and (min-width:1024px) {
+@media screen and (min-width:1300px) {
         .selectionAndMap {
                 display: flex;
                 flex-direction: row;

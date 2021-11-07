@@ -7,11 +7,24 @@ import GoogleMapSelection from "../components/GoogleMapSelection/GoogleMapSelect
 import Footer from "../components/Footer/Footer";
 
 function Map() {
+  /* Usestate pour les filtres checkbox */
   const [parkingIsChecked, setParkingIsChecked] = useState(false);
   const [restaurantIsChecked, setRestaurantIsChecked] = useState(false);
   const [sportIsChecked, setSportIsChecked] = useState(false);
   const [parcIsChecked, setParcIsChecked] = useState(false);
   const [cinemaIsChecked, setCinemaIsChecked] = useState(false);
+  const [monumentIsChecked, setMonumentIsChecked] = useState(false);
+  const [spectacleIsChecked, setSepctacleIsChecked] = useState(false);
+  const [piscineIsChecked, setPiscineIsChecked] = useState(false);
+
+  /* useState pour les Fetch des APIS */
+  const [parking, setParking] = useState("");
+  const [parc, setParc] = useState("");
+  const [musee, setMusee] = useState("");
+  const [cinema, setCinema] = useState("");
+  const [restaurant, setRestaurant] = useState("");
+  const [spectacle, setSpectacle] = useState("");
+  const [piscine, setPiscine] = useState("");
 
   /* fonction pour changement statut de chaque checkbox */
   const ParkinghandleOnChange = () => {
@@ -29,13 +42,15 @@ function Map() {
   const CinemaHandleOnChange = () => {
     setCinemaIsChecked(!cinemaIsChecked);
   };
-
-  /* useState pour les Fetch des APIS */
-  const [parking, setParking] = useState("");
-  const [parc, setParc] = useState("");
-  const [musee, setMusee] = useState("");
-  const [cinema, setCinema] = useState("");
-  const [restaurant, setRestaurant] = useState("");
+  const MonumentHandleOnChange = () => {
+    setMonumentIsChecked(!monumentIsChecked);
+  };
+  const SpectacleHandleOnChange = () => {
+    setSepctacleIsChecked(!spectacleIsChecked);
+  };
+  const PiscineHandleOnChange = () => {
+    setPiscineIsChecked(!piscineIsChecked);
+  };
 
   /* useEffect pour les Fetch des APIS */
   useEffect(() => {
@@ -44,17 +59,19 @@ function Map() {
     getMusee();
     getCinema();
     getRestaurant();
+    getSpectacle();
+    getPiscine();
   }, []);
 
   /* Fetch API pour markers parking */
   const getParking = () => {
     axios
       .get(
-        "https://data.nantesmetropole.fr/api/records/1.0/search/?dataset=244400404_parkings-publics-nantes&q=&rows=100&facet=libcategorie&facet=libtype&facet=acces_pmr&facet=service_velo&facet=stationnement_velo&facet=stationnement_velo_securise&facet=moyen_paiement"
+        "https://data.opendatasoft.com/api/records/1.0/search/?dataset=244400404_lieux-stationnement-nantes-metropole%40nantesmetropole&q=&rows=100&facet=type_usagers"
       )
       .then((response) => {
         const parkingData = response.data.records.map(
-          (record) => record.fields.location
+          (record) => record.fields.geo_shape.coordinates
         );
         setParking(parkingData);
       });
@@ -78,11 +95,11 @@ function Map() {
   const getMusee = () => {
     axios
       .get(
-        "https://data.opendatasoft.com/api/records/1.0/search/?dataset=244400404_equipements-publics-nantes-metropole%40nantesmetropole&q=&rows=100&facet=theme&facet=categorie&facet=type&facet=commune&refine.categorie=Mus%C3%A9e%2C+Ch%C3%A2teau&refine.commune=Nantes"
+        "https://data.paysdelaloire.fr/api/records/1.0/search/?dataset=234400034_070-012_offre-touristique-patrimoineculturel-rpdl&q=nantes&rows=100&facet=type&facet=commune&facet=animauxacceptes&facet=accueilgroupe&facet=ouverturealannee&facet=resaenligneouinon&facet=tarifgratuit&facet=departement&refine.commune=NANTES"
       )
       .then((response) => {
         const museeData = response.data.records.map(
-          (record) => record.fields.geo_shape.coordinates
+          (record) => record.geometry.coordinates
         );
         setMusee(museeData);
       });
@@ -92,7 +109,7 @@ function Map() {
   const getCinema = () => {
     axios
       .get(
-        "https://data.opendatasoft.com/api/records/1.0/search/?dataset=244400404_equipements-publics-nantes-metropole%40nantesmetropole&q=&rows=100&facet=theme&facet=categorie&facet=type&facet=commune&refine.categorie=Mus%C3%A9e%2C+Ch%C3%A2teau&refine.commune=Nantes"
+        "https://data.opendatasoft.com/api/records/1.0/search/?dataset=244400404_equipements-publics-nantes-metropole%40nantesmetropole&q=cinema&facet=theme&facet=categorie&facet=type&facet=commune&refine.commune=Nantes"
       )
       .then((response) => {
         const cinemaData = response.data.records.map(
@@ -116,6 +133,34 @@ function Map() {
       });
   };
 
+  /* Fetch API pour markers salles de spectacles */
+  const getSpectacle = () => {
+    axios
+      .get(
+        "https://data.opendatasoft.com/api/records/1.0/search/?dataset=244400404_equipements-publics-nantes-metropole%40nantesmetropole&q=&rows=100&facet=theme&facet=categorie&facet=type&facet=commune&refine.categorie=Salle+de+spectacle&refine.commune=Nantes"
+      )
+      .then((response) => {
+        const spectacleData = response.data.records.map(
+          (record) => record.fields.geo_shape.coordinates
+        );
+        setSpectacle(spectacleData);
+      });
+  };
+
+  /* Fetch API pour markers piscines */
+  const getPiscine = () => {
+    axios
+      .get(
+        "https://data.opendatasoft.com/api/records/1.0/search/?dataset=244400404_piscines-nantes-metropole%40nantesmetropole&q=&rows=100&facet=commune&facet=acces_pmr_equipt&facet=bassin_sportif&facet=pataugeoire&facet=toboggan&facet=bassin_apprentissage&facet=plongeoir&facet=solarium&facet=bassin_loisir&facet=accessibilite_handicap&facet=libre_service"
+      )
+      .then((response) => {
+        const piscineData = response.data.records.map(
+          (record) => record.geometry.coordinates
+        );
+        setSpectacle(piscineData);
+      });
+  };
+
   return (
     <div className="map">
       {/* Carte + sélection catégorie --------------------------------- */}
@@ -131,6 +176,12 @@ function Map() {
           ParcHandleOnChange={ParcHandleOnChange}
           cinemaIsChecked={cinemaIsChecked}
           CinemaHandleOnChange={CinemaHandleOnChange}
+          monumentIsChecked={monumentIsChecked}
+          MonumentHandleOnChange={MonumentHandleOnChange}
+          spectacleIsChecked={spectacleIsChecked}
+          SpectacleHandleOnChange={SpectacleHandleOnChange}
+          piscineIsChecked={piscineIsChecked}
+          PiscineHandleOnChange={PiscineHandleOnChange}
         />
         <GoogleMap
           parkingIsChecked={parkingIsChecked}
@@ -143,11 +194,19 @@ function Map() {
           ParcHandleOnChange={ParcHandleOnChange}
           cinemaIsChecked={cinemaIsChecked}
           CinemaHandleOnChange={CinemaHandleOnChange}
+          monumentIsChecked={monumentIsChecked}
+          MonumentHandleOnChange={MonumentHandleOnChange}
+          spectacleIsChecked={spectacleIsChecked}
+          SpectacleHandleOnChange={SpectacleHandleOnChange}
           parking={parking}
           parc={parc}
           musee={musee}
           cinema={cinema}
           restaurant={restaurant}
+          spectacle={spectacle}
+          piscine={piscine}
+          piscineIsChecked={piscineIsChecked}
+          PiscineHandleOnChange={PiscineHandleOnChange}
         />
       </div>
       {/* ---------------------------------------------------- */}
