@@ -10,7 +10,10 @@ import imageCinema from "../../Assets/Images/Markers/cinema.png";
 import imageRestaurant from "../../Assets/Images/Markers/restaurant.png";
 import imageSpectacle from "../../Assets/Images/Markers/spectacle.png";
 import imagePiscine from "../../Assets/Images/Markers/piscine.png";
-import customStyles from "./CustomStyle";
+import imageBicloo from "../../Assets/Images/Markers/bicloo.png";
+import imageMarguerite from "../../Assets/Images/Markers/voiture.png";
+import customStylesLite from "./CustomStyleLite";
+import customStylesDark from "./CustomStylesDark";
 
 /* API Google */
 const key = process.env.REACT_APP_API_KEY;
@@ -65,7 +68,7 @@ function MarkerCinema() {
         transform: "translate(-50%, -50%)",
       }}
     >
-      <img className="marker" src={imageCinema} width="35px" alt="musee"></img>
+      <img className="marker" src={imageCinema} width="35px" alt="cinema"></img>
     </div>
   );
 }
@@ -81,7 +84,7 @@ function MarkerRestaurant() {
         className="marker"
         src={imageRestaurant}
         width="35px"
-        alt="musee"
+        alt="restaurant"
       ></img>
     </div>
   );
@@ -115,7 +118,36 @@ function MarkerPiscine() {
         className="marker"
         src={imagePiscine}
         width="35px"
-        alt="spectacle"
+        alt="piscine"
+      ></img>
+    </div>
+  );
+}
+/* Marker pour les bicloo */
+function MarkerBicloo() {
+  return (
+    <div
+      style={{
+        transform: "translate(-50%, -50%)",
+      }}
+    >
+      <img className="marker" src={imageBicloo} width="35px" alt="bicloo"></img>
+    </div>
+  );
+}
+/* Marker pour les bicloo */
+function MarkerMarguerite() {
+  return (
+    <div
+      style={{
+        transform: "translate(-50%, -50%)",
+      }}
+    >
+      <img
+        className="marker"
+        src={imageMarguerite}
+        width="35px"
+        alt="marguerite"
       ></img>
     </div>
   );
@@ -199,21 +231,36 @@ class GoogleMap extends React.Component {
         marker ? <MarkerPiscine lat={marker[1]} lng={marker[0]} /> : <div></div>
       );
     }
+    let googleMarkersBicloo = [];
+    if (this.props.bicloo.length > 0) {
+      googleMarkersBicloo = this.props.bicloo.map((marker) =>
+        marker ? <MarkerBicloo lat={marker[1]} lng={marker[0]} /> : <div></div>
+      );
+    }
+    let googleMarkersMarguerite = [];
+    if (this.props.marguerite.length > 0) {
+      googleMarkersMarguerite = this.props.marguerite.map((marker) =>
+        marker ? (
+          <MarkerMarguerite lat={marker[1]} lng={marker[0]} />
+        ) : (
+          <div></div>
+        )
+      );
+    }
     return (
       <div className="googlemap">
         <GoogleMapReact
           options={{
-            styles: customStyles,
+            styles: customStylesDark,
           }}
-          bootstrapURLKeys={
-            {
-              /* key, */
-            }
-          }
+          bootstrapURLKeys={{
+            key,
+          }}
           defaultCenter={this.props.center}
           defaultZoom={this.props.zoom}
           onClick={() => this.togglePopup()}
         >
+          {this.props.biclooIsChecked ? "" : googleMarkersBicloo}
           {this.props.parkingIsChecked ? "" : googleMarkersParking}
           {this.props.parcIsChecked ? "" : googleMarkersParc}
           {this.props.monumentIsChecked ? "" : googleMarkersMusee}
@@ -221,6 +268,7 @@ class GoogleMap extends React.Component {
           {this.props.restaurantIsChecked ? "" : googleMarkersRestaurant}
           {this.props.spectacleIsChecked ? "" : googleMarkersSpectacle}
           {this.props.piscineIsChecked ? "" : googleMarkersPiscine}
+          {this.props.margueriteIsChecked ? "" : googleMarkersMarguerite}
           {this.state.isOpen && (
             <Popup
               content={

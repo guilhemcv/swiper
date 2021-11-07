@@ -16,6 +16,8 @@ function Map() {
   const [monumentIsChecked, setMonumentIsChecked] = useState(false);
   const [spectacleIsChecked, setSepctacleIsChecked] = useState(false);
   const [piscineIsChecked, setPiscineIsChecked] = useState(false);
+  const [biclooIsChecked, setBiclooIsChecked] = useState(false);
+  const [margueriteIsChecked, setMargueriteIsChecked] = useState(false);
 
   /* useState pour les Fetch des APIS */
   const [parking, setParking] = useState("");
@@ -25,6 +27,8 @@ function Map() {
   const [restaurant, setRestaurant] = useState("");
   const [spectacle, setSpectacle] = useState("");
   const [piscine, setPiscine] = useState("");
+  const [bicloo, setBicloo] = useState("");
+  const [marguerite, setMarguerite] = useState("");
 
   /* fonction pour changement statut de chaque checkbox */
   const ParkinghandleOnChange = () => {
@@ -51,6 +55,12 @@ function Map() {
   const PiscineHandleOnChange = () => {
     setPiscineIsChecked(!piscineIsChecked);
   };
+  const BiclooHandleOnChange = () => {
+    setBiclooIsChecked(!biclooIsChecked);
+  };
+  const MargueriteHandleOnChange = () => {
+    setMargueriteIsChecked(!margueriteIsChecked);
+  };
 
   /* useEffect pour les Fetch des APIS */
   useEffect(() => {
@@ -61,6 +71,8 @@ function Map() {
     getRestaurant();
     getSpectacle();
     getPiscine();
+    getBicloo();
+    getMarguerite();
   }, []);
 
   /* Fetch API pour markers parking */
@@ -157,7 +169,33 @@ function Map() {
         const piscineData = response.data.records.map(
           (record) => record.geometry.coordinates
         );
-        setSpectacle(piscineData);
+        setPiscine(piscineData);
+      });
+  };
+  /* Fetch API pour markers bicloo */
+  const getBicloo = () => {
+    axios
+      .get(
+        "https://data.opendatasoft.com/api/records/1.0/search/?dataset=244400404_stations-velos-libre-service-nantes-metropole%40nantesmetropole&q=&rows=200&facet=commune&facet=descriptif"
+      )
+      .then((response) => {
+        const biclooData = response.data.records.map(
+          (record) => record.fields.geo_shape.coordinates
+        );
+        setBicloo(biclooData);
+      });
+  };
+  /* Fetch API pour markers marguerite */
+  const getMarguerite = () => {
+    axios
+      .get(
+        "https://data.nantesmetropole.fr/api/records/1.0/search/?dataset=244400404_stations-marguerite-nantes-metropole-disponibilites&q=&rows=100&facet=sparknom&facet=smodenom&facet=smarqnom&facet=icapacite&facet=bvehielectrique&facet=bdisponiblevehicule"
+      )
+      .then((response) => {
+        const margueriteData = response.data.records.map(
+          (record) => record.geometry.coordinates
+        );
+        setMarguerite(margueriteData);
       });
   };
 
@@ -182,6 +220,10 @@ function Map() {
           SpectacleHandleOnChange={SpectacleHandleOnChange}
           piscineIsChecked={piscineIsChecked}
           PiscineHandleOnChange={PiscineHandleOnChange}
+          biclooIsChecked={biclooIsChecked}
+          BiclooHandleOnChange={BiclooHandleOnChange}
+          margueriteIsChecked={margueriteIsChecked}
+          MargueriteHandleOnChange={MargueriteHandleOnChange}
         />
         <GoogleMap
           parkingIsChecked={parkingIsChecked}
@@ -198,6 +240,12 @@ function Map() {
           MonumentHandleOnChange={MonumentHandleOnChange}
           spectacleIsChecked={spectacleIsChecked}
           SpectacleHandleOnChange={SpectacleHandleOnChange}
+          piscineIsChecked={piscineIsChecked}
+          PiscineHandleOnChange={PiscineHandleOnChange}
+          biclooIsChecked={biclooIsChecked}
+          BiclooHandleOnChange={BiclooHandleOnChange}
+          margueriteIsChecked={margueriteIsChecked}
+          MargueriteHandleOnChange={MargueriteHandleOnChange}
           parking={parking}
           parc={parc}
           musee={musee}
@@ -205,8 +253,8 @@ function Map() {
           restaurant={restaurant}
           spectacle={spectacle}
           piscine={piscine}
-          piscineIsChecked={piscineIsChecked}
-          PiscineHandleOnChange={PiscineHandleOnChange}
+          bicloo={bicloo}
+          marguerite={marguerite}
         />
       </div>
       {/* ---------------------------------------------------- */}

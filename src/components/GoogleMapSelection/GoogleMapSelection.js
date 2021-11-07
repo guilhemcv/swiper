@@ -59,7 +59,7 @@ function GoogleMapSelection(props) {
               checked={!props.parcIsChecked}
               onChange={props.ParcHandleOnChange}
             />
-            <label for="culturel">Parcs et Squares</label>
+            <label for="parc">Parcs et Squares</label>
           </div>
           <div className="inputLabel">
             <input
@@ -97,7 +97,7 @@ function GoogleMapSelection(props) {
               checked={!props.spectacleIsChecked}
               onChange={props.SpectacleHandleOnChange}
             />
-            <label for="restaurant">Spectacles</label>
+            <label for="spectacle">Spectacles</label>
           </div>
           <div className="inputLabel">
             <input
@@ -109,31 +109,31 @@ function GoogleMapSelection(props) {
               checked={!props.piscineIsChecked}
               onChange={props.PiscineHandleOnChange}
             />
-            <label for="sport">Piscines</label>
+            <label for="piscine">Piscines</label>
           </div>
           <div className="inputLabel">
             <input
               className="input"
               type="checkbox"
-              id="culturel"
-              name="culturel"
-              defaultChecked=""
-              checked=""
-              onChange=""
+              id="bicloo"
+              name="bicloo"
+              defaultChecked={props.biclooIsChecked}
+              checked={!props.biclooIsChecked}
+              onChange={props.BiclooHandleOnChange}
             />
-            <label for="culturel">Lieux culturels</label>
+            <label for="bicloo">Stations Bicloo</label>
           </div>
           <div className="inputLabel">
             <input
               className="input"
               type="checkbox"
-              id="cinemas"
-              name="cinemas"
-              defaultChecked=""
-              checked=""
-              onChange=""
+              id="marguerite"
+              name="marguerite"
+              defaultChecked={props.margueriteIsChecked}
+              checked={!props.margueriteIsChecked}
+              onChange={props.MargueriteHandleOnChange}
             />
-            <label for="cinemas">Cinémas</label>
+            <label for="marguerite">Stations Marguerite</label>
           </div>
         </div>
       </div>
