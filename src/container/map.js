@@ -37,6 +37,13 @@ function Map() {
     setChangeTheme(!changeTheme);
   };
 
+  /* State pour input recherche */
+  const [adresse, setAdresse] = useState("");
+  const getAdresse = (event) => {
+    setAdresse(event.target.value);
+  };
+  console.log(adresse);
+
   /* fonction pour changement statut de chaque checkbox */
   const ParkinghandleOnChange = () => {
     setParkingIsChecked(!parkingIsChecked);
@@ -247,6 +254,7 @@ function Map() {
           MargueriteHandleOnChange={MargueriteHandleOnChange}
           changeTheme={changeTheme}
           ChangeColorTheme={ChangeColorTheme}
+          getAdresse={getAdresse}
         />
         <GoogleMap
           parkingIsChecked={parkingIsChecked}

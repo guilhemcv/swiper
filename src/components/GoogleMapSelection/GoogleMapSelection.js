@@ -1,5 +1,4 @@
-import React from "react";
-import customStylesLite from "../GoogleMap/CustomStyleLite";
+import React, { useState } from "react";
 import "./GoogleMapSelection.css";
 
 function GoogleMapSelection(props) {
@@ -10,7 +9,16 @@ function GoogleMapSelection(props) {
           <h3 className="mapselection-titre">Rechercher une adresse :</h3>
         </label>
         <br />
-        <input className="input-recherche" type="text" id="name" name="name" />
+        <div className="recherchebouton">
+          <input
+            onChange={props.getAdresse}
+            className="input-recherche"
+            type="text"
+            id="name"
+            name="name"
+          />
+          <button className="rechercheadresse">Rechercher</button>
+        </div>
       </div>
       <div className="selection">
         <div className="selectiongauche">

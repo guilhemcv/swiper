@@ -1,13 +1,13 @@
 .googlemap {
   height: 80vh;
   width: 98%;
-  margin: 0 auto;
+  margin: 5rem auto;
   display: flex;
   justify-content: right;
 }
  @media screen and (max-width: 400px) {
   .googlemap {
-    margin: 15rem auto;
+    margin: 20rem auto;
   }
 } 
 

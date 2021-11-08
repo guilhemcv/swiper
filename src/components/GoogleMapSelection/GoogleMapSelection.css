@@ -40,7 +40,8 @@
 .input-recherche {
     margin-top: 2rem ;
     text-align: center;
-    border-radius: 20px;
+    border-radius: 2rem;
+    margin-bottom: 2rem;
     height: 4rem;
     width: 90%;
     border: none;
@@ -61,6 +62,19 @@
 .divbouton {
     margin: 90px auto;
     text-align: center;
+}
+.rechercheadresse {
+    width: 20rem;
+    height: 3rem;
+    border-radius: 2rem;
+    border: none;
+    background-color: #08A2FF;
+    color: white;
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.3rem;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    text-align: center;
+    margin-bottom: 1rem;
 }
 
 .switchtheme {
@@ -123,7 +137,7 @@
         width: 50%;
     }
     .input-recherche {
-        margin: 5rem auto;
+        margin: 5rem auto 1rem auto;
         text-align: center;
         border-radius: 20px;
         height: 4rem;
