@@ -30,11 +30,11 @@ function Footer() {
         <OpenWeather />
       </div>
       <div className="footer-bas">
-        <div className="footer-mention">
-          <a href="politique.html">
-            <p>Mentions légales / Politiques de confidentialité</p>
-          </a>
-        </div>
+        <a href="politique.html">
+          <p className="mentions">
+            Mentions légales / Politiques de confidentialité
+          </p>
+        </a>
         <p className="footer-copyright">Copyright</p>
       </div>
     </div>

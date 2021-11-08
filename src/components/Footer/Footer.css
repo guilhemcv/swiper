@@ -23,6 +23,12 @@ a {
     margin: 0 auto;
     position: relative;
 }
+.footer-contact h2{
+    text-align: justify;
+}
+.footer-contact p{
+    text-align: justify;
+}
 
 .footer-haut {
     text-align: center;
@@ -55,24 +61,23 @@ a {
     color: white;
 
 }
-
 .footer-image-meteo {
     width: 4rem;
     height: auto;
 }
-
-.footer-bas {
+.mentions{
     display: flex;
+    justify-content: center;
+    align-items: center;
     text-align: center;
-    flex-direction: column;
-    margin: 2rem auto;
 }
 
 .footer-copyright {
     margin: 2rem;
-    color: lightgray;
+    color: gray;
     font-style: italic;
-    font-size: 0.6rem;
+    font-size: 1rem;
+    text-align: right;
 }
 
 .footer-legal {
