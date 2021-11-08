@@ -18,6 +18,8 @@
     z-index: 1;
     padding-left: 1rem;
     display:flex;
+    margin-top: 0;
+    text-decoration: none;  
 }
   .img-logo {
     display: none;

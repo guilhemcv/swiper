@@ -29,11 +29,15 @@
         border-top: 1px solid black;
         padding-left: 2rem;
         margin-bottom: 5rem;
-        margin-top: 10rem;
-      }
+/*         margin-top: 10rem; */
+}
 
 .footer-favoris {
         margin-top: 100px;
+}
+
+.favoris {
+        padding-top: 12rem;    
 }
 
 /*----------------------------------
