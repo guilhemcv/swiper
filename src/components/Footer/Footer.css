@@ -25,9 +25,11 @@ a {
 }
 .footer-contact h2{
     text-align: justify;
+    margin-left: 2rem;
 }
 .footer-contact p{
     text-align: justify;
+    margin-left: 2rem;
 }
 
 .footer-haut {

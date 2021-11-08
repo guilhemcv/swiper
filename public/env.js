@@ -9,7 +9,7 @@ window.env = {
   "npm_config_global_prefix": "/usr/local",
   "TERM_PROGRAM_VERSION": "433",
   "COLOR": "1",
-  "TERM_SESSION_ID": "1177EF52-D8C4-40AA-B3C5-3B4DC44A41FA",
+  "TERM_SESSION_ID": "9A7FD27D-D21A-4F34-852D-F70105DB1A57",
   "npm_config_noproxy": "",
   "npm_config_local_prefix": "/Users/coraliecourant/Documents/Wild/Projets/swiper",
   "USER": "coraliecourant",
