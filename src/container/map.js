@@ -1,17 +1,21 @@
 /* eslint-disable import/no-cycle */
 import "./map.css";
-import React from "react";
+import React, { useContext, useEffect } from "react";
 import GoogleMap from "../components/GoogleMap/GoogleMap";
 import GoogleMapSelection from "../components/GoogleMapSelection/GoogleMapSelection";
 import Footer from "../components/Footer/Footer";
+import LogoContext from "../contexts/LogoContext";
+
 
 function Map() {
+  // Utilisation du LogoContext pour gérer la couleur du logo en fonction de la page où on est
+  const { setLogoColor } = useContext(LogoContext);
+
+  useEffect(() => {
+    setLogoColor("logo-black");
+  });
   return (
     <div className="map">
-      {/* Menu et Navigation --------------------------------- */}
-
-      {/* ---------------------------------------------------- */}
-
       {/* Carte + sélection catégorie --------------------------------- */}
       <div className="selectionAndMap">
         <GoogleMapSelection />

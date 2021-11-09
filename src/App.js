@@ -8,10 +8,13 @@ import Map from "./container/map";
 import Swipe from "./container/swipe";
 import NotFound from "./components/NotFound/NotFound";
 import "./components/MenuBurger/MenuBurger.css";
+import LogoContext from "./contexts/LogoContext";
 
 function App() {
   const [isChecked, setIsChecked] = React.useState("");
+  const [logoColor, setLogoColor] = React.useState("logo-white");
 
+  // On utilise une fonction sur l'état du menu burger pour le fermer lorsqu'on clique sur un lien
   function handleIsChecked() {
     if (isChecked === "") {
       setIsChecked("checked");
@@ -20,52 +23,54 @@ function App() {
     }
   }
   return (
-    <div className="App">
-      <Router>
-        <Link to="/">
-          <Logo />
-        </Link>
-        <div>
-          <input
-            id="burger"
-            type="checkbox"
-            checked={isChecked}
-            readOnly={true}
-          />
-          <label id="label-burger" htmlFor="burger" onClick={handleIsChecked}>
-            <span id="burger-top"></span>
-            <span id="burger-middle"></span>
-            <span id="burger-bottom"></span>
-          </label>
-          <nav id="nav-header">
-            <ul>
-              <li>
-                <Link to="/swipe" className="a" onClick={handleIsChecked}>
-                  Swipe
-                </Link>
-              </li>
-              <li>
-                <Link to="/map" className="a" onClick={handleIsChecked}>
-                  Carte
-                </Link>
-              </li>
-              <li>
-                <Link to="/favoris" className="a" onClick={handleIsChecked}>
-                  Favoris
-                </Link>
-              </li>
-            </ul>
-          </nav>
-        </div>
-        <Switch>
-          <Route path="/swipe" component={Swipe} />
-          <Route path="/map" component={Map} />
-          <Route path="/favoris" component={Favoris} />
-          <Route exact path="/" component={Accueil} />
-          <Route component={NotFound} />
-        </Switch>
-      </Router>
-    </div>
+    <LogoContext.Provider value={{ logoColor, setLogoColor }}>
+      <div className="App">
+        <Router>
+          <Link to="/">
+            <Logo />
+          </Link>
+          <div>
+            <input
+              id="burger"
+              type="checkbox"
+              checked={isChecked}
+              readOnly={true}
+            />
+            <label id="label-burger" htmlFor="burger" onClick={handleIsChecked}>
+              <span id="burger-top"></span>
+              <span id="burger-middle"></span>
+              <span id="burger-bottom"></span>
+            </label>
+            <nav id="nav-header">
+              <ul>
+                <li>
+                  <Link to="/swipe" className="a" onClick={handleIsChecked}>
+                    Swipe
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/map" className="a" onClick={handleIsChecked}>
+                    Carte
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/favoris" className="a" onClick={handleIsChecked}>
+                    Favoris
+                  </Link>
+                </li>
+              </ul>
+            </nav>
+          </div>
+          <Switch>
+            <Route path="/swipe" component={Swipe} />
+            <Route path="/map" component={Map} />
+            <Route path="/favoris" component={Favoris} />
+            <Route exact path="/" component={Accueil} />
+            <Route component={NotFound} />
+          </Switch>
+        </Router>
+      </div>
+    </LogoContext.Provider>
   );
 }
 

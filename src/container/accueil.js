@@ -1,20 +1,21 @@
 /* eslint-disable import/no-cycle */
 import "./accueil.css";
-import React from "react";
-// import MenuBurger from "../components/MenuBurger/MenuBurger";
+import React, { useContext, useEffect } from "react";
 import HeaderAccueil from "../components/HeaderAccueil/HeaderAccueil";
 import Footer from "../components/Footer/Footer";
 import Avis from "../components/Avis/Avis";
 import Carte from "../components/Carte/Carte";
-// import Logo from "../components/Logo/Logo";
+import LogoContext from "../contexts/LogoContext";
 
 function Accueil() {
+  // Utilisation du LogoContext pour gérer la couleur du logo en fonction de la page où on est
+  const { setLogoColor } = useContext(LogoContext);
+
+  useEffect(() => {
+    setLogoColor("logo-white");
+  });
   return (
     <div className="accueil">
-      {/* Menu et Navigation --------------------------------- */}
-
-      {/* ---------------------------------------------------- */}
-
       {/* Header (image accueil et phrase d'accroche) -------- */}
       <HeaderAccueil />
       {/* ---------------------------------------------------- */}
