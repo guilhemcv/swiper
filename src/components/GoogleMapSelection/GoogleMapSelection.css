@@ -149,9 +149,27 @@
     .switchtheme:hover {
         transform: scale(1.1);
     }
+
+    .rechercheadresse:hover {
+        transform: scale(1.1);
+
+    }
     .divbouton {
         margin: 0 auto;
         text-align: center;
     }
     
+}
+
+@media screen and (min-width:700px) {
+    .switchtheme:hover {
+        transform: scale(1.1);
+        cursor: pointer;
+    }
+
+    .rechercheadresse:hover {
+        transform: scale(1.1);
+        cursor: pointer;
+
+    }
 }

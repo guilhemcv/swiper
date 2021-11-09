@@ -2,6 +2,7 @@
 import React from "react";
 import GoogleMapReact from "google-map-react";
 import "./GoogleMap.css";
+import env from "react-dotenv";
 import Popup from "../Popup/Popup";
 import imageParcs from "../../Assets/Images/Markers/parc.png";
 import imageParking from "../../Assets/Images/Markers/parking.png";
@@ -13,11 +14,11 @@ import imagePiscine from "../../Assets/Images/Markers/piscine.png";
 import imageBicloo from "../../Assets/Images/Markers/bicloo.png";
 import imageMarguerite from "../../Assets/Images/Markers/voiture.png";
 import imageSport from "../../Assets/Images/Markers/sport.png";
+import imageRecherche from "../../Assets/Images/Markers/recherche.png";
 import customStylesLite from "./CustomStyleLite";
 import customStylesDark from "./CustomStylesDark";
 
-/* API Google */
-const key = process.env.REACT_APP_API_KEY;
+/* const key = env.REACT_APP_API_KEY; */
 
 /* Marker pour les parcs */
 function MarkerParc() {
@@ -170,6 +171,23 @@ function MarkerSport() {
     </div>
   );
 }
+/* Marker pour la recherche input */
+function MarkerRecherche() {
+  return (
+    <div
+      style={{
+        transform: "translate(-50%, -50%)",
+      }}
+    >
+      <img
+        className="marker"
+        src={imageRecherche}
+        width="60px"
+        alt="recherche"
+      ></img>
+    </div>
+  );
+}
 
 /* fonction affichage de la Google Map */
 class GoogleMap extends React.Component {
@@ -271,6 +289,8 @@ class GoogleMap extends React.Component {
         marker ? <MarkerSport lat={marker[1]} lng={marker[0]} /> : <div></div>
       );
     }
+    console.log(this.props.latRecherche, this.props.lngRecherche);
+
     return (
       <div className="googlemap">
         <GoogleMapReact
@@ -285,6 +305,7 @@ class GoogleMap extends React.Component {
           onClick={() => this.togglePopup()}
         >
           {this.props.margueriteIsChecked ? "" : googleMarkersMarguerite}
+          {/* getMarkersLatLng(this.props.) */}
           {this.props.biclooIsChecked ? "" : googleMarkersBicloo}
           {this.props.parkingIsChecked ? "" : googleMarkersParking}
           {this.props.parcIsChecked ? "" : googleMarkersParc}
@@ -294,6 +315,10 @@ class GoogleMap extends React.Component {
           {this.props.cinemaIsChecked ? "" : googleMarkersCinema}
           {this.props.spectacleIsChecked ? "" : googleMarkersSpectacle}
           {this.props.monumentIsChecked ? "" : googleMarkersMusee}
+          <MarkerRecherche
+            lat={this.props.latRecherche}
+            lng={this.props.lngRecherche}
+          />
           {this.state.isOpen && (
             <Popup
               content={

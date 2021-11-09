@@ -1,6 +1,8 @@
 /* eslint-disable import/no-cycle */
 import "./map.css";
 import React, { useState, useEffect } from "react";
+import env from "react-dotenv";
+import Geocode from "react-geocode";
 import axios from "axios";
 import GoogleMap from "../components/GoogleMap/GoogleMap";
 import GoogleMapSelection from "../components/GoogleMapSelection/GoogleMapSelection";
@@ -36,13 +38,6 @@ function Map() {
   const ChangeColorTheme = () => {
     setChangeTheme(!changeTheme);
   };
-
-  /* State pour input recherche */
-  const [adresse, setAdresse] = useState("");
-  const getAdresse = (event) => {
-    setAdresse(event.target.value);
-  };
-  console.log(adresse);
 
   /* fonction pour changement statut de chaque checkbox */
   const ParkinghandleOnChange = () => {
@@ -97,6 +92,7 @@ function Map() {
         "https://data.opendatasoft.com/api/records/1.0/search/?dataset=244400404_lieux-stationnement-nantes-metropole%40nantesmetropole&q=&rows=100&facet=type_usagers"
       )
       .then((response) => {
+        console.log(response.data);
         const parkingData = response.data.records.map(
           (record) => record.fields.geo_shape.coordinates
         );
@@ -227,6 +223,34 @@ function Map() {
       });
   };
 
+  /* State pour input recherche */
+  const [adresse, setAdresse] = useState("");
+  const textInput = React.createRef();
+  const onClickButton = () => {
+    setAdresse(textInput.current.value);
+  };
+
+  /* Geocodage pour transformer input barre recherche en coordonnées Lat et Long afin de cibler le lieu sur la carte */
+  const [latRecherche, setLatRecherche] = useState("");
+  const [lngRecherche, setLngRecherche] = useState("");
+
+  Geocode.setLanguage("fr");
+  /* Geocode.setApiKey(env.REACT_APP_API_KEY); */
+  Geocode.setRegion("fr");
+  Geocode.setLocationType("ROOFTOP");
+  Geocode.enableDebug();
+  Geocode.fromAddress(adresse).then(
+    (response) => {
+      setLatRecherche(response.results[0].geometry.location.lat);
+      setLngRecherche(response.results[0].geometry.location.lng);
+      /* const { lat, lng } = response.results[0].geometry.location; */
+      console.log(latRecherche, lngRecherche);
+    },
+    (error) => {
+      console.error(error);
+    }
+  );
+
   return (
     <div className="map">
       {/* Carte + sélection catégorie --------------------------------- */}
@@ -254,7 +278,8 @@ function Map() {
           MargueriteHandleOnChange={MargueriteHandleOnChange}
           changeTheme={changeTheme}
           ChangeColorTheme={ChangeColorTheme}
-          getAdresse={getAdresse}
+          onClickButton={onClickButton}
+          textInput={textInput}
         />
         <GoogleMap
           parkingIsChecked={parkingIsChecked}
@@ -289,6 +314,8 @@ function Map() {
           bicloo={bicloo}
           marguerite={marguerite}
           sport={sport}
+          latRecherche={latRecherche}
+          lngRecherche={lngRecherche}
         />
       </div>
       {/* ---------------------------------------------------- */}

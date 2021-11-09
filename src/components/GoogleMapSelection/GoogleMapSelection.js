@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import "./GoogleMapSelection.css";
 
 function GoogleMapSelection(props) {
@@ -11,13 +11,18 @@ function GoogleMapSelection(props) {
         <br />
         <div className="recherchebouton">
           <input
-            onChange={props.getAdresse}
+            ref={props.textInput}
             className="input-recherche"
             type="text"
             id="name"
             name="name"
           />
-          <button className="rechercheadresse">Rechercher</button>
+          <button
+            className="rechercheadresse"
+            onClick={() => props.onClickButton()}
+          >
+            Rechercher
+          </button>
         </div>
       </div>
       <div className="selection">
