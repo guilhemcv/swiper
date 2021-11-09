@@ -342,11 +342,24 @@ function Map() {
       .get(
         "https://data.opendatasoft.com/api/records/1.0/search/?dataset=244400404_equipements-publics-nantes-metropole%40nantesmetropole&q=&rows=100&facet=theme&facet=categorie&facet=type&facet=commune&refine.categorie=Pratique+libre"
       )
-      .then((response) => {
-        const sportData = response.data.records.map(
-          (record) => record.fields.geo_shape.coordinates
-        );
-        setSport(sportData);
+      .then((response) => response.data)
+      .then((data) => {
+        function dataSportFinal() {
+          const sporttableauvide = [];
+          const sportNettoyes = data.records.map((record) => record.fields);
+          sportNettoyes.forEach((sportnettoye) => {
+            sporttableauvide.push({
+              commune: sportnettoye.commune,
+              nom: sportnettoye.nom_complet,
+              adresse: sportnettoye.adresse,
+              coordonnees: sportnettoye.geo_shape.coordinates,
+              categorie: sportnettoye.type,
+              site_web: sportnettoye.url_nantesfr,
+            });
+          });
+          console.log(sporttableauvide);
+        }
+        dataSportFinal();
       });
   };
 
