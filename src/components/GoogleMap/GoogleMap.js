@@ -172,9 +172,7 @@ class GoogleMap extends React.Component {
       <div className="googlemap">
         <GoogleMapReact
           options={(map) => ({ mapTypeId: map.MapTypeId.HYBRID })}
-          bootstrapURLKeys={{
-            key,
-          }}
+          /* bootstrapURLKeys={{key,}} */
           defaultCenter={this.props.center}
           defaultZoom={this.props.zoom}
         >
