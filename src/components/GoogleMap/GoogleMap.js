@@ -9,7 +9,9 @@ import imageMusee from "./Musee.png";
 import imageCinema from "./cinema.png";
 
 /* API Google */
-const key = 0; // process.env.REACT_APP_API_KEY;
+
+const key = process.env.REACT_APP_API_KEY;
+
 
 /* Marker pour les parcs */
 function MarkerParc() {
@@ -74,7 +76,8 @@ class GoogleMap extends React.Component {
     };
   }
 
-  /*
+
+  /* 
   //UseEffect pour affichage des markers sur la Google Map
   */
 
