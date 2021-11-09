@@ -86,17 +86,29 @@ function Map() {
   }, []);
 
   /* Fetch API pour markers parking */
+
   const getParking = () => {
     axios
       .get(
         "https://data.opendatasoft.com/api/records/1.0/search/?dataset=244400404_lieux-stationnement-nantes-metropole%40nantesmetropole&q=&rows=100&facet=type_usagers"
       )
-      .then((response) => {
-        console.log(response.data);
-        const parkingData = response.data.records.map(
-          (record) => record.fields.geo_shape.coordinates
-        );
-        setParking(parkingData);
+      .then((response) => response.data)
+      .then((data) => {
+        function dataParkingFinal() {
+          const parkingtableauvide = [];
+          const parkingNettoyes = data.records.map((record) => record.fields);
+          parkingNettoyes.forEach((parkingnettoye) => {
+            parkingtableauvide.push({
+              places: parkingnettoye.nb_places,
+              commune: parkingnettoye.commune,
+              nom: parkingnettoye.nom,
+              adresse: parkingnettoye.adresse,
+              coordonnees: parkingnettoye.geo_shape.coordinates,
+            });
+          });
+          console.log(parkingtableauvide);
+        }
+        dataParkingFinal();
       });
   };
 
@@ -106,11 +118,25 @@ function Map() {
       .get(
         "https://data.nantesmetropole.fr/api/records/1.0/search/?dataset=244400404_parcs-jardins-nantes&q=&rows=100&facet=libtype&facet=gardien&facet=jeux_enfants&facet=pataugeoire&facet=sanitaires&facet=sanitaires_handicapes&facet=chiens_autorises&facet=jardin_clos&facet=abris&facet=point_eau_potable&facet=table_pique_nique"
       )
-      .then((response) => {
-        const parcData = response.data.records.map(
-          (record) => record.fields.location
-        );
-        setParc(parcData);
+      .then((response) => response.data)
+      .then((data) => {
+        function dataParcFinal() {
+          const parctableauvide = [];
+          const parcNettoyes = data.records.map((record) => record.fields);
+          parcNettoyes.forEach((parcnettoye) => {
+            parctableauvide.push({
+              commune: parcnettoye.commune,
+              nom: parcnettoye.nom_complet,
+              adresse: parcnettoye.adresse,
+              site_web: parcnettoye.siteweb,
+              coordonnees: parcnettoye.location,
+              jeux_enfants: parcnettoye.jeux_enfants,
+              acces: parcnettoye.acces_transport_commun,
+            });
+          });
+          console.log(parctableauvide);
+        }
+        dataParcFinal();
       });
   };
 
@@ -120,11 +146,27 @@ function Map() {
       .get(
         "https://data.paysdelaloire.fr/api/records/1.0/search/?dataset=234400034_070-012_offre-touristique-patrimoineculturel-rpdl&q=nantes&rows=100&facet=type&facet=commune&facet=animauxacceptes&facet=accueilgroupe&facet=ouverturealannee&facet=resaenligneouinon&facet=tarifgratuit&facet=departement&refine.commune=NANTES"
       )
-      .then((response) => {
-        const museeData = response.data.records.map(
-          (record) => record.geometry.coordinates
-        );
-        setMusee(museeData);
+      .then((response) => response.data)
+      .then((data) => {
+        function dataMuseesFinal() {
+          const museestableauvide = [];
+          const museesNettoyes = data.records.map((record) => record.fields);
+          museesNettoyes.forEach((museesnettoye) => {
+            museestableauvide.push({
+              site: museesnettoye.commweb,
+              commune: museesnettoye.commune,
+              nom: museesnettoye.nomoffre,
+              adresse: museesnettoye.adresse1suite,
+              coordonnees: [
+                museesnettoye.gmaplongitude0,
+                museesnettoye.gmaplatitude0,
+              ],
+            });
+          });
+          console.log(museestableauvide);
+        }
+
+        dataMuseesFinal();
       });
   };
 
@@ -134,11 +176,25 @@ function Map() {
       .get(
         "https://data.opendatasoft.com/api/records/1.0/search/?dataset=244400404_equipements-publics-nantes-metropole%40nantesmetropole&q=cinema&facet=theme&facet=categorie&facet=type&facet=commune&refine.commune=Nantes"
       )
-      .then((response) => {
-        const cinemaData = response.data.records.map(
-          (record) => record.fields.geo_shape.coordinates
-        );
-        setCinema(cinemaData);
+      .then((response) => response.data)
+      .then((data) => {
+        function dataCinemasFinal() {
+          const cinemastableauvide = [];
+          const cinemasNettoyes = data.records.map((record) => record.fields);
+          cinemasNettoyes.forEach((cinemasnettoye) => {
+            cinemastableauvide.push({
+              site: cinemasnettoye.site_web,
+              commune: cinemasnettoye.commune,
+              nom: cinemasnettoye.nom,
+              adresse: cinemasnettoye.adresse,
+              telephone: cinemasnettoye.telephone,
+              coordonnees: cinemasnettoye.geo_shape.coordinates,
+            });
+          });
+          console.log(cinemastableauvide);
+        }
+
+        dataCinemasFinal();
       });
   };
 
@@ -148,11 +204,30 @@ function Map() {
       .get(
         "https://data.opendatasoft.com/api/records/1.0/search/?dataset=793866443_restaurants-en-loire-atlantique%40loireatlantique&q=&rows=300&facet=type&facet=categorie&facet=commune&facet=modepaiement&facet=departement&refine.commune=NANTES"
       )
-      .then((response) => {
-        const restaurantData = response.data.records.map(
-          (record) => record.geometry.coordinates
-        );
-        setRestaurant(restaurantData);
+      .then((response) => response.data)
+      .then((data) => {
+        function dataRestaurantsFinal() {
+          const restaurantstableauvide = [];
+          const restaurantNettoyes = data.records.map(
+            (record) => record.fields
+          );
+          restaurantNettoyes.forEach((restaurantnettoye) => {
+            restaurantstableauvide.push({
+              site: restaurantnettoye.commweb,
+              commune: restaurantnettoye.commune,
+              nom: restaurantnettoye.nomoffre,
+              adresse: restaurantnettoye.adresse2,
+              telephone: restaurantnettoye.commtel,
+              coordonnees: [
+                restaurantnettoye.longitude,
+                restaurantnettoye.latitude,
+              ],
+            });
+          });
+          console.log(restaurantstableauvide);
+        }
+
+        dataRestaurantsFinal();
       });
   };
 
@@ -162,11 +237,22 @@ function Map() {
       .get(
         "https://data.opendatasoft.com/api/records/1.0/search/?dataset=244400404_equipements-publics-nantes-metropole%40nantesmetropole&q=&rows=100&facet=theme&facet=categorie&facet=type&facet=commune&refine.categorie=Salle+de+spectacle&refine.commune=Nantes"
       )
-      .then((response) => {
-        const spectacleData = response.data.records.map(
-          (record) => record.fields.geo_shape.coordinates
-        );
-        setSpectacle(spectacleData);
+      .then((response) => response.data)
+      .then((data) => {
+        function dataSpectacleFinal() {
+          const spectacletableauvide = [];
+          const spectacleNettoyes = data.records.map((record) => record.fields);
+          spectacleNettoyes.forEach((spectaclenettoye) => {
+            spectacletableauvide.push({
+              commune: spectaclenettoye.commune,
+              nom: spectaclenettoye.nom,
+              adresse: spectaclenettoye.adresse,
+              coordonnees: spectaclenettoye.geo_shape.coordinates,
+            });
+          });
+          console.log(spectacletableauvide);
+        }
+        dataSpectacleFinal();
       });
   };
 
@@ -176,11 +262,24 @@ function Map() {
       .get(
         "https://data.opendatasoft.com/api/records/1.0/search/?dataset=244400404_piscines-nantes-metropole%40nantesmetropole&q=&rows=100&facet=commune&facet=acces_pmr_equipt&facet=bassin_sportif&facet=pataugeoire&facet=toboggan&facet=bassin_apprentissage&facet=plongeoir&facet=solarium&facet=bassin_loisir&facet=accessibilite_handicap&facet=libre_service"
       )
-      .then((response) => {
-        const piscineData = response.data.records.map(
-          (record) => record.geometry.coordinates
-        );
-        setPiscine(piscineData);
+      .then((response) => response.data)
+      .then((data) => {
+        function dataPiscineFinal() {
+          const piscinetableauvide = [];
+          const piscineNettoyes = data.records.map((record) => record.fields);
+          piscineNettoyes.forEach((piscinenettoye) => {
+            piscinetableauvide.push({
+              commune: piscinenettoye.commune,
+              nom: piscinenettoye.nom_complet,
+              adresse: piscinenettoye.adresse,
+              coordonnees: piscinenettoye.location,
+              site_web: piscinenettoye.web,
+              descriptif: piscinenettoye.infos_complementaires,
+            });
+          });
+          console.log(piscinetableauvide);
+        }
+        dataPiscineFinal();
       });
   };
   /* Fetch API pour markers bicloo */
@@ -189,11 +288,23 @@ function Map() {
       .get(
         "https://data.opendatasoft.com/api/records/1.0/search/?dataset=244400404_stations-velos-libre-service-nantes-metropole%40nantesmetropole&q=&rows=200&facet=commune&facet=descriptif"
       )
-      .then((response) => {
-        const biclooData = response.data.records.map(
-          (record) => record.fields.geo_shape.coordinates
-        );
-        setBicloo(biclooData);
+      .then((response) => response.data)
+      .then((data) => {
+        function dataBiclooFinal() {
+          const biclootableauvide = [];
+          const biclooNettoyes = data.records.map((record) => record.fields);
+          biclooNettoyes.forEach((bicloonettoye) => {
+            biclootableauvide.push({
+              commune: bicloonettoye.commune,
+              nom: bicloonettoye.nom,
+              adresse: bicloonettoye.adresse,
+              coordonnees: bicloonettoye.geo_shape.coordinates,
+              capacite: bicloonettoye.capacite,
+            });
+          });
+          console.log(biclootableauvide);
+        }
+        dataBiclooFinal();
       });
   };
   /* Fetch API pour markers marguerite */
@@ -202,11 +313,27 @@ function Map() {
       .get(
         "https://data.nantesmetropole.fr/api/records/1.0/search/?dataset=244400404_stations-marguerite-nantes-metropole-disponibilites&q=&rows=100&facet=sparknom&facet=smodenom&facet=smarqnom&facet=icapacite&facet=bvehielectrique&facet=bdisponiblevehicule"
       )
-      .then((response) => {
-        const margueriteData = response.data.records.map(
-          (record) => record.geometry.coordinates
-        );
-        setMarguerite(margueriteData);
+      .then((response) => response.data)
+      .then((data) => {
+        function dataMargueriteFinal() {
+          const margueritetableauvide = [];
+          const margueriteNettoyes = data.records.map(
+            (record) => record.fields
+          );
+          margueriteNettoyes.forEach((margueritenettoye) => {
+            margueritetableauvide.push({
+              commune: margueritenettoye.svillnom,
+              nom: margueritenettoye.sparknom,
+              adresse: margueritenettoye.sparkadresse1,
+              coordonnees: margueritenettoye.geo_location,
+              options: margueritenettoye.options,
+              capacite: margueritenettoye.icapacite,
+              description: margueritenettoye.sparkdescription,
+            });
+          });
+          console.log(margueritetableauvide);
+        }
+        dataMargueriteFinal();
       });
   };
   /* Fetch API pour markers marguerite */
@@ -234,8 +361,8 @@ function Map() {
   const [latRecherche, setLatRecherche] = useState("");
   const [lngRecherche, setLngRecherche] = useState("");
 
-  Geocode.setLanguage("fr");
-  /* Geocode.setApiKey(env.REACT_APP_API_KEY); */
+  /*   Geocode.setLanguage("fr");
+  Geocode.setApiKey(env.REACT_APP_API_KEY);
   Geocode.setRegion("fr");
   Geocode.setLocationType("ROOFTOP");
   Geocode.enableDebug();
@@ -243,13 +370,12 @@ function Map() {
     (response) => {
       setLatRecherche(response.results[0].geometry.location.lat);
       setLngRecherche(response.results[0].geometry.location.lng);
-      /* const { lat, lng } = response.results[0].geometry.location; */
       console.log(latRecherche, lngRecherche);
     },
     (error) => {
       console.error(error);
     }
-  );
+  ); */
 
   return (
     <div className="map">
