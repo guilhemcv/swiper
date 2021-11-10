@@ -116,6 +116,9 @@ function App() {
                 museesnettoyes.gmaplongitude0,
                 museesnettoyes.gmaplatitude0,
               ],
+              type: "musees",
+              img: "path",
+              imgWidth: "35px",
               site: museesnettoyes.commweb,
             });
             const newMarkers = [...markers, ...museesTableauVide];
@@ -126,8 +129,6 @@ function App() {
       });
   };
   console.log(markers);
-  
-  
   /* Fetch API pour markers salles de spectacles */
   const getSpectacle = () => {
     axios
@@ -137,17 +138,21 @@ function App() {
       .then((response) => response.data)
       .then((data) => {
         const dataSpectacleFinal = () => {
-          const spectacletableauvide = [];
-          const spectacleNettoyes = data.records.map((record) => record.fields);
-          spectacleNettoyes.forEach((spectaclenettoye) => {
-            spectacletableauvide.push({
-              commune: spectaclenettoye.commune,
-              nom: spectaclenettoye.nom,
-              adresse: spectaclenettoye.adresse,
-              coordonnees: spectaclenettoye.geo_shape.coordinates,
+          data.records.forEach((record) => {
+            const spectaclesnettoyes = record.fields;
+            const spectaclesTableauVide = [];
+            spectaclesTableauVide.push({
+              commune: spectaclesnettoyes.commune,
+              adresse: spectaclesnettoyes.adresse,
+              nom: spectaclesnettoyes.nom,
+              coordonnees: spectaclesnettoyes.geo_shape.coordinates,
+              type: "spectacle",
+              img: "path",
+              imgWidth: "35px",
             });
+            const newMarkers = [...markers, ...spectaclesTableauVide];
+            setMarkers(newMarkers);
           });
-          console.log(spectacletableauvide);
         };
         dataSpectacleFinal();
       });
@@ -162,105 +167,27 @@ function App() {
       .then((response) => response.data)
       .then((data) => {
         const dataPiscineFinal = () => {
-          const piscinetableauvide = [];
-          const piscineNettoyes = data.records.map((record) => record.fields);
-          piscineNettoyes.forEach((piscinenettoye) => {
-            piscinetableauvide.push({
-              commune: piscinenettoye.commune,
-              nom: piscinenettoye.nom_complet,
-              adresse: piscinenettoye.adresse,
-              coordonnees: piscinenettoye.location,
-              site_web: piscinenettoye.web,
-              descriptif: piscinenettoye.infos_complementaires,
+          data.records.forEach((record) => {
+            const piscinesnettoyes = record.fields;
+            const piscinesTableauVide = [];
+            piscinesTableauVide.push({
+              commune: piscinesnettoyes.commune,
+              adresse: piscinesnettoyes.adresse,
+              nom: piscinesnettoyes.nom_complet,
+              coordonnees: piscinesnettoyes.location,
+              type: "piscine",
+              img: "path",
+              imgWidth: "35px",
+              site_web: piscinesnettoyes.web,
+              descriptif: piscinesnettoyes.infos_complementaires,
             });
+            const newMarkers = [...markers, ...piscinesTableauVide];
+            setMarkers(newMarkers);
           });
-          console.log(piscinetableauvide);
         };
         dataPiscineFinal();
       });
   };
-  /* Fetch API pour markers bicloo */
-  const getBicloo = () => {
-    axios
-      .get(
-        "https://data.opendatasoft.com/api/records/1.0/search/?dataset=244400404_stations-velos-libre-service-nantes-metropole%40nantesmetropole&q=&rows=200&facet=commune&facet=descriptif"
-      )
-      .then((response) => response.data)
-      .then((data) => {
-        const dataBiclooFinal = () => {
-          const biclootableauvide = [];
-          const biclooNettoyes = data.records.map((record) => record.fields);
-          biclooNettoyes.forEach((bicloonettoye) => {
-            biclootableauvide.push({
-              commune: bicloonettoye.commune,
-              nom: bicloonettoye.nom,
-              adresse: bicloonettoye.adresse,
-              coordonnees: bicloonettoye.geo_shape.coordinates,
-              capacite: bicloonettoye.capacite,
-            });
-          });
-          console.log(biclootableauvide);
-        };
-        dataBiclooFinal();
-      });
-  };
-  /* Fetch API pour markers marguerite */
-  /* coordonnées inversées */
-  const getMarguerite = () => {
-    axios
-      .get(
-        "https://data.nantesmetropole.fr/api/records/1.0/search/?dataset=244400404_stations-marguerite-nantes-metropole-disponibilites&q=&rows=100&facet=sparknom&facet=smodenom&facet=smarqnom&facet=icapacite&facet=bvehielectrique&facet=bdisponiblevehicule"
-      )
-      .then((response) => response.data)
-      .then((data) => {
-        const dataMargueriteFinal = () => {
-          const margueritetableauvide = [];
-          const margueriteNettoyes = data.records.map(
-            (record) => record.fields
-          );
-          margueriteNettoyes.forEach((margueritenettoye) => {
-            margueritetableauvide.push({
-              commune: margueritenettoye.svillnom,
-              nom: margueritenettoye.sparknom,
-              adresse: margueritenettoye.sparkadresse1,
-              coordonnees: margueritenettoye.geo_location,
-              options: margueritenettoye.options,
-              capacite: margueritenettoye.icapacite,
-              description: margueritenettoye.sparkdescription,
-            });
-          });
-          console.log(margueritetableauvide);
-        };
-        dataMargueriteFinal();
-      });
-  };
-  /* Fetch API pour markers marguerite */
-  const getSport = () => {
-    axios
-      .get(
-        "https://data.opendatasoft.com/api/records/1.0/search/?dataset=244400404_equipements-publics-nantes-metropole%40nantesmetropole&q=&rows=100&facet=theme&facet=categorie&facet=type&facet=commune&refine.categorie=Pratique+libre"
-      )
-      .then((response) => response.data)
-      .then((data) => {
-        const dataSportFinal = () => {
-          const sporttableauvide = [];
-          const sportNettoyes = data.records.map((record) => record.fields);
-          sportNettoyes.forEach((sportnettoye) => {
-            sporttableauvide.push({
-              commune: sportnettoye.commune,
-              nom: sportnettoye.nom_complet,
-              adresse: sportnettoye.adresse,
-              coordonnees: sportnettoye.geo_shape.coordinates,
-              categorie: sportnettoye.type,
-              site_web: sportnettoye.url_nantesfr,
-            });
-          });
-          console.log(sporttableauvide);
-        };
-        dataSportFinal();
-      });
-  };
-
   /*  */
 
   /* Coralie */
