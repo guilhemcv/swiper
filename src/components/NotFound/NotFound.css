@@ -1,0 +1,42 @@
+.div404 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+}
+
+.title404 {
+  color: black;
+  padding: 20rem auto 0 auto;
+  margin-bottom: 5rem;
+  margin-top: 20rem;
+  font-size: 3rem;
+  text-align: center;
+}
+
+.image404 {
+  width: 80%;
+}
+
+
+
+@media screen and (min-width: 800px) {
+  .div404 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  
+  }
+  
+  .title404 {
+    color: black;
+    padding: 20rem auto 0 auto;
+    margin-bottom: 5rem;
+    margin-top: 20rem;
+    font-size: 5rem;
+  }
+  
+  .image404 {
+    width: 400px;
+  }
+}
