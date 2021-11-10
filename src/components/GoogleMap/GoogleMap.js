@@ -1,16 +1,30 @@
 /* eslint-disable prefer-destructuring */
 import React from "react";
 import GoogleMapReact from "google-map-react";
-import axios from "axios";
 import "./GoogleMap.css";
-import imageParcs from "./park.png";
-import imageParking from "./Parking.png";
-import imageMusee from "./Musee.png";
-import imageCinema from "./cinema.png";
+import env from "react-dotenv";
+import Popup from "../Popup/Popup";
+import imageParcs from "../../Assets/Images/Markers/parc.png";
+import imageParking from "../../Assets/Images/Markers/parking.png";
+import imageMusee from "../../Assets/Images/Markers/musee.png";
+import imageCinema from "../../Assets/Images/Markers/cinema.png";
+import imageRestaurant from "../../Assets/Images/Markers/restaurant.png";
+import imageSpectacle from "../../Assets/Images/Markers/spectacle.png";
+import imagePiscine from "../../Assets/Images/Markers/piscine.png";
+import imageBicloo from "../../Assets/Images/Markers/bicloo.png";
+import imageMarguerite from "../../Assets/Images/Markers/voiture.png";
+import imageSport from "../../Assets/Images/Markers/sport.png";
+import imageRecherche from "../../Assets/Images/Markers/recherche.png";
+import customStylesLite from "./CustomStyleLite";
+import customStylesDark from "./CustomStylesDark";
 
+<<<<<<< HEAD
 /* API Google */
 
 const key = process.env.REACT_APP_API_KEY;
+=======
+/* const key = env.REACT_APP_API_KEY; */
+>>>>>>> 885d7771db154868e1eb9bc33c5c2f6db725363b
 
 /* Marker pour les parcs */
 function MarkerParc() {
@@ -20,24 +34,28 @@ function MarkerParc() {
         transform: "translate(-50%, -50%)",
       }}
     >
-      <img src={imageParcs} width="35px" alt="parc"></img>
+      <img className="marker" src={imageParcs} width="35px" alt="parc"></img>
     </div>
   );
 }
-
 /* Marker pour les parkings */
 function MarkerParking() {
   return (
     <div
+      className="markernothover"
       style={{
         transform: "translate(-50%, -50%)",
       }}
     >
-      <img src={imageParking} width="35px" alt="parking"></img>
+      <img
+        className="marker"
+        src={imageParking}
+        width="35px"
+        alt="parking"
+      ></img>
     </div>
   );
 }
-
 /* Marker pour les musées */
 function MarkerMusee() {
   return (
@@ -46,7 +64,7 @@ function MarkerMusee() {
         transform: "translate(-50%, -50%)",
       }}
     >
-      <img src={imageMusee} width="35px" alt="musee"></img>
+      <img className="marker" src={imageMusee} width="35px" alt="musee"></img>
     </div>
   );
 }
@@ -58,7 +76,121 @@ function MarkerCinema() {
         transform: "translate(-50%, -50%)",
       }}
     >
-      <img src={imageCinema} width="35px" alt="musee"></img>
+      <img className="marker" src={imageCinema} width="35px" alt="cinema"></img>
+    </div>
+  );
+}
+/* Marker pour les restaurant */
+function MarkerRestaurant() {
+  return (
+    <div
+      style={{
+        transform: "translate(-50%, -50%)",
+      }}
+    >
+      <img
+        className="marker"
+        src={imageRestaurant}
+        width="35px"
+        alt="restaurant"
+      ></img>
+    </div>
+  );
+}
+/* Marker pour les salles de spectacle */
+function MarkerSpectacle() {
+  return (
+    <div
+      style={{
+        transform: "translate(-50%, -50%)",
+      }}
+    >
+      <img
+        className="marker"
+        src={imageSpectacle}
+        width="35px"
+        alt="spectacle"
+      ></img>
+    </div>
+  );
+}
+/* Marker pour les piscines */
+function MarkerPiscine() {
+  return (
+    <div
+      style={{
+        transform: "translate(-50%, -50%)",
+      }}
+    >
+      <img
+        className="marker"
+        src={imagePiscine}
+        width="35px"
+        alt="piscine"
+      ></img>
+    </div>
+  );
+}
+/* Marker pour les bicloo */
+function MarkerBicloo() {
+  return (
+    <div
+      style={{
+        transform: "translate(-50%, -50%)",
+      }}
+    >
+      <img className="marker" src={imageBicloo} width="35px" alt="bicloo"></img>
+    </div>
+  );
+}
+/* Marker pour les bicloo */
+function MarkerMarguerite() {
+  return (
+    <div
+      style={{
+        transform: "translate(-50%, -50%)",
+      }}
+    >
+      <img
+        className="marker"
+        src={imageMarguerite}
+        width="35px"
+        alt="marguerite"
+      ></img>
+    </div>
+  );
+}
+/* Marker pour le sport de plein air */
+function MarkerSport() {
+  return (
+    <div
+      style={{
+        transform: "translate(-50%, -50%)",
+      }}
+    >
+      <img
+        className="marker"
+        src={imageSport}
+        width="35px"
+        alt="marguerite"
+      ></img>
+    </div>
+  );
+}
+/* Marker pour la recherche input */
+function MarkerRecherche() {
+  return (
+    <div
+      style={{
+        transform: "translate(-50%, -50%)",
+      }}
+    >
+      <img
+        className="marker"
+        src={imageRecherche}
+        width="60px"
+        alt="recherche"
+      ></img>
     </div>
   );
 }
@@ -68,13 +200,12 @@ class GoogleMap extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      markersParking: [],
-      markersParc: [],
-      markersMusee: [],
-      markersCinema: [],
+      isOpen: false,
     };
+    this.togglePopup = this.togglePopup.bind(this);
   }
 
+<<<<<<< HEAD
   /*
   //UseEffect pour affichage des markers sur la Google Map
   */
@@ -133,6 +264,14 @@ class GoogleMap extends React.Component {
         });
       });
   }
+=======
+  /* fonction affichage popup sur map */
+  togglePopup = () => {
+    this.setState((prevState) => ({
+      isOpen: !prevState.isOpen,
+    }));
+  };
+>>>>>>> 885d7771db154868e1eb9bc33c5c2f6db725363b
 
   /* Définir le center de la carte par défaut */
   static defaultProps = {
@@ -140,49 +279,29 @@ class GoogleMap extends React.Component {
       lat: 47.212369,
       lng: -1.55,
     },
-    zoom: 14,
+    zoom: 13,
   };
 
   render() {
-    /* Affichage des markers selon disponibilites des données dans l'API */
-    let googleMarkersParking = [];
-    if (this.state.markersParking.length > 0) {
-      googleMarkersParking = this.state.markersParking.map((marker) =>
-        marker ? <MarkerParking lat={marker[0]} lng={marker[1]} /> : <div></div>
-      );
-    }
-    let googleMarkersParc = [];
-    if (this.state.markersParc.length > 0) {
-      googleMarkersParc = this.state.markersParc.map((marker) =>
-        marker ? <MarkerParc lat={marker[0]} lng={marker[1]} /> : <div></div>
-      );
-    }
-    let googleMarkersMusee = [];
-    if (this.state.markersMusee.length > 0) {
-      googleMarkersMusee = this.state.markersMusee.map((marker) =>
-        marker ? <MarkerMusee lat={marker[1]} lng={marker[0]} /> : <div></div>
-      );
-    }
-    let googleMarkersCinema = [];
-    if (this.state.markersCinema.length > 0) {
-      googleMarkersCinema = this.state.markersCinema.map((marker) =>
-        marker ? <MarkerCinema lat={marker[1]} lng={marker[0]} /> : <div></div>
-      );
-    }
     return (
       <div className="googlemap">
         <GoogleMapReact
-          options={(map) => ({ mapTypeId: map.MapTypeId.HYBRID })}
-          bootstrapURLKeys={{
-            key,
-          }}
+          options={
+            this.props.changeTheme
+              ? { styles: customStylesDark }
+              : { styles: customStylesLite }
+          }
+          /* bootstrapURLKeys={{ key }} */
           defaultCenter={this.props.center}
           defaultZoom={this.props.zoom}
+          onClick={() => this.togglePopup()}
         >
-          {googleMarkersParking}
-          {googleMarkersParc}
-          {googleMarkersMusee}
-          {googleMarkersCinema}
+          {/* {this.props.parkingTableauVide.map((marker) => (
+            <MarkerParking
+              lat={marker.coordonnees[1]}
+              lng={marker.coordonnees[0]}
+            />
+          ))} */}
         </GoogleMapReact>
       </div>
     );

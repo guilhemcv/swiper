@@ -7,14 +7,24 @@ window.env = {
   "npm_config_metrics_registry": "https://registry.npmjs.org/",
   "TMPDIR": "/var/folders/6w/m8s84kpd2hsczjr9llw6f0yr0000gn/T/",
   "npm_config_global_prefix": "/usr/local",
+<<<<<<< HEAD
   "TERM_PROGRAM_VERSION": "443",
+=======
+  "TERM_PROGRAM_VERSION": "1.62.1",
+  "NODE_OPTIONS": "--require \"/Users/guilhemseyvet/Library/Application Support/Code/User/workspaceStorage/ee228dec2ffe268abd7622988a53bf0c/ms-vscode.js-debug/bootloader.js\" ",
+  "ORIGINAL_XDG_CURRENT_DESKTOP": "undefined",
+>>>>>>> 885d7771db154868e1eb9bc33c5c2f6db725363b
   "COLOR": "1",
   "TERM_SESSION_ID": "C707C3BD-B92B-45DA-8809-F0C0ADC9E3BA",
   "npm_config_noproxy": "",
   "npm_config_local_prefix": "/Users/lucasrossolini/Documents/WILD CODE SCHOOL/PROJETS/PROJET2/swiper",
   "USER": "lucasrossolini",
   "npm_config_globalconfig": "/usr/local/etc/npmrc",
+<<<<<<< HEAD
   "SSH_AUTH_SOCK": "/private/tmp/com.apple.launchd.AhcWTsk3FM/Listeners",
+=======
+  "SSH_AUTH_SOCK": "/private/tmp/com.apple.launchd.Ojs0wpmKLc/Listeners",
+>>>>>>> 885d7771db154868e1eb9bc33c5c2f6db725363b
   "__CF_USER_TEXT_ENCODING": "0x1F5:0x0:0x1",
   "npm_execpath": "/usr/local/lib/node_modules/npm/bin/npm-cli.js",
   "PATH": "/Users/lucasrossolini/Documents/WILD CODE SCHOOL/PROJETS/PROJET2/swiper/node_modules/.bin:/Users/lucasrossolini/Documents/WILD CODE SCHOOL/PROJETS/PROJET2/node_modules/.bin:/Users/lucasrossolini/Documents/WILD CODE SCHOOL/PROJETS/node_modules/.bin:/Users/lucasrossolini/Documents/WILD CODE SCHOOL/node_modules/.bin:/Users/lucasrossolini/Documents/node_modules/.bin:/Users/lucasrossolini/node_modules/.bin:/Users/node_modules/.bin:/node_modules/.bin:/usr/local/lib/node_modules/npm/node_modules/@npmcli/run-script/lib/node-gyp-bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin",
@@ -29,6 +39,7 @@ window.env = {
   "EDITOR": "vi",
   "npm_package_name": "swiper",
   "LANG": "fr_FR.UTF-8",
+  "VSCODE_GIT_ASKPASS_EXTRA_ARGS": "--ms-enable-electron-run-as-node",
   "XPC_FLAGS": "0x0",
   "npm_config_node_gyp": "/usr/local/lib/node_modules/npm/node_modules/node-gyp/bin/node-gyp.js",
   "npm_package_version": "0.1.0",

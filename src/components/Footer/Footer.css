@@ -19,7 +19,7 @@ a {
 
 .footer {
     background-color: white;
-    height: 38rem;
+    height: 31rem;
     margin: 0 auto;
     position: relative;
 }
@@ -90,7 +90,7 @@ a {
 @media screen and (min-width: 800px){
 
     .footer {
-        height: 25rem;
+        height: 21rem;
     }
 
     .footer-haut {
