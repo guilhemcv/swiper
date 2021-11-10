@@ -8,7 +8,7 @@ import GoogleMapSelection from "../components/GoogleMapSelection/GoogleMapSelect
 import Footer from "../components/Footer/Footer";
 import LogoContext from "../contexts/LogoContext";
 
-function Map(props) {
+function Map({ markers }) {
   // Utilisation du LogoContext pour gérer la couleur du logo en fonction de la page où on est
   const { setLogoColor } = useContext(LogoContext);
 
@@ -59,7 +59,11 @@ function Map(props) {
           onClickButton={onClickButton}
           textInput={textInput}
         />
-        <GoogleMap markers={props} />
+        <GoogleMap
+          changeTheme={changeTheme}
+          ChangeColorTheme={ChangeColorTheme}
+          markers={markers}
+        />
       </div>
       {/* ---------------------------------------------------- */}
 
