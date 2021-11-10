@@ -1,4 +1,3 @@
-/* eslint-disable import/no-cycle */
 import "./map.css";
 import React, { useState, useEffect } from "react";
 import env from "react-dotenv";
@@ -86,7 +85,6 @@ function Map() {
   }, []);
 
   /* Fetch API pour markers parking */
-
   const getParking = () => {
     axios
       .get(
@@ -111,7 +109,6 @@ function Map() {
         dataParkingFinal();
       });
   };
-
   /* Fetch API pour markers parc */
   const getParc = () => {
     axios
@@ -139,7 +136,6 @@ function Map() {
         dataParcFinal();
       });
   };
-
   /* Fetch API pour markers musées */
   const getMusee = () => {
     axios
@@ -169,7 +165,6 @@ function Map() {
         dataMuseesFinal();
       });
   };
-
   /* Fetch API pour markers cinémas */
   const getCinema = () => {
     axios
@@ -197,7 +192,6 @@ function Map() {
         dataCinemasFinal();
       });
   };
-
   /* Fetch API pour markers restaurant */
   const getRestaurant = () => {
     axios
@@ -230,7 +224,6 @@ function Map() {
         dataRestaurantsFinal();
       });
   };
-
   /* Fetch API pour markers salles de spectacles */
   const getSpectacle = () => {
     axios
@@ -255,7 +248,6 @@ function Map() {
         dataSpectacleFinal();
       });
   };
-
   /* Fetch API pour markers piscines */
   const getPiscine = () => {
     axios
