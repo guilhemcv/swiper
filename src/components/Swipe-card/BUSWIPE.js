@@ -2,12 +2,6 @@ import React, { useState, useMemo, useRef, useEffect } from "react";
 import TinderCard from "react-tinder-card";
 import "./SwipeCard.css";
 import axios from "axios";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faThumbsUp,
-  faThumbsDown,
-  faUndo,
-} from "@fortawesome/free-solid-svg-icons";
 
 function Advanced() {
   const [newPlace, setNewPlace] = useState([]);
@@ -32,29 +26,17 @@ function Advanced() {
         });
     }
   }, []);
-
-  // // Ajout d'une image pour chaque élément de notre tableau NewPlace
-  // function createMuseeImgArray(arr) {
-  //   // eslint-disable-next-line no-plusplus
-  //   for (let i = 0; i < arr.length; i++) {
-  //     // eslint-disable-next-line no-param-reassign
-  //     arr[i].img = `https://source.unsplash.com/800x60${i}/?museum`; // On insert l'index dans la taille de l'image pour générer une image différente à chaque fois
-  //   }
-  // }
-
-  // createMuseeImgArray(newPlace);
-
   console.log(newPlace);
+
   // utilisé pour la clôture de outOfFrame
   const currentIndexRef = useRef(currentIndex);
 
-  // on Memoize nos objets dans un tableau
   const childRefs = useMemo(
     () =>
       Array(newPlace.length)
         .fill(0)
         .map((i) => React.createRef()),
-    [newPlace]
+    []
   );
   // Mise à jour de l'index après chaque mouvement de carte
   const updateCurrentIndex = (val) => {
@@ -78,9 +60,8 @@ function Advanced() {
     currentIndexRef.current >= idx && childRefs[idx].current.restoreCard();
   };
 
+  console.log(`currentIndex ${childRefs[currentIndex].current}`);
   const swipe = async (dir) => {
-    console.log(`currentIndex ${childRefs[currentIndex].current}`);
-
     if (canSwipe && currentIndex < newPlace.length) {
       await childRefs[currentIndex].current.swipe(dir); // Swipe de la carte !
     }
@@ -92,11 +73,6 @@ function Advanced() {
     const newIndex = currentIndex + 1;
     updateCurrentIndex(newIndex);
     await childRefs[newIndex].current.restoreCard();
-  };
-
-  const getRandomImage = (index) => {
-    const image = `https://source.unsplash.com/600x60${index}/?museum}`;
-    return image;
   };
 
   return (
@@ -115,7 +91,7 @@ function Advanced() {
           >
             <div
               style={{
-                backgroundImage: `url(${getRandomImage(index)})`,
+                backgroundImage: `url("https://images.unsplash.com/photo-1630348637723-25d84aac0dd9?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=774&q=80")`,
               }}
               className="card"
             >
@@ -130,21 +106,21 @@ function Advanced() {
           style={{ backgroundColor: !canSwipe && "#c3c4d3" }}
           onClick={() => swipe("left")}
         >
-          <FontAwesomeIcon icon={faThumbsDown} />
+          Swipe à gauche !
         </button>
         <button
           className="button-back"
           style={{ backgroundColor: !canGoBack && "#c3c4d3" }}
           onClick={() => goBack()}
         >
-          <FontAwesomeIcon icon={faUndo} />
+          Annuler swipe!
         </button>
         <button
           className="button-like"
           style={{ backgroundColor: !canSwipe && "#c3c4d3" }}
           onClick={() => swipe("right")}
         >
-          <FontAwesomeIcon icon={faThumbsUp} />
+          Swipe à droite !
         </button>
       </div>
       {lastDirection ? (
