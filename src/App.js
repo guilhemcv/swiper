@@ -119,6 +119,9 @@ function App() {
                 museesnettoyes.gmaplongitude0,
                 museesnettoyes.gmaplatitude0,
               ],
+              type: "musees",
+              img: "path",
+              imgWidth: "35px",
               site: museesnettoyes.commweb,
             });
             const newMarkers = [...markers, ...museesTableauVide];
@@ -129,65 +132,6 @@ function App() {
       });
   };
   console.log(markers);
-  /* Fetch API pour markers cinémas */
-  const getCinema = () => {
-    axios
-      .get(
-        "https://data.opendatasoft.com/api/records/1.0/search/?dataset=244400404_equipements-publics-nantes-metropole%40nantesmetropole&q=cinema&facet=theme&facet=categorie&facet=type&facet=commune&refine.commune=Nantes"
-      )
-      .then((response) => response.data)
-      .then((data) => {
-        const dataCinemasFinal = () => {
-          const cinemastableauvide = [];
-          const cinemasNettoyes = data.records.map((record) => record.fields);
-          cinemasNettoyes.forEach((cinemasnettoye) => {
-            cinemastableauvide.push({
-              site: cinemasnettoye.site_web,
-              commune: cinemasnettoye.commune,
-              nom: cinemasnettoye.nom,
-              adresse: cinemasnettoye.adresse,
-              telephone: cinemasnettoye.telephone,
-              coordonnees: cinemasnettoye.geo_shape.coordinates,
-            });
-          });
-          console.log(cinemastableauvide);
-        };
-
-        dataCinemasFinal();
-      });
-  };
-  /* Fetch API pour markers restaurant */
-  const getRestaurant = () => {
-    axios
-      .get(
-        "https://data.opendatasoft.com/api/records/1.0/search/?dataset=793866443_restaurants-en-loire-atlantique%40loireatlantique&q=&rows=300&facet=type&facet=categorie&facet=commune&facet=modepaiement&facet=departement&refine.commune=NANTES"
-      )
-      .then((response) => response.data)
-      .then((data) => {
-        const dataRestaurantsFinal = () => {
-          const restaurantstableauvide = [];
-          const restaurantNettoyes = data.records.map(
-            (record) => record.fields
-          );
-          restaurantNettoyes.forEach((restaurantnettoye) => {
-            restaurantstableauvide.push({
-              site: restaurantnettoye.commweb,
-              commune: restaurantnettoye.commune,
-              nom: restaurantnettoye.nomoffre,
-              adresse: restaurantnettoye.adresse2,
-              telephone: restaurantnettoye.commtel,
-              coordonnees: [
-                restaurantnettoye.longitude,
-                restaurantnettoye.latitude,
-              ],
-            });
-          });
-          console.log(restaurantstableauvide);
-        };
-
-        dataRestaurantsFinal();
-      });
-  };
   /* Fetch API pour markers salles de spectacles */
   const getSpectacle = () => {
     axios
@@ -197,17 +141,21 @@ function App() {
       .then((response) => response.data)
       .then((data) => {
         const dataSpectacleFinal = () => {
-          const spectacletableauvide = [];
-          const spectacleNettoyes = data.records.map((record) => record.fields);
-          spectacleNettoyes.forEach((spectaclenettoye) => {
-            spectacletableauvide.push({
-              commune: spectaclenettoye.commune,
-              nom: spectaclenettoye.nom,
-              adresse: spectaclenettoye.adresse,
-              coordonnees: spectaclenettoye.geo_shape.coordinates,
+          data.records.forEach((record) => {
+            const spectaclesnettoyes = record.fields;
+            const spectaclesTableauVide = [];
+            spectaclesTableauVide.push({
+              commune: spectaclesnettoyes.commune,
+              adresse: spectaclesnettoyes.adresse,
+              nom: spectaclesnettoyes.nom,
+              coordonnees: spectaclesnettoyes.geo_shape.coordinates,
+              type: "spectacle",
+              img: "path",
+              imgWidth: "35px",
             });
+            const newMarkers = [...markers, ...spectaclesTableauVide];
+            setMarkers(newMarkers);
           });
-          console.log(spectacletableauvide);
         };
         dataSpectacleFinal();
       });
@@ -222,19 +170,23 @@ function App() {
       .then((response) => response.data)
       .then((data) => {
         const dataPiscineFinal = () => {
-          const piscinetableauvide = [];
-          const piscineNettoyes = data.records.map((record) => record.fields);
-          piscineNettoyes.forEach((piscinenettoye) => {
-            piscinetableauvide.push({
-              commune: piscinenettoye.commune,
-              nom: piscinenettoye.nom_complet,
-              adresse: piscinenettoye.adresse,
-              coordonnees: piscinenettoye.location,
-              site_web: piscinenettoye.web,
-              descriptif: piscinenettoye.infos_complementaires,
+          data.records.forEach((record) => {
+            const piscinesnettoyes = record.fields;
+            const piscinesTableauVide = [];
+            piscinesTableauVide.push({
+              commune: piscinesnettoyes.commune,
+              adresse: piscinesnettoyes.adresse,
+              nom: piscinesnettoyes.nom_complet,
+              coordonnees: piscinesnettoyes.location,
+              type: "piscine",
+              img: "path",
+              imgWidth: "35px",
+              site_web: piscinesnettoyes.web,
+              descriptif: piscinesnettoyes.infos_complementaires,
             });
+            const newMarkers = [...markers, ...piscinesTableauVide];
+            setMarkers(newMarkers);
           });
-          console.log(piscinetableauvide);
         };
         dataPiscineFinal();
       });
@@ -242,7 +194,75 @@ function App() {
   /*  */
 
   /* Coralie */
+  
+  /* Fetch API pour markers cinémas */
+  const getCinema = () => {
+    axios
+      .get(
+        "https://data.opendatasoft.com/api/records/1.0/search/?dataset=244400404_equipements-publics-nantes-metropole%40nantesmetropole&q=cinema&facet=theme&facet=categorie&facet=type&facet=commune&refine.commune=Nantes"
+      )
+      .then((response) => response.data)
+      .then((data) => {
+        const dataCinemasFinal=() => { 
+        data.records.forEach((record) => {
+          const cinemasnettoyes = record.fields;
+          const cinemasTableauVide = [];
+          cinemasTableauVide.push({
+              site: cinemasnettoyes.site_web,
+              commune: cinemasnettoyes.commune,
+              nom: cinemasnettoyes.nom,
+              adresse: cinemasnettoyes.adresse,
+              telephone: cinemasnettoyes.telephone,
+              coordonnees: cinemasnettoyes.geo_shape.coordinates,
+              type: "cinémas",
+              img: "path",
+              imgWidth: "35px",
+            });
+            const newMarkers = [...markers, ...cinemasTableauVide];
+            setMarkers(newMarkers);
+          });
+          console.log(cinemastableauvide);
+        }
+        dataCinemasFinal();
+      });
+  };
+  
+  /* Fetch API pour markers restaurant */
+  const getRestaurant = () => {
+    axios
+      .get(
+        "https://data.opendatasoft.com/api/records/1.0/search/?dataset=793866443_restaurants-en-loire-atlantique%40loireatlantique&q=&rows=300&facet=type&facet=categorie&facet=commune&facet=modepaiement&facet=departement&refine.commune=NANTES"
+      )
+      .then((response) => response.data)
+      .then((data) => {
+      const dataRestaurantsFinal = () => {
+          data.records.forEach((record) => {
+            const restaurantsnettoyes = record.fields;
+            const restaurantsTableauVide = [];
+            restaurantsTableauVide.push({
+              site: restaurantsnettoyes.commweb,
+              commune: restaurantsnettoyes.commune,
+              nom: restaurantsnettoyes.nomoffre,
+              adresse: restaurantsnettoyes.adresse2,
+              telephone: restaurantsnettoyes.commtel,
+              coordonnees: [
+                restaurantsnettoyes.longitude,
+                restaurantsnettoyes.latitude,
+              ],
+              type: "restaurants",
+              img: "path",
+              imgWidth: "35px",
+            });
+            const newMarkers = [...markers, ...restaurantsTableauVide];
+            setMarkers(newMarkers);
+          });
+          console.log(restaurantstableauvide);
+        };
 
+        dataRestaurantsFinal();
+      });
+  };
+  
   /*  */
 
   /* Lucas */
@@ -277,7 +297,7 @@ function App() {
       });
   };
 
-  /* Fetch API pour markers Sport */
+ /* Fetch API pour markers Sport */
   const getSport = () => {
     axios
       .get(
@@ -307,9 +327,10 @@ function App() {
         dataSportFinal();
       });
   };
+  
+    /*  */
 
-  /*  */
-
+        
   return (
     <LogoContext.Provider value={{ logoColor, setLogoColor }}>
       <div className="App">
