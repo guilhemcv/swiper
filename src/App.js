@@ -192,6 +192,76 @@ function App() {
 
   /* Coralie */
 
+  /* Fetch API pour markers cinémas */
+  const getCinema = () => {
+    axios
+      .get(
+        "https://data.opendatasoft.com/api/records/1.0/search/?dataset=244400404_equipements-publics-nantes-metropole%40nantesmetropole&q=cinema&facet=theme&facet=categorie&facet=type&facet=commune&refine.commune=Nantes"
+      )
+      .then((response) => response.data)
+      .then((data) => {
+        const dataCinemasFinal=() => { 
+        data.records.forEach((record) => {
+          const cinemasnettoyes = record.fields;
+          const cinemasTableauVide = [];
+          cinemasTableauVide.push({
+              site: cinemasnettoyes.site_web,
+              commune: cinemasnettoyes.commune,
+              nom: cinemasnettoyes.nom,
+              adresse: cinemasnettoyes.adresse,
+              telephone: cinemasnettoyes.telephone,
+              coordonnees: cinemasnettoyes.geo_shape.coordinates,
+              type: "cinémas",
+              img: "path",
+              imgWidth: "35px",
+            });
+            const newMarkers = [...markers, ...cinemasTableauVide];
+            setMarkers(newMarkers);
+          });
+          console.log(cinemastableauvide);
+        }
+        dataCinemasFinal();
+      });
+  };
+
+  /* Fetch API pour markers restaurant */
+  const getRestaurant = () => {
+    axios
+      .get(
+        "https://data.opendatasoft.com/api/records/1.0/search/?dataset=793866443_restaurants-en-loire-atlantique%40loireatlantique&q=&rows=300&facet=type&facet=categorie&facet=commune&facet=modepaiement&facet=departement&refine.commune=NANTES"
+      )
+      .then((response) => response.data)
+      .then((data) => {
+        const dataRestaurantsFinal = () => {
+          data.records.forEach((record) => {
+            const restaurantsnettoyes = record.fields;
+            const restaurantsTableauVide = [];
+            restaurantsTableauVide.push({
+              site: restaurantsnettoyes.commweb,
+              commune: restaurantsnettoyes.commune,
+              nom: restaurantsnettoyes.nomoffre,
+              adresse: restaurantsnettoyes.adresse2,
+              telephone: restaurantsnettoyes.commtel,
+              coordonnees: [
+                restaurantsnettoyes.longitude,
+                restaurantsnettoyes.latitude,
+              ],
+              type: "restaurants",
+              img: "path",
+              imgWidth: "35px",
+            });
+            const newMarkers = [...markers, ...restaurantsTableauVide];
+            setMarkers(newMarkers);
+          });
+          console.log(restaurantstableauvide);
+        };
+
+        dataRestaurantsFinal();
+      });
+  };
+
+
+
   /*  */
 
   /* Lucas */

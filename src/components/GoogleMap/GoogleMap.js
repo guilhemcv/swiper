@@ -219,6 +219,7 @@ class GoogleMap extends React.Component {
     return (
       <div className="googlemap">
         <GoogleMapReact
+
           options={
             this.props.changeTheme
               ? { styles: customStylesDark }
