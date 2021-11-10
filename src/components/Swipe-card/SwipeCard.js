@@ -94,6 +94,7 @@ function Advanced() {
     await childRefs[newIndex].current.restoreCard();
   };
 
+  // On utilise le lien source d'unsplash pour obtenir une image aléatoire pour chaque carte
   const getRandomImage = (index) => {
     const image = `https://source.unsplash.com/600x60${index}/?museum}`;
     return image;
