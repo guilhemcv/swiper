@@ -1,5 +1,5 @@
 import "./map.css";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import env from "react-dotenv";
 import Geocode from "react-geocode";
 import axios from "axios";
@@ -16,56 +16,10 @@ function Map() {
     setLogoColor("logo-black");
   });
 
-  /* Usestate pour les filtres checkbox */
-  const [parkingIsChecked, setParkingIsChecked] = useState(false);
-  const [restaurantIsChecked, setRestaurantIsChecked] = useState(false);
-  const [sportIsChecked, setSportIsChecked] = useState(false);
-  const [parcIsChecked, setParcIsChecked] = useState(false);
-  const [cinemaIsChecked, setCinemaIsChecked] = useState(false);
-  const [monumentIsChecked, setMonumentIsChecked] = useState(false);
-  const [spectacleIsChecked, setSepctacleIsChecked] = useState(false);
-  const [piscineIsChecked, setPiscineIsChecked] = useState(false);
-  const [biclooIsChecked, setBiclooIsChecked] = useState(false);
-  const [margueriteIsChecked, setMargueriteIsChecked] = useState(false);
-
-  /* useState pour les Fetch des APIS */
-
   /* State pour bouton switch de changement theme google map */
   const [changeTheme, setChangeTheme] = useState(false);
   const ChangeColorTheme = () => {
     setChangeTheme(!changeTheme);
-  };
-
-  /* fonction pour changement statut de chaque checkbox */
-  const ParkinghandleOnChange = () => {
-    setParkingIsChecked(!parkingIsChecked);
-  };
-  const RestaurantHandleOnChange = () => {
-    setRestaurantIsChecked(!restaurantIsChecked);
-  };
-  const ParcHandleOnChange = () => {
-    setParcIsChecked(!parcIsChecked);
-  };
-  const CinemaHandleOnChange = () => {
-    setCinemaIsChecked(!cinemaIsChecked);
-  };
-  const MonumentHandleOnChange = () => {
-    setMonumentIsChecked(!monumentIsChecked);
-  };
-  const SpectacleHandleOnChange = () => {
-    setSepctacleIsChecked(!spectacleIsChecked);
-  };
-  const PiscineHandleOnChange = () => {
-    setPiscineIsChecked(!piscineIsChecked);
-  };
-  const BiclooHandleOnChange = () => {
-    setBiclooIsChecked(!biclooIsChecked);
-  };
-  const MargueriteHandleOnChange = () => {
-    setMargueriteIsChecked(!margueriteIsChecked);
-  };
-  const SportHandleOnChange = () => {
-    setSportIsChecked(!sportIsChecked);
   };
 
   /* State pour input recherche */
@@ -100,57 +54,12 @@ function Map() {
       {/* Carte + sélection catégorie --------------------------------- */}
       <div className="selectionAndMap">
         <GoogleMapSelection
-          parkingIsChecked={parkingIsChecked}
-          ParkinghandleOnChange={ParkinghandleOnChange}
-          restaurantIsChecked={restaurantIsChecked}
-          RestaurantHandleOnChange={RestaurantHandleOnChange}
-          sportIsChecked={sportIsChecked}
-          SportHandleOnChange={SportHandleOnChange}
-          parcIsChecked={parcIsChecked}
-          ParcHandleOnChange={ParcHandleOnChange}
-          cinemaIsChecked={cinemaIsChecked}
-          CinemaHandleOnChange={CinemaHandleOnChange}
-          monumentIsChecked={monumentIsChecked}
-          MonumentHandleOnChange={MonumentHandleOnChange}
-          spectacleIsChecked={spectacleIsChecked}
-          SpectacleHandleOnChange={SpectacleHandleOnChange}
-          piscineIsChecked={piscineIsChecked}
-          PiscineHandleOnChange={PiscineHandleOnChange}
-          biclooIsChecked={biclooIsChecked}
-          BiclooHandleOnChange={BiclooHandleOnChange}
-          margueriteIsChecked={margueriteIsChecked}
-          MargueriteHandleOnChange={MargueriteHandleOnChange}
           changeTheme={changeTheme}
           ChangeColorTheme={ChangeColorTheme}
           onClickButton={onClickButton}
           textInput={textInput}
         />
-        <GoogleMap
-          parkingIsChecked={parkingIsChecked}
-          ParkinghandleOnChange={ParkinghandleOnChange}
-          restaurantIsChecked={restaurantIsChecked}
-          RestaurantHandleOnChange={RestaurantHandleOnChange}
-          sportIsChecked={sportIsChecked}
-          SportHandleOnChange={SportHandleOnChange}
-          parcIsChecked={parcIsChecked}
-          ParcHandleOnChange={ParcHandleOnChange}
-          cinemaIsChecked={cinemaIsChecked}
-          CinemaHandleOnChange={CinemaHandleOnChange}
-          monumentIsChecked={monumentIsChecked}
-          MonumentHandleOnChange={MonumentHandleOnChange}
-          spectacleIsChecked={spectacleIsChecked}
-          SpectacleHandleOnChange={SpectacleHandleOnChange}
-          piscineIsChecked={piscineIsChecked}
-          PiscineHandleOnChange={PiscineHandleOnChange}
-          biclooIsChecked={biclooIsChecked}
-          BiclooHandleOnChange={BiclooHandleOnChange}
-          margueriteIsChecked={margueriteIsChecked}
-          MargueriteHandleOnChange={MargueriteHandleOnChange}
-          changeTheme={changeTheme}
-          ChangeColorTheme={ChangeColorTheme}
-          latRecherche={latRecherche}
-          lngRecherche={lngRecherche}
-        />
+        <GoogleMap />
       </div>
       {/* ---------------------------------------------------- */}
 

@@ -16,6 +16,16 @@ function App() {
   const [logoColor, setLogoColor] = React.useState("logo-white");
 
   const [markers, setMarkers] = useState([]);
+  const parkingTableauVide = [];
+  const sportTableauVide = [];
+  const biclooTableauVide = [];
+  const restaurantsTableauVide = [];
+  const cinemasTableauVide = [];
+  const piscinesTableauVide = [];
+  const spectaclesTableauVide = [];
+  const museesTableauVide = [];
+  const parcTableauVide = [];
+  let fetchIndex = 0;
 
   // On utilise une fonction sur l'état du menu burger pour le fermer lorsqu'on clique sur un lien
   function handleIsChecked() {
@@ -38,7 +48,21 @@ function App() {
     getSport();
   }, []);
 
-  /* Guilhem */
+  const setFullMarkers = () => {
+    const newMarkers = [
+      ...parkingTableauVide,
+      ...parcTableauVide,
+      ...museesTableauVide,
+      ...cinemasTableauVide,
+      ...restaurantsTableauVide,
+      ...spectaclesTableauVide,
+      ...piscinesTableauVide,
+      ...biclooTableauVide,
+      ...sportTableauVide,
+    ];
+    setMarkers(newMarkers);
+  };
+
   /* Fetch pour les parkings */
   const getParking = () => {
     axios
@@ -47,10 +71,10 @@ function App() {
       )
       .then((response) => response.data)
       .then((data) => {
+        fetchIndex += 1;
         const dataParkingFinal = () => {
           data.records.forEach((record) => {
             const parkingnettoyes = record.fields;
-            const parkingTableauVide = [];
             parkingTableauVide.push({
               commune: parkingnettoyes.commune,
               adresse: parkingnettoyes.adresse,
@@ -61,9 +85,10 @@ function App() {
               imgWidth: "35px",
               places: parkingnettoyes.nb_places,
             });
-            const newMarkers = [...markers, ...parkingTableauVide];
-            setMarkers(newMarkers);
           });
+          if (fetchIndex === 9) {
+            setFullMarkers();
+          }
         };
         dataParkingFinal();
       });
@@ -76,10 +101,10 @@ function App() {
       )
       .then((response) => response.data)
       .then((data) => {
+        fetchIndex += 1;
         const dataParcFinal = () => {
           data.records.forEach((record) => {
             const parcnettoyes = record.fields;
-            const parcTableauVide = [];
             parcTableauVide.push({
               commune: parcnettoyes.commune,
               adresse: parcnettoyes.adresse,
@@ -92,9 +117,10 @@ function App() {
               jeux_enfants: parcnettoyes.jeux_enfants,
               acces: parcnettoyes.acces_transport_commun,
             });
-            const newMarkers = [...markers, ...parcTableauVide];
-            setMarkers(newMarkers);
           });
+          if (fetchIndex === 9) {
+            setFullMarkers();
+          }
         };
         dataParcFinal();
       });
@@ -107,10 +133,10 @@ function App() {
       )
       .then((response) => response.data)
       .then((data) => {
+        fetchIndex += 1;
         const dataMuseeFinal = () => {
           data.records.forEach((record) => {
             const museesnettoyes = record.fields;
-            const museesTableauVide = [];
             museesTableauVide.push({
               commune: museesnettoyes.commune,
               adresse: museesnettoyes.adresse1suite,
@@ -124,14 +150,14 @@ function App() {
               imgWidth: "35px",
               site: museesnettoyes.commweb,
             });
-            const newMarkers = [...markers, ...museesTableauVide];
-            setMarkers(newMarkers);
           });
+          if (fetchIndex === 9) {
+            setFullMarkers();
+          }
         };
         dataMuseeFinal();
       });
   };
-  console.log(markers);
   /* Fetch API pour markers salles de spectacles */
   const getSpectacle = () => {
     axios
@@ -140,10 +166,10 @@ function App() {
       )
       .then((response) => response.data)
       .then((data) => {
+        fetchIndex += 1;
         const dataSpectacleFinal = () => {
           data.records.forEach((record) => {
             const spectaclesnettoyes = record.fields;
-            const spectaclesTableauVide = [];
             spectaclesTableauVide.push({
               commune: spectaclesnettoyes.commune,
               adresse: spectaclesnettoyes.adresse,
@@ -153,9 +179,10 @@ function App() {
               img: "path",
               imgWidth: "35px",
             });
-            const newMarkers = [...markers, ...spectaclesTableauVide];
-            setMarkers(newMarkers);
           });
+          if (fetchIndex === 9) {
+            setFullMarkers();
+          }
         };
         dataSpectacleFinal();
       });
@@ -169,10 +196,10 @@ function App() {
       )
       .then((response) => response.data)
       .then((data) => {
+        fetchIndex += 1;
         const dataPiscineFinal = () => {
           data.records.forEach((record) => {
             const piscinesnettoyes = record.fields;
-            const piscinesTableauVide = [];
             piscinesTableauVide.push({
               commune: piscinesnettoyes.commune,
               adresse: piscinesnettoyes.adresse,
@@ -184,17 +211,15 @@ function App() {
               site_web: piscinesnettoyes.web,
               descriptif: piscinesnettoyes.infos_complementaires,
             });
-            const newMarkers = [...markers, ...piscinesTableauVide];
-            setMarkers(newMarkers);
           });
+          if (fetchIndex === 9) {
+            setFullMarkers();
+          }
         };
         dataPiscineFinal();
       });
   };
-  /*  */
 
-  /* Coralie */
-  
   /* Fetch API pour markers cinémas */
   const getCinema = () => {
     axios
@@ -203,11 +228,11 @@ function App() {
       )
       .then((response) => response.data)
       .then((data) => {
-        const dataCinemasFinal=() => { 
-        data.records.forEach((record) => {
-          const cinemasnettoyes = record.fields;
-          const cinemasTableauVide = [];
-          cinemasTableauVide.push({
+        fetchIndex += 1;
+        const dataCinemasFinal = () => {
+          data.records.forEach((record) => {
+            const cinemasnettoyes = record.fields;
+            cinemasTableauVide.push({
               site: cinemasnettoyes.site_web,
               commune: cinemasnettoyes.commune,
               nom: cinemasnettoyes.nom,
@@ -218,15 +243,15 @@ function App() {
               img: "path",
               imgWidth: "35px",
             });
-            const newMarkers = [...markers, ...cinemasTableauVide];
-            setMarkers(newMarkers);
           });
-          console.log(cinemastableauvide);
-        }
+          if (fetchIndex === 9) {
+            setFullMarkers();
+          }
+        };
         dataCinemasFinal();
       });
   };
-  
+
   /* Fetch API pour markers restaurant */
   const getRestaurant = () => {
     axios
@@ -235,10 +260,10 @@ function App() {
       )
       .then((response) => response.data)
       .then((data) => {
-      const dataRestaurantsFinal = () => {
+        fetchIndex += 1;
+        const dataRestaurantsFinal = () => {
           data.records.forEach((record) => {
             const restaurantsnettoyes = record.fields;
-            const restaurantsTableauVide = [];
             restaurantsTableauVide.push({
               site: restaurantsnettoyes.commweb,
               commune: restaurantsnettoyes.commune,
@@ -253,19 +278,15 @@ function App() {
               img: "path",
               imgWidth: "35px",
             });
-            const newMarkers = [...markers, ...restaurantsTableauVide];
-            setMarkers(newMarkers);
           });
-          console.log(restaurantstableauvide);
+          if (fetchIndex === 9) {
+            setFullMarkers();
+          }
         };
 
         dataRestaurantsFinal();
       });
   };
-  
-  /*  */
-
-  /* Lucas */
 
   /* Fetch API pour markers bicloo */
   const getBicloo = () => {
@@ -275,10 +296,10 @@ function App() {
       )
       .then((response) => response.data)
       .then((data) => {
+        fetchIndex += 1;
         const dataBiclooFinal = () => {
           data.records.forEach((record) => {
             const biclooNettoye = record.fields;
-            const biclooTableauVide = [];
             biclooTableauVide.push({
               commune: biclooNettoye.commune,
               nom: biclooNettoye.nom,
@@ -289,15 +310,16 @@ function App() {
               imgWidth: "35px",
               capacite: biclooNettoye.capacite,
             });
-            const newMarkers = [...markers, ...biclooTableauVide];
-            setMarkers(newMarkers);
           });
+          if (fetchIndex === 9) {
+            setFullMarkers();
+          }
         };
         dataBiclooFinal();
       });
   };
 
- /* Fetch API pour markers Sport */
+  /* Fetch API pour markers Sport */
   const getSport = () => {
     axios
       .get(
@@ -305,10 +327,10 @@ function App() {
       )
       .then((response) => response.data)
       .then((data) => {
+        fetchIndex += 1;
         const dataSportFinal = () => {
           data.records.forEach((record) => {
             const sportNettoyes = record.fields;
-            const sportTableauVide = [];
             sportTableauVide.push({
               commune: sportNettoyes.commune,
               nom: sportNettoyes.nom_complet,
@@ -320,19 +342,18 @@ function App() {
               categorie: sportNettoyes.categorie,
               site_web: sportNettoyes.url_nantesfr,
             });
-            const newMarkers = [...markers, ...sportTableauVide];
-            setMarkers(newMarkers);
           });
+          if (fetchIndex === 9) {
+            setFullMarkers();
+          }
         };
         dataSportFinal();
       });
   };
-  
-    /*  */
 
-        
   return (
     <LogoContext.Provider value={{ logoColor, setLogoColor }}>
+      {console.log(markers)}
       <div className="App">
         <Router>
           <Link to="/">
