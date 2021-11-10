@@ -81,7 +81,7 @@ function App() {
               nom: parkingnettoyes.nom,
               coordonnees: parkingnettoyes.geo_shape.coordinates,
               type: "parking",
-              img: "path",
+              img: "src/Assets/Images/Markers/parking.png",
               imgWidth: "35px",
               places: parkingnettoyes.nb_places,
             });
@@ -353,7 +353,6 @@ function App() {
 
   return (
     <LogoContext.Provider value={{ logoColor, setLogoColor }}>
-      {console.log(markers)}
       <div className="App">
         <Router>
           <Link to="/">
@@ -393,7 +392,9 @@ function App() {
           </div>
           <Switch>
             <Route path="/swipe" component={Swipe} />
-            <Route path="/map" component={Map} />
+            <Route path="/map">
+              <Map markers={markers} />
+            </Route>
             <Route path="/favoris" component={Favoris} />
             <Route exact path="/" component={Accueil} />
             <Route component={NotFound} />

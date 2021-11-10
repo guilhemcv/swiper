@@ -172,8 +172,8 @@ function MarkerSport() {
     </div>
   );
 }
-/* Marker pour la recherche input */
-function MarkerRecherche() {
+
+function Marker() {
   return (
     <div
       style={{
@@ -182,7 +182,7 @@ function MarkerRecherche() {
     >
       <img
         className="marker"
-        src={imageRecherche}
+        src={imageParking}
         width="60px"
         alt="recherche"
       ></img>
@@ -197,6 +197,8 @@ class GoogleMap extends React.Component {
     this.state = {
       isOpen: false,
     };
+    this.markers = this.props.markers;
+    this.markers.map((marker) => console.log(marker));
     this.togglePopup = this.togglePopup.bind(this);
   }
 
@@ -217,6 +219,7 @@ class GoogleMap extends React.Component {
   };
 
   render() {
+    // eslint-disable-next-line no-return-assign
     return (
       <div className="googlemap">
         <GoogleMapReact
@@ -230,11 +233,8 @@ class GoogleMap extends React.Component {
           defaultZoom={this.props.zoom}
           onClick={() => this.togglePopup()}
         >
-          {/* {this.props.parkingTableauVide.map((marker) => (
-            <MarkerParking
-              lat={marker.coordonnees[1]}
-              lng={marker.coordonnees[0]}
-            />
+          {/* {this.markers.map((marker) => (
+            <Marker lat={marker.coordonnees[0]} lng={marker.coordonnees[1]} />
           ))} */}
         </GoogleMapReact>
       </div>
