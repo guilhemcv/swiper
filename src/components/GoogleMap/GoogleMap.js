@@ -18,7 +18,13 @@ import imageRecherche from "../../Assets/Images/Markers/recherche.png";
 import customStylesLite from "./CustomStyleLite";
 import customStylesDark from "./CustomStylesDark";
 
+<<<<<<< HEAD
+/* API Google */
+
+const key = process.env.REACT_APP_API_KEY;
+=======
 /* const key = env.REACT_APP_API_KEY; */
+>>>>>>> 885d7771db154868e1eb9bc33c5c2f6db725363b
 
 /* Marker pour les parcs */
 function MarkerParc() {
@@ -199,12 +205,73 @@ class GoogleMap extends React.Component {
     this.togglePopup = this.togglePopup.bind(this);
   }
 
+<<<<<<< HEAD
+  /*
+  //UseEffect pour affichage des markers sur la Google Map
+  */
+
+  componentDidMount() {
+    /* fetch pour les parkings */
+    axios
+      .get(
+        "https://data.nantesmetropole.fr/api/records/1.0/search/?dataset=244400404_parkings-publics-nantes&q=&rows=100&facet=libcategorie&facet=libtype&facet=acces_pmr&facet=service_velo&facet=stationnement_velo&facet=stationnement_velo_securise&facet=moyen_paiement"
+      )
+      .then((response) => {
+        console.log(response.data);
+        const parkingData = response.data.records.map(
+          (record) => record.fields.location
+        );
+        this.setState({
+          markersParking: parkingData,
+        });
+      });
+    /* fetch pour les parcs */
+    axios
+      .get(
+        "https://data.nantesmetropole.fr/api/records/1.0/search/?dataset=244400404_parcs-jardins-nantes&q=&rows=100&facet=libtype&facet=gardien&facet=jeux_enfants&facet=pataugeoire&facet=sanitaires&facet=sanitaires_handicapes&facet=chiens_autorises&facet=jardin_clos&facet=abris&facet=point_eau_potable&facet=table_pique_nique"
+      )
+      .then((response) => {
+        const parcData = response.data.records.map(
+          (record) => record.fields.location
+        );
+        this.setState({
+          markersParc: parcData,
+        });
+      });
+    /* fetch pour les musées */
+    axios
+      .get(
+        "https://data.opendatasoft.com/api/records/1.0/search/?dataset=244400404_equipements-publics-nantes-metropole%40nantesmetropole&q=&rows=100&facet=theme&facet=categorie&facet=type&facet=commune&refine.categorie=Mus%C3%A9e%2C+Ch%C3%A2teau&refine.commune=Nantes"
+      )
+      .then((response) => {
+        const museeData = response.data.records.map(
+          (record) => record.fields.geo_shape.coordinates
+        );
+        this.setState({
+          markersMusee: museeData,
+        });
+      });
+    axios
+      .get(
+        "https://data.opendatasoft.com/api/records/1.0/search/?dataset=244400404_equipements-publics-nantes-metropole%40nantesmetropole&q=&rows=100&facet=theme&facet=categorie&facet=type&facet=commune&refine.categorie=Mus%C3%A9e%2C+Ch%C3%A2teau&refine.commune=Nantes"
+      )
+      .then((response) => {
+        const cinemaData = response.data.records.map(
+          (record) => record.fields.geo_shape.coordinates
+        );
+        this.setState({
+          markersCinema: cinemaData,
+        });
+      });
+  }
+=======
   /* fonction affichage popup sur map */
   togglePopup = () => {
     this.setState((prevState) => ({
       isOpen: !prevState.isOpen,
     }));
   };
+>>>>>>> 885d7771db154868e1eb9bc33c5c2f6db725363b
 
   /* Définir le center de la carte par défaut */
   static defaultProps = {

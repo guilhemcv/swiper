@@ -6,8 +6,16 @@ import axios from "axios";
 import GoogleMap from "../components/GoogleMap/GoogleMap";
 import GoogleMapSelection from "../components/GoogleMapSelection/GoogleMapSelection";
 import Footer from "../components/Footer/Footer";
+import LogoContext from "../contexts/LogoContext";
 
 function Map() {
+  // Utilisation du LogoContext pour gérer la couleur du logo en fonction de la page où on est
+  const { setLogoColor } = useContext(LogoContext);
+
+  useEffect(() => {
+    setLogoColor("logo-black");
+  });
+
   /* Usestate pour les filtres checkbox */
   const [parkingIsChecked, setParkingIsChecked] = useState(false);
   const [restaurantIsChecked, setRestaurantIsChecked] = useState(false);

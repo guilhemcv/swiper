@@ -7,24 +7,17 @@ window.env = {
   "npm_config_metrics_registry": "https://registry.npmjs.org/",
   "TMPDIR": "/var/folders/rd/85qjhf0n1n590tfy1t4bp6z80000gn/T/",
   "npm_config_global_prefix": "/usr/local",
-<<<<<<< HEAD
-  "TERM_PROGRAM_VERSION": "433",
-=======
   "TERM_PROGRAM_VERSION": "1.62.1",
   "NODE_OPTIONS": "--require \"/Users/guilhemseyvet/Library/Application Support/Code/User/workspaceStorage/ee228dec2ffe268abd7622988a53bf0c/ms-vscode.js-debug/bootloader.js\" ",
   "ORIGINAL_XDG_CURRENT_DESKTOP": "undefined",
->>>>>>> 885d7771db154868e1eb9bc33c5c2f6db725363b
   "COLOR": "1",
+  "SSH_AUTH_SOCK": "/private/tmp/com.apple.launchd.AhcWTsk3FM/Listeners",
   "TERM_SESSION_ID": "105BBD06-029A-4C50-870E-05F997AA8F50",
   "npm_config_noproxy": "",
   "npm_config_local_prefix": "/Users/coraliecourant/Documents/Wild/Projets/swiper",
   "USER": "coraliecourant",
   "npm_config_globalconfig": "/usr/local/etc/npmrc",
-<<<<<<< HEAD
-  "SSH_AUTH_SOCK": "/private/tmp/com.apple.launchd.yrzHhVFlci/Listeners",
-=======
   "SSH_AUTH_SOCK": "/private/tmp/com.apple.launchd.Ojs0wpmKLc/Listeners",
->>>>>>> 885d7771db154868e1eb9bc33c5c2f6db725363b
   "__CF_USER_TEXT_ENCODING": "0x1F5:0x0:0x1",
   "npm_execpath": "/usr/local/lib/node_modules/npm/bin/npm-cli.js",
   "PATH": "/Users/coraliecourant/Documents/Wild/Projets/swiper/node_modules/.bin:/Users/coraliecourant/Documents/Wild/Projets/node_modules/.bin:/Users/coraliecourant/Documents/Wild/node_modules/.bin:/Users/coraliecourant/Documents/node_modules/.bin:/Users/coraliecourant/node_modules/.bin:/Users/node_modules/.bin:/node_modules/.bin:/usr/local/lib/node_modules/npm/node_modules/@npmcli/run-script/lib/node-gyp-bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/mysql/bin/.",

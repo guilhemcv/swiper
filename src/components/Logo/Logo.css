@@ -1,4 +1,8 @@
-.titre-logo {
+.logo-white {
+  display: none;
+}
+
+.logo-black {
   display: none;
 }
 
@@ -13,13 +17,26 @@
 }
 
 @media screen and (min-width: 800px) {
-  .titre-logo {
+  .logo-white {
     position: absolute;
     z-index: 1;
     padding-left: 1rem;
     display:flex;
     margin-top: 0;
-    text-decoration: none;  
+    text-decoration: none;
+    color: #FFF;
+}
+
+.logo-black {
+  position: absolute;
+  z-index: 1;
+  padding-left: 1rem;
+  display:flex;
+  margin-top: 0;
+  text-decoration: none;
+  color: #000;
+  text-decoration: none;  
+
 }
   .img-logo {
     display: none;
