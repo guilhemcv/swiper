@@ -11,9 +11,11 @@ function HeaderAccueil() {
           <br />
           ce weekend ?
         </h1>
+        <br />
       </div>
       <div className="header-text-desktop">
         <h1> On fait quoi ce weekend ?</h1>
+        <br />
       </div>
     </div>
   );
