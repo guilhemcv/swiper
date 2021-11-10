@@ -31,7 +31,7 @@ function Map() {
   const [bicloo, setBicloo] = useState("");
   const [marguerite, setMarguerite] = useState("");
   const [sport, setSport] = useState("");
-  const [markers, setMarkers] = useState([]);
+
 
   /* State pour bouton switch de changement theme google map */
   const [changeTheme, setChangeTheme] = useState(false);

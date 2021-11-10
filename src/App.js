@@ -11,6 +11,7 @@ import "./components/MenuBurger/MenuBurger.css";
 
 function App() {
   const [isChecked, setIsChecked] = React.useState("");
+  const [markers, setMarkers] = useState([]);
 
   function handleIsChecked() {
     if (isChecked === "") {
