@@ -217,7 +217,7 @@ class GoogleMap extends React.Component {
 
   render() {
     /* Affichage des markers selon disponibilites des données dans l'API */
-    let googleMarkersParking = [];
+    /* let googleMarkersParking = [];
     if (this.props.parking.length > 0) {
       googleMarkersParking = this.props.parking.map((marker) =>
         marker ? <MarkerParking lat={marker[1]} lng={marker[0]} /> : <div></div>
@@ -290,7 +290,7 @@ class GoogleMap extends React.Component {
       );
     }
     console.log(this.props.latRecherche, this.props.lngRecherche);
-
+ */
     return (
       <div className="googlemap">
         <GoogleMapReact
@@ -304,37 +304,12 @@ class GoogleMap extends React.Component {
           defaultZoom={this.props.zoom}
           onClick={() => this.togglePopup()}
         >
-          {this.props.margueriteIsChecked ? "" : googleMarkersMarguerite}
-          {/* getMarkersLatLng(this.props.) */}
-          {this.props.biclooIsChecked ? "" : googleMarkersBicloo}
-          {this.props.parkingIsChecked ? "" : googleMarkersParking}
-          {this.props.parcIsChecked ? "" : googleMarkersParc}
-          {this.props.piscineIsChecked ? "" : googleMarkersPiscine}
-          {this.props.sportIsChecked ? "" : googleMarkersSport}
-          {this.props.restaurantIsChecked ? "" : googleMarkersRestaurant}
-          {this.props.cinemaIsChecked ? "" : googleMarkersCinema}
-          {this.props.spectacleIsChecked ? "" : googleMarkersSpectacle}
-          {this.props.monumentIsChecked ? "" : googleMarkersMusee}
-          <MarkerRecherche
-            lat={this.props.latRecherche}
-            lng={this.props.lngRecherche}
-          />
-          {this.state.isOpen && (
-            <Popup
-              content={
-                <>
-                  <h5>Ceci est la Cigale</h5>
-                  <br />
-                  <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                    do eiusmod tempor incididunt ut labore et dolore magna
-                    aliqua. Ut enim ad minim veniam
-                  </p>
-                </>
-              }
-              handleClose={() => this.togglePopup}
+          {/* {this.props.parkingTableauVide.map((marker) => (
+            <MarkerParking
+              lat={marker.coordonnees[1]}
+              lng={marker.coordonnees[0]}
             />
-          )}
+          ))} */}
         </GoogleMapReact>
       </div>
     );

@@ -2,6 +2,7 @@ import React from "react";
 import "./GoogleMapSelection.css";
 
 function GoogleMapSelection(props) {
+  console.log(props.parkingTableauVide);
   return (
     <div className="barreRecherche">
       <div className="selection-recherche">

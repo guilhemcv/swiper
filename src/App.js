@@ -19,6 +19,19 @@ function App() {
       setIsChecked("");
     }
   }
+
+  /* Guilhem */
+
+  /*  */
+
+  /* Coralie */
+
+  /*  */
+
+  /* Lucas */
+
+  /*  */
+
   return (
     <div className="App">
       <Router>

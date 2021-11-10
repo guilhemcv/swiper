@@ -31,6 +31,7 @@ function Map() {
   const [bicloo, setBicloo] = useState("");
   const [marguerite, setMarguerite] = useState("");
   const [sport, setSport] = useState("");
+  const [markers, setMarkers] = useState([]);
 
   /* State pour bouton switch de changement theme google map */
   const [changeTheme, setChangeTheme] = useState(false);
@@ -92,23 +93,29 @@ function Map() {
       )
       .then((response) => response.data)
       .then((data) => {
-        function dataParkingFinal() {
-          const parkingtableauvide = [];
-          const parkingNettoyes = data.records.map((record) => record.fields);
-          parkingNettoyes.forEach((parkingnettoye) => {
-            parkingtableauvide.push({
-              places: parkingnettoye.nb_places,
-              commune: parkingnettoye.commune,
-              nom: parkingnettoye.nom,
-              adresse: parkingnettoye.adresse,
-              coordonnees: parkingnettoye.geo_shape.coordinates,
+        const dataParkingFinal = () => {
+          data.records.forEach((record) => {
+            const parkingnettoyes = record.fields;
+            const parkingTableauVide = [];
+            parkingTableauVide.push({
+              type: "parking",
+              img: "path",
+              imgWidth: "35px",
+              places: parkingnettoyes.nb_places,
+              commune: parkingnettoyes.commune,
+              nom: parkingnettoyes.nom,
+              adresse: parkingnettoyes.adresse,
+              coordonnees: parkingnettoyes.geo_shape.coordinates,
             });
+            const newMarkers = [...markers, ...parkingTableauVide];
+            setMarkers(newMarkers);
           });
-          console.log(parkingtableauvide);
-        }
+        };
         dataParkingFinal();
       });
   };
+  console.log(markers);
+
   /* Fetch API pour markers parc */
   const getParc = () => {
     axios
@@ -117,7 +124,7 @@ function Map() {
       )
       .then((response) => response.data)
       .then((data) => {
-        function dataParcFinal() {
+        const dataParcFinal = () => {
           const parctableauvide = [];
           const parcNettoyes = data.records.map((record) => record.fields);
           parcNettoyes.forEach((parcnettoye) => {
@@ -132,7 +139,7 @@ function Map() {
             });
           });
           console.log(parctableauvide);
-        }
+        };
         dataParcFinal();
       });
   };
@@ -144,7 +151,7 @@ function Map() {
       )
       .then((response) => response.data)
       .then((data) => {
-        function dataMuseesFinal() {
+        const dataMuseesFinal = () => {
           const museestableauvide = [];
           const museesNettoyes = data.records.map((record) => record.fields);
           museesNettoyes.forEach((museesnettoye) => {
@@ -160,7 +167,7 @@ function Map() {
             });
           });
           console.log(museestableauvide);
-        }
+        };
 
         dataMuseesFinal();
       });
@@ -173,7 +180,7 @@ function Map() {
       )
       .then((response) => response.data)
       .then((data) => {
-        function dataCinemasFinal() {
+        const dataCinemasFinal = () => {
           const cinemastableauvide = [];
           const cinemasNettoyes = data.records.map((record) => record.fields);
           cinemasNettoyes.forEach((cinemasnettoye) => {
@@ -187,7 +194,7 @@ function Map() {
             });
           });
           console.log(cinemastableauvide);
-        }
+        };
 
         dataCinemasFinal();
       });
@@ -200,7 +207,7 @@ function Map() {
       )
       .then((response) => response.data)
       .then((data) => {
-        function dataRestaurantsFinal() {
+        const dataRestaurantsFinal = () => {
           const restaurantstableauvide = [];
           const restaurantNettoyes = data.records.map(
             (record) => record.fields
@@ -219,7 +226,7 @@ function Map() {
             });
           });
           console.log(restaurantstableauvide);
-        }
+        };
 
         dataRestaurantsFinal();
       });
@@ -232,7 +239,7 @@ function Map() {
       )
       .then((response) => response.data)
       .then((data) => {
-        function dataSpectacleFinal() {
+        const dataSpectacleFinal = () => {
           const spectacletableauvide = [];
           const spectacleNettoyes = data.records.map((record) => record.fields);
           spectacleNettoyes.forEach((spectaclenettoye) => {
@@ -244,11 +251,12 @@ function Map() {
             });
           });
           console.log(spectacletableauvide);
-        }
+        };
         dataSpectacleFinal();
       });
   };
   /* Fetch API pour markers piscines */
+  /* Coordonées inversées */
   const getPiscine = () => {
     axios
       .get(
@@ -256,7 +264,7 @@ function Map() {
       )
       .then((response) => response.data)
       .then((data) => {
-        function dataPiscineFinal() {
+        const dataPiscineFinal = () => {
           const piscinetableauvide = [];
           const piscineNettoyes = data.records.map((record) => record.fields);
           piscineNettoyes.forEach((piscinenettoye) => {
@@ -270,7 +278,7 @@ function Map() {
             });
           });
           console.log(piscinetableauvide);
-        }
+        };
         dataPiscineFinal();
       });
   };
@@ -282,7 +290,7 @@ function Map() {
       )
       .then((response) => response.data)
       .then((data) => {
-        function dataBiclooFinal() {
+        const dataBiclooFinal = () => {
           const biclootableauvide = [];
           const biclooNettoyes = data.records.map((record) => record.fields);
           biclooNettoyes.forEach((bicloonettoye) => {
@@ -295,11 +303,12 @@ function Map() {
             });
           });
           console.log(biclootableauvide);
-        }
+        };
         dataBiclooFinal();
       });
   };
   /* Fetch API pour markers marguerite */
+  /* coordonnées inversées */
   const getMarguerite = () => {
     axios
       .get(
@@ -307,7 +316,7 @@ function Map() {
       )
       .then((response) => response.data)
       .then((data) => {
-        function dataMargueriteFinal() {
+        const dataMargueriteFinal = () => {
           const margueritetableauvide = [];
           const margueriteNettoyes = data.records.map(
             (record) => record.fields
@@ -324,7 +333,7 @@ function Map() {
             });
           });
           console.log(margueritetableauvide);
-        }
+        };
         dataMargueriteFinal();
       });
   };
@@ -336,7 +345,7 @@ function Map() {
       )
       .then((response) => response.data)
       .then((data) => {
-        function dataSportFinal() {
+        const dataSportFinal = () => {
           const sporttableauvide = [];
           const sportNettoyes = data.records.map((record) => record.fields);
           sportNettoyes.forEach((sportnettoye) => {
@@ -350,7 +359,7 @@ function Map() {
             });
           });
           console.log(sporttableauvide);
-        }
+        };
         dataSportFinal();
       });
   };
