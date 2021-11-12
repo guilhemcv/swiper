@@ -17,9 +17,10 @@ const key = process.env.REACT_APP_API_KEY;
 /* fonction affichage de la Google Map */
 function GoogleMap({ changeTheme, markers }) {
   const center = { lat: 47.212369, lng: -1.55 };
+  console.log(markers);
 
   return (
-    <div className="googlemap">
+    <div className>
       <GoogleMapReact
         options={
           changeTheme
