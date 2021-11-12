@@ -4,32 +4,15 @@
 /* eslint-disable prefer-destructuring */
 import React, { useEffect } from "react";
 import GoogleMapReact from "google-map-react";
-import "./GoogleMap.css";
 import env from "react-dotenv";
+import Marker from "../Marker/Marker";
+import "./GoogleMap.css";
 import Popup from "../Popup/Popup";
 import customStylesLite from "./CustomStyleLite";
 import customStylesDark from "./CustomStylesDark";
 
 /* API Google */
 const key = process.env.REACT_APP_API_KEY;
-
-function Marker(props) {
-  console.log(props);
-  return (
-    <div
-      style={{
-        transform: "translate(-50%, -50%)",
-      }}
-    >
-      <img
-        className="marker"
-        src={props.data.img}
-        alt={props.data.type}
-        width="35px"
-      />
-    </div>
-  );
-}
 
 /* fonction affichage de la Google Map */
 function GoogleMap({ changeTheme, markers }) {
