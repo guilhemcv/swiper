@@ -19,7 +19,7 @@ function GoogleMap({ changeTheme, markers }) {
   const center = { lat: 47.212369, lng: -1.55 };
   /* console.log(markers); */
   /* Ajout d'un state pour cibler le marker */
-  const [selectedMarker, setSelectedMarker] = useState(null);
+  const [selectedMarker, setSelectedMarker] = useState(center);
 
   return (
     <div className="googlemap">
@@ -34,13 +34,15 @@ function GoogleMap({ changeTheme, markers }) {
         defaultZoom={13}
       >
         {markers.map((marker) => {
-          console.log("hi");
+          console.log("hello");
           return (
             <Marker
               key={marker.id}
               lat={marker.coordonnees[1]}
               lng={marker.coordonnees[0]}
               data={marker}
+              nom={marker.nom}
+              commune={marker.commune}
               onClick={() => {
                 setSelectedMarker(marker);
               }}
@@ -48,19 +50,29 @@ function GoogleMap({ changeTheme, markers }) {
           );
         })}
         {selectedMarker && (
-          <Popup
-            lat={selectedMarker.coordonnees[1]}
-            lng={selectedMarker.coordonnees[0]}
-            OncloseClick={() => {
+          <div>
+            <h2>{selectedMarker.nom}</h2>
+            <p>lat:{selectedMarker.coordonnees[1]}</p>
+            <p>lng:{selectedMarker.coordonnees[0]}</p>
+            <p>{selectedMarker.marker.commune}</p>
+          </div>
+        )}
+        {/* {selectedMarker && (
+          <InfoWindow
+            position={{
+              lat:{selectedMarker.coordonnees[1]},
+              lng:{selectedMarker.coordonnees[0]}
+              }}
+            onCloseClick={() => {
               setSelectedMarker(null);
             }}
           >
-            <div>
-              <h2>{selectedMarker.fields.name}</h2>
-              <p>{selectedMarker.fields.commune}</p>
-            </div>
-          </Popup>
-        )}
+           <div>
+            <h2>{selectedMarker.marker.nom}</h2>
+            <p>{selectedMarker.marker.commune}</p>
+          </div>
+          </InfoWindow>
+        )} */}
       </GoogleMapReact>
     </div>
   );

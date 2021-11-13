@@ -1,11 +1,18 @@
 import React, { useState } from "react";
 import "./Popup.css";
 
-function Popup(props) {
-  return <div>Coucou</div>;
-}
+// function Popup({ marker }) {
+//   {
+//     (lat = selectedMarker.coordonnees[1]),
+//       (lng = selectedMarker.coordonnees[0]);
+//   }
 
-export default Popup;
+//   <div>
+//     <h2>{marker.nom}</h2>
+//     <p>{marker.commune}</p>
+//   </div>;
+// }
+// export default Popup;
 
 // function Popup(props) {
 //   return props.trigger ? (
