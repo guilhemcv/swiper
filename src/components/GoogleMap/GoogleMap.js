@@ -49,14 +49,14 @@ function GoogleMap({ changeTheme, markers }) {
             />
           );
         })}
-        {selectedMarker && (
+        {/* {selectedMarker && (
           <div>
             <h2>{selectedMarker.nom}</h2>
-            <p>lat:{selectedMarker.coordonnees[1]}</p>
-            <p>lng:{selectedMarker.coordonnees[0]}</p>
+            <p>lat={selectedMarker.coordonnees[1]}</p>
+            <p>lng={selectedMarker.coordonnees[0]}</p>
             <p>{selectedMarker.marker.commune}</p>
           </div>
-        )}
+        )} */}
         {/* {selectedMarker && (
           <InfoWindow
             position={{
