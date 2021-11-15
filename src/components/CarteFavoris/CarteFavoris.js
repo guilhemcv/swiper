@@ -1,4 +1,5 @@
 import React from "react";
+import { useHistory } from "react-router-dom";
 import "./CarteFavoris.css";
 import imageRestaurant from "../../Assets/Images/restaurant.jpg";
 import imageTheatre from "../../Assets/Images/theatre.jpg";
@@ -8,7 +9,12 @@ import imageSport from "../../Assets/Images/sport.jpg";
 import imagePiscine from "../../Assets/Images/piscine.jpg";
 
 function CarteFavoris(props) {
-  console.log(props.data);
+  const history = useHistory();
+
+  const redirect = () => {
+    history.push("/map");
+  };
+
   if (
     props.data.type === "parking" ||
     props.data.type === "bicloo" ||
@@ -47,10 +53,7 @@ function CarteFavoris(props) {
           backgroundSize: "cover",
         }}
       >
-        <h2
-          className="favoris-titre"
-          onClick={() => console.log("carte cliquée")}
-        >
+        <h2 className="favoris-titre" onClick={redirect}>
           {props.data.nom}
         </h2>
       </div>

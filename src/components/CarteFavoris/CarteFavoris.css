@@ -27,4 +27,5 @@
 }
 .favoris-titre:hover {
   background-color:#0AA2FF;
+  cursor:pointer;
 }
