@@ -3,6 +3,7 @@ import "./GoogleMapSelection.css";
 
 function GoogleMapSelection(props) {
   return (
+    /* Input pour la barre de recherche */
     <div className="barreRecherche">
       <div className="selection-recherche">
         <label forHtml="name">
@@ -11,14 +12,21 @@ function GoogleMapSelection(props) {
         <br />
         <div className="recherchebouton">
           <input
+            ref={props.textInput}
             className="input-recherche"
             type="text"
             id="name"
             name="name"
           />
-          <button className="rechercheadresse">Rechercher</button>
+          <button
+            className="rechercheadresse"
+            onClick={() => props.onClickButton()}
+          >
+            Rechercher
+          </button>
         </div>
       </div>
+      {/* Input pour les filtres */}
       <div className="selection">
         {props.checkboxFilter.map((filter, index) => (
           <div className="inputLabel">
@@ -34,6 +42,7 @@ function GoogleMapSelection(props) {
           </div>
         ))}
       </div>
+      {/* Bouton pour le changement de  thème de la map */}
       <div className="divbouton">
         <button
           className="switchtheme"

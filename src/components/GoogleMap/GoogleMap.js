@@ -1,11 +1,8 @@
 /* eslint-disable arrow-body-style */
-/* eslint-disable no-else-return */
-/* eslint-disable consistent-return */
-/* eslint-disable array-callback-return */
-/* eslint-disable prefer-destructuring */
-import React, { useEffect, useState } from "react";
+import React from "react";
 import GoogleMapReact from "google-map-react";
 import env from "react-dotenv";
+import MarkerRecherche from "../Marker/MarkerRecherche";
 import Marker from "../Marker/Marker";
 import "./GoogleMap.css";
 import customStylesLite from "./CustomStyleLite";
@@ -29,6 +26,7 @@ function GoogleMap(props) {
         defaultCenter={center}
         defaultZoom={13}
       >
+        {/* MArker pour fetch */}
         {props.markers.map((marker) => {
           return (
             <Marker
@@ -38,6 +36,8 @@ function GoogleMap(props) {
             />
           );
         })}
+        {/* Marker pour input recherche */}
+        <MarkerRecherche lat={props.latRecherche} lng={props.lngRecherche} />
       </GoogleMapReact>
     </div>
   );

@@ -1,13 +1,6 @@
 import React from "react";
 
 function Marker(props) {
-  const [infoWindowOpen, setInfoWindowOpen] = React.useState(false);
-
-  const handleToggleOpen = () => {
-    console.log("Marker Clicked");
-    setInfoWindowOpen(!infoWindowOpen);
-  };
-
   return (
     <div
       style={{
@@ -19,7 +12,6 @@ function Marker(props) {
         src={props.data.img}
         alt={props.data.type}
         width="35px"
-        onClick={() => handleToggleOpen()}
       />
     </div>
   );
