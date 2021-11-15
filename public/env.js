@@ -9,7 +9,7 @@ window.env = {
   "npm_config_global_prefix": "/usr/local",
   "TERM_PROGRAM_VERSION": "433",
   "COLOR": "1",
-  "TERM_SESSION_ID": "42BBC602-71D7-4FF2-A5F6-4F8C881549C1",
+  "TERM_SESSION_ID": "CAA799C9-139F-44D5-87E1-7985C1D47092",
   "npm_config_noproxy": "",
   "npm_config_local_prefix": "/Users/coraliecourant/Documents/Wild/Projets/swiper",
   "USER": "coraliecourant",
@@ -40,6 +40,6 @@ window.env = {
   "npm_config_user_agent": "npm/7.24.2 node/v12.13.0 darwin x64 workspaces/false",
   "npm_node_execpath": "/usr/local/bin/node",
   "npm_config_prefix": "/usr/local",
-  "REACT_APP_API_KEY": "AIzaSyAvATmVZLKn5v6qbfj0xHzHRVeqqr4cvdA",
+  "REACT_APP_API_KEY": "",
   "REACT_METEO_API_KEY": "2aed266dbd13eb51768f8ca86b3086ae"
 };
