@@ -6,7 +6,6 @@ import LogoContext from "../../contexts/LogoContext";
 
 function Logo() {
   const { logoColor } = useContext(LogoContext);
-  console.log(logoColor);
   return (
     <div>
       <h1 className={logoColor}>Swiper</h1>

@@ -7,15 +7,16 @@
 .barreRecherche {
     height: 40rem;
     margin: 10rem auto 0;
+    width: 90%;
 }
 
 .selection {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    text-align: left;
-    width: 70%;
-    height: 30rem;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 90%;
+    height: auto;
     margin: 1rem auto -7rem auto;
     padding: 1rem;
     background-color: white;
@@ -24,9 +25,15 @@
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
+
+
+.selection label {
+    font-size: 1.3rem;
+}
+
 .selection-recherche {
     margin-bottom: 2rem;
-    width: 42rem;
+    width: 90%;
     margin: 0 auto;
     text-align: center;
     
@@ -35,42 +42,154 @@
 .input-recherche {
     margin-top: 2rem ;
     text-align: center;
-    border-radius: 20px;
+    border-radius: 2rem;
+    margin-bottom: 2rem;
     height: 4rem;
-    width: 35rem;
+    width: 90%;
     border: none;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-
 }
 
-.input {
-    margin-right: 2rem;
-    margin-left: 8rem;
+input {
+    margin-right: 10px;
 }
-
 .inputLabel {
-    margin: 1rem 0;
+    margin: 0.8rem auto;
+    justify-content: center;
+    width: 100px;
 }
 
-@media screen and (min-width: 900px) {
+.divbouton {
+    margin: 90px auto;
+    text-align: center;
+}
+.rechercheadresse {
+    width: 20rem;
+    height: 3rem;
+    border-radius: 2rem;
+    border: none;
+    background-color: #08A2FF;
+    color: white;
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.3rem;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.switchtheme {
+    width: 20rem;
+    height: 3rem;
+    border-radius: 2rem;
+    border: none;
+    background-color: #08A2FF;
+    color: white;
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.3rem;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    text-align: center;
+}
+
+/* @media screen and (max-width: 400px) {
+    .selection{
+        flex-direction: column;
+        height: auto;
+        justify-content: left;
+        align-items: flex-start;
+        justify-content: flex-start;
+    }
+    .divbouton {
+        margin: 90px auto;
+    }
+} */
+
+
+@media screen and (min-width: 700px) {
     .selection {
         display: flex;
         flex-direction: column;
+        flex-wrap: wrap;
         justify-content: center;
+        align-items: flex-start;
         width: 40rem;
-        height: 30rem;
-        margin: 5rem;
+        height: 25rem;
+        margin: 5rem auto;
         padding: 1rem;
         background-color: white;
         border-radius: 2rem;
         font-size: 2rem;
         box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     }
+    .selection label {
+        font-size: 1.3rem;
+    }
+
+    input {
+        margin-right: 10px;
+    }
+    .inputLabel {
+        margin: 0.8rem auto;
+        justify-content: center;
+        width: 100px;
+    }
+    
+
+    .selection-recherche {
+        margin-bottom: 2rem;
+        width: 30rem;
+        margin: 0 auto;
+        text-align: center;
+        
+    }
 
     .barreRecherche {
         height: 40rem;
-        margin: 10rem auto;
+        margin: 10rem 0;
+        width: 50%;
+    }
+    .input-recherche {
+        margin: 5rem auto 1rem auto;
+        text-align: center;
+        border-radius: 20px;
+        height: 4rem;
+        width: 30rem;
+        border: none;
+        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    
+    }
+    .switchtheme:hover {
+        transform: scale(1.1);
+    }
+
+    .rechercheadresse:hover {
+        transform: scale(1.1);
+
+    }
+    .divbouton {
+        margin: 0 auto;
+        text-align: center;
     }
     
-    
 }
+
+/* @media screen and (min-width:700px) {
+    .switchtheme:hover {
+        transform: scale(1.1);
+        cursor: pointer;
+    }
+
+    .rechercheadresse:hover {
+        transform: scale(1.1);
+        cursor: pointer;
+
+    }
+    .selection {
+        height: 25rem;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-content: space-around;
+        align-items: flex-start;
+    }
+} */

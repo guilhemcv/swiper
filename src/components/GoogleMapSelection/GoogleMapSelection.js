@@ -1,7 +1,7 @@
 import React from "react";
 import "./GoogleMapSelection.css";
 
-function GoogleMapSelection() {
+function GoogleMapSelection(props) {
   return (
     <div className="barreRecherche">
       <div className="selection-recherche">
@@ -9,49 +9,38 @@ function GoogleMapSelection() {
           <h3 className="mapselection-titre">Rechercher une adresse :</h3>
         </label>
         <br />
-        <input className="input-recherche" type="text" id="name" name="name" />
+        <div className="recherchebouton">
+          <input
+            className="input-recherche"
+            type="text"
+            id="name"
+            name="name"
+          />
+          <button className="rechercheadresse">Rechercher</button>
+        </div>
       </div>
       <div className="selection">
-        <div className="inputLabel">
-          <input
-            className="input"
-            type="checkbox"
-            id="parking"
-            name="parking"
-          />
-          <label for="parking">Parkings</label>
-        </div>
-        <div className="inputLabel">
-          <input
-            className="input"
-            type="checkbox"
-            id="restaurant"
-            name="restaurant"
-          />
-          <label for="restaurant">Restaurants</label>
-        </div>
-        <div className="inputLabel">
-          <input className="input" type="checkbox" id="sport" name="sport" />
-          <label for="sport">Sport et loisirs</label>
-        </div>
-        <div className="inputLabel">
-          <input
-            className="input"
-            type="checkbox"
-            id="culturel"
-            name="culturel"
-          />
-          <label for="culturel">Lieux culturels</label>
-        </div>
-        <div className="inputLabel">
-          <input
-            className="input"
-            type="checkbox"
-            id="cinemas"
-            name="cinemas"
-          />
-          <label for="cinemas">Cinémas</label>
-        </div>
+        {props.checkboxFilter.map((filter, index) => (
+          <div className="inputLabel">
+            <input
+              className="input"
+              type="checkbox"
+              id={filter.name}
+              name={filter.name}
+              checked={filter.check}
+              onChange={() => props.updateCheckboxFilter(index)}
+            />
+            <label for={filter.name}>{filter.name}</label>
+          </div>
+        ))}
+      </div>
+      <div className="divbouton">
+        <button
+          className="switchtheme"
+          onClick={() => props.ChangeColorTheme()}
+        >
+          {props.changeTheme ? "Map : theme clair" : "Map : theme sombre"}
+        </button>
       </div>
     </div>
   );

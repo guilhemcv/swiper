@@ -11,7 +11,6 @@ function Swipe() {
 
   useEffect(() => {
     setLogoColor("logo-black");
-    console.log(logoColor);
   });
   return (
     <div className="swipe-page">
