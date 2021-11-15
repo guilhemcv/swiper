@@ -33,7 +33,7 @@
     position: absolute;
     width: 200px;
     height: 50px;
-    margin: auto;
+    margin-left: 50px;
     top: 620px;
     border: 2px solid #FFFFFF;
     box-sizing: border-box;
@@ -53,7 +53,7 @@
     position: absolute;
     width: 250px;
     height: 50px;
-    margin-right: 100px;
+    right: 110px;
     top: 19px;
     border: 2px solid #FFFFFF;
     box-sizing: border-box;
