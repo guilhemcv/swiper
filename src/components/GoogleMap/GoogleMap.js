@@ -18,8 +18,6 @@ const key = process.env.REACT_APP_API_KEY;
 function GoogleMap({ changeTheme, markers }) {
   const center = { lat: 47.212369, lng: -1.55 };
   /* console.log(markers); */
-  /* Ajout d'un state pour cibler le marker */
-  const [selectedMarker, setSelectedMarker] = useState(center);
 
   return (
     <div className="googlemap">
@@ -37,18 +35,19 @@ function GoogleMap({ changeTheme, markers }) {
           console.log("hello");
           return (
             <Marker
-              key={marker.id}
               lat={marker.coordonnees[1]}
               lng={marker.coordonnees[0]}
               data={marker}
-              nom={marker.nom}
-              commune={marker.commune}
-              onClick={() => {
-                setSelectedMarker(marker);
-              }}
             />
           );
         })}
+        {/* {popupInfo && (
+          <Popup
+            store={popupInfo}
+            lat={popupInfo.coordonnees[1]}
+            lng={popupInfo.coordonnees[0]}
+          />
+        )} */}
         {/* {selectedMarker && (
           <div>
             <h2>{selectedMarker.nom}</h2>
