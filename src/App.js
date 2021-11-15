@@ -152,7 +152,7 @@ function App() {
                 museesnettoyes.gmaplongitude0,
                 museesnettoyes.gmaplatitude0,
               ],
-              type: "musees",
+              type: "musee",
               img: imageMusee,
               site: museesnettoyes.commweb,
             });
@@ -246,7 +246,7 @@ function App() {
               adresse: cinemasnettoyes.adresse,
               telephone: cinemasnettoyes.telephone,
               coordonnees: cinemasnettoyes.geo_shape.coordinates,
-              type: "cinémas",
+              type: "cinema",
               img: imageCinema,
             });
           });
@@ -280,7 +280,7 @@ function App() {
                 restaurantsnettoyes.longitude,
                 restaurantsnettoyes.latitude,
               ],
-              type: "restaurants",
+              type: "restaurant",
               img: imageRestaurant,
             });
           });

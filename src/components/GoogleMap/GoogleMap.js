@@ -3,12 +3,11 @@
 /* eslint-disable consistent-return */
 /* eslint-disable array-callback-return */
 /* eslint-disable prefer-destructuring */
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import GoogleMapReact from "google-map-react";
 import env from "react-dotenv";
 import Marker from "../Marker/Marker";
 import "./GoogleMap.css";
-import Popup from "../Popup/Popup";
 import customStylesLite from "./CustomStyleLite";
 import customStylesDark from "./CustomStylesDark";
 
@@ -18,15 +17,14 @@ const key = process.env.REACT_APP_API_KEY;
 /* fonction affichage de la Google Map */
 function GoogleMap(props) {
   const center = { lat: 47.212369, lng: -1.55 };
-  console.log(props.markers);
 
   return (
     <div className="googlemap">
       <GoogleMapReact
         options={
           props.changeTheme
-            ? { styles: props.customStylesDark }
-            : { styles: props.customStylesLite }
+            ? { styles: customStylesDark }
+            : { styles: customStylesLite }
         }
         /* bootstrapURLKeys={{ key }} */
         defaultCenter={center}

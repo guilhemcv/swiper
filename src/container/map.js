@@ -1,3 +1,4 @@
+/* eslint-disable consistent-return */
 import "./map.css";
 import React, { useState, useEffect, useContext } from "react";
 import env from "react-dotenv";
@@ -9,19 +10,40 @@ import Footer from "../components/Footer/Footer";
 import LogoContext from "../contexts/LogoContext";
 
 function Map({ markers }) {
-  const [elementChecked, setElementChecked] = React.useState(false);
-
-  const HandleChange = () => {
-    setElementChecked(!elementChecked);
-    console.log("click");
-  };
+  const [checkboxFilter, setCheckboxFilter] = useState([
+    { name: "musee", check: true },
+    { name: "cinema", check: true },
+    { name: "spectacle", check: true },
+    { name: "restaurant", check: true },
+    { name: "parc", check: true },
+    { name: "sport", check: true },
+    { name: "piscine", check: true },
+    { name: "parking", check: true },
+    { name: "bicloo", check: true },
+  ]);
 
   // Utilisation du LogoContext pour gérer la couleur du logo en fonction de la page où on est
   const { setLogoColor } = useContext(LogoContext);
+  const [mapPoint, setMapPoint] = useState(markers);
 
   useEffect(() => {
     setLogoColor("logo-black");
-  });
+    const newMapPoint = [];
+    markers.forEach((marker) => {
+      checkboxFilter.forEach((filter) => {
+        if (filter.check === true && marker.type === filter.name) {
+          newMapPoint.push(marker);
+        }
+      });
+    });
+    setMapPoint(newMapPoint);
+  }, [checkboxFilter, markers]);
+
+  const updateCheckboxFilter = (index) => {
+    const newCheckboxFilter = [...checkboxFilter];
+    newCheckboxFilter[index].check = !newCheckboxFilter[index].check;
+    setCheckboxFilter(newCheckboxFilter);
+  };
 
   /* State pour bouton switch de changement theme google map */
   const [changeTheme, setChangeTheme] = useState(false);
@@ -64,17 +86,13 @@ function Map({ markers }) {
           changeTheme={changeTheme}
           ChangeColorTheme={ChangeColorTheme}
           onClickButton={onClickButton}
-          textInput={textInput}
-          markers={markers}
-          elementChecked={elementChecked}
-          HandleChange={HandleChange}
+          checkboxFilter={checkboxFilter}
+          updateCheckboxFilter={updateCheckboxFilter}
         />
         <GoogleMap
           changeTheme={changeTheme}
           ChangeColorTheme={ChangeColorTheme}
-          markers={markers}
-          elementChecked={elementChecked}
-          HandleChange={HandleChange}
+          markers={mapPoint}
         />
       </div>
       {/* ---------------------------------------------------- */}
