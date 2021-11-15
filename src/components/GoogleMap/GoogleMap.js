@@ -17,7 +17,6 @@ const key = process.env.REACT_APP_API_KEY;
 /* fonction affichage de la Google Map */
 function GoogleMap(props) {
   const center = { lat: 47.212369, lng: -1.55 };
-
   return (
     <div className="googlemap">
       <GoogleMapReact
