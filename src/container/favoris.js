@@ -1,11 +1,10 @@
 import "./favoris.css";
 import React, { useContext, useEffect } from "react";
 import Footer from "../components/Footer/Footer";
-import CarteRestaurant from "../components/CarteRestaurant/CarteRestaurant";
-import CarteCinema from "../components/CarteCinema/CarteCinema";
+import CarteFavoris from "../components/CarteFavoris/CarteFavoris";
 import LogoContext from "../contexts/LogoContext";
 
-function Favoris() {
+function Favoris({ markers }) {
   // Utilisation du LogoContext pour gérer la couleur du logo en fonction de la page où on est
   const { setLogoColor } = useContext(LogoContext);
 
@@ -15,17 +14,16 @@ function Favoris() {
   return (
     <div className="favoris">
       {/* Corps favoris --------------------------------- */}
-      <div className="restaurant">
-        <h1 className="titre-favoris">Restaurants</h1>
-        <CarteRestaurant />
-        <CarteRestaurant />
-        <CarteRestaurant />
+      <div className="container-favoris">
+        <div className="flex-favoris">
+          {markers.map((marker) => {
+            console.log(marker);
+            return <CarteFavoris data={marker} />;
+          })}
+        </div>
       </div>
       <div className="cinema">
         <h1 className="titre-favoris">Cinémas</h1>
-        <CarteCinema />
-        <CarteCinema />
-        <CarteCinema />
       </div>
       {/* ---------------------------------------------------- */}
 

@@ -79,7 +79,7 @@ function Map({ markers }) {
     setAdresse(textInput.current.value);
   };
   Geocode.setLanguage("fr");
-  Geocode.setApiKey("");
+  Geocode.setApiKey(/* "AIzaSyAvATmVZLKn5v6qbfj0xHzHRVeqqr4cvdA" */);
   Geocode.setRegion("fr");
   Geocode.setLocationType("ROOFTOP");
   Geocode.enableDebug();

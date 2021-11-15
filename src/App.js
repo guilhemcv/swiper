@@ -398,7 +398,9 @@ function App() {
             <Route path="/map">
               <Map markers={markers} />
             </Route>
-            <Route path="/favoris" component={Favoris} />
+            <Route path="/favoris">
+              <Favoris markers={markers} />
+            </Route>
             <Route exact path="/" component={Accueil} />
             <Route component={NotFound} />
           </Switch>
