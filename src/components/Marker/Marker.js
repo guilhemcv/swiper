@@ -1,7 +1,6 @@
 import React from "react";
 
 function Marker(props) {
-  console.log(props);
   return (
     <div
       style={{

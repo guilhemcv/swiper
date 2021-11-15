@@ -9,6 +9,13 @@ import Footer from "../components/Footer/Footer";
 import LogoContext from "../contexts/LogoContext";
 
 function Map({ markers }) {
+  const [elementChecked, setElementChecked] = React.useState(false);
+
+  const HandleChange = () => {
+    setElementChecked(!elementChecked);
+    console.log("click");
+  };
+
   // Utilisation du LogoContext pour gérer la couleur du logo en fonction de la page où on est
   const { setLogoColor } = useContext(LogoContext);
 
@@ -58,11 +65,16 @@ function Map({ markers }) {
           ChangeColorTheme={ChangeColorTheme}
           onClickButton={onClickButton}
           textInput={textInput}
+          markers={markers}
+          elementChecked={elementChecked}
+          HandleChange={HandleChange}
         />
         <GoogleMap
           changeTheme={changeTheme}
           ChangeColorTheme={ChangeColorTheme}
           markers={markers}
+          elementChecked={elementChecked}
+          HandleChange={HandleChange}
         />
       </div>
       {/* ---------------------------------------------------- */}

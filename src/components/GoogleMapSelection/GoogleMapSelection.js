@@ -1,3 +1,4 @@
+/* eslint-disable no-const-assign */
 import React from "react";
 import "./GoogleMapSelection.css";
 
@@ -119,9 +120,9 @@ function GoogleMapSelection(props) {
               type="checkbox"
               id="parking"
               name="parking"
-              defaultChecked={props.parkingIsChecked}
-              checked={!props.parkingIsChecked}
-              onChange={props.ParkinghandleOnChange}
+              defaultChecked={props.elementChecked}
+              checked={!props.elementChecked}
+              onChange={() => props.HandleChange()}
             />
             <label for="parking">Parkings</label>
           </div>

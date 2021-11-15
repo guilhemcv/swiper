@@ -1,3 +1,4 @@
+/* eslint-disable arrow-body-style */
 /* eslint-disable no-else-return */
 /* eslint-disable consistent-return */
 /* eslint-disable array-callback-return */
@@ -15,24 +16,23 @@ import customStylesDark from "./CustomStylesDark";
 const key = process.env.REACT_APP_API_KEY;
 
 /* fonction affichage de la Google Map */
-function GoogleMap({ changeTheme, markers }) {
+function GoogleMap(props) {
   const center = { lat: 47.212369, lng: -1.55 };
-  console.log(markers);
+  console.log(props.markers);
 
   return (
     <div className="googlemap">
       <GoogleMapReact
         options={
-          changeTheme
-            ? { styles: customStylesDark }
-            : { styles: customStylesLite }
+          props.changeTheme
+            ? { styles: props.customStylesDark }
+            : { styles: props.customStylesLite }
         }
         /* bootstrapURLKeys={{ key }} */
         defaultCenter={center}
         defaultZoom={13}
       >
-        {markers.map((marker) => {
-          console.log("marker");
+        {props.markers.map((marker) => {
           return (
             <Marker
               lat={marker.coordonnees[1]}
