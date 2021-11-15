@@ -12,7 +12,6 @@ import imageCinema from "./cinema.png";
 
 const key = process.env.REACT_APP_API_KEY;
 
-
 /* Marker pour les parcs */
 function MarkerParc() {
   return (
@@ -75,7 +74,6 @@ class GoogleMap extends React.Component {
       markersCinema: [],
     };
   }
-
 
   /* 
   //UseEffect pour affichage des markers sur la Google Map
