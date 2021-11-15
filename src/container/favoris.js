@@ -22,9 +22,6 @@ function Favoris({ markers }) {
           })}
         </div>
       </div>
-      <div className="cinema">
-        <h1 className="titre-favoris">Cinémas</h1>
-      </div>
       {/* ---------------------------------------------------- */}
 
       {/* Footer --------------------------------- */}
