@@ -5,10 +5,7 @@ import Popup from "../Popup/Popup";
 function Marker(props) {
   const [popup, setPopup] = useState(false);
   // console.log(props);
-  // function handleClick(e) {
-  //   console.log(props.data.nom);
-  //   <Popup props={props.data.nom} />;
-  // }
+
   return (
     <div
       style={{
@@ -20,25 +17,32 @@ function Marker(props) {
         src={props.data.img}
         alt={props.data.type}
         width="35px"
-        // onClick={handleClick()}
         onClick={() => setPopup(true)}
       />
       {popup && (
         <div
           style={{
             border: "1px solid black",
+            borderRadius: "5px",
             backgroundColor: "white",
             position: "absolute",
             top: 5,
             right: 5,
+            width: "auto",
+            textAlign: "center",
+            paddingRight: "20px",
+            paddingLeft: "20px",
           }}
         >
-          <h2>{props.data.nom}</h2>
-          <p>{props.data.commune}</p>
-          <p>{props.data.adresse}</p>
-          <p>{props.data.places}</p>
-          <p>{props.data.telephone}</p>
-          <p>{props.data.site_web}</p>
+          <h2 style={{ fontSize: "1.5rem" }}>{props.data.nom}</h2>
+          <p style={{ fontSize: "1rem" }}>{props.data.commune}</p>
+          <p style={{ fontSize: "0.8rem" }}>{props.data.adresse}</p>
+          <p style={{ fontSize: "0.8rem" }}>{props.data.places}</p>
+          <p style={{ fontSize: "0.8rem" }}>{props.data.telephone}</p>
+          <a
+            href={props.data.site_web}
+            style={{ fontSize: "0.8rem", color: "blue" }}
+          />
         </div>
       )}
       {/* <Popup

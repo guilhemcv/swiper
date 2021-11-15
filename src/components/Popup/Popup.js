@@ -9,6 +9,11 @@ function Popup({ props }) {
         position: "absolute",
         top: 5,
         right: 5,
+        fontSize: 16,
+        width: "300px",
+        textAlign: "center",
+        paddingRight: "2px",
+        paddingLeft: "2px",
       }}
     >
       <h2>Nom: {props.data.nom}</h2>
