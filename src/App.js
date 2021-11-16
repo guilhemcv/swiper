@@ -353,7 +353,6 @@ function App() {
 
   return (
     <LogoContext.Provider value={{ logoColor, setLogoColor }}>
-      {console.log(markers)}
       <div className="App">
         <Router>
           <Link to="/">
@@ -392,7 +391,9 @@ function App() {
             </nav>
           </div>
           <Switch>
-            <Route path="/swipe" component={Swipe} />
+            <Route path="/swipe">
+              <Swipe markers={markers} />
+            </Route>
             <Route path="/map" component={Map} />
             <Route path="/favoris" component={Favoris} />
             <Route exact path="/" component={Accueil} />
