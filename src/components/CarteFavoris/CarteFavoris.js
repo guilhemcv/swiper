@@ -10,7 +10,6 @@ import imagePiscine from "../../Assets/Images/piscine.jpg";
 
 function CarteFavoris(props) {
   const history = useHistory();
-
   const redirect = () => {
     history.push("/map");
   };
