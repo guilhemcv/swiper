@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-no-duplicate-props */
 import React from "react";
 import { useHistory } from "react-router-dom";
 import "./CarteFavoris.css";
@@ -10,7 +11,7 @@ import imagePiscine from "../../Assets/Images/piscine.jpg";
 
 function CarteFavoris(props) {
   const history = useHistory();
-  const redirect = () => {
+  const Redirect = () => {
     history.push("/map");
   };
 
@@ -51,8 +52,17 @@ function CarteFavoris(props) {
           backgroundRepeat: "no-repeat",
           backgroundSize: "cover",
         }}
+        onClick={() => {
+          Redirect();
+        }}
       >
-        <h2 className="favoris-titre" onClick={redirect}>
+        <h2
+          className="favoris-titre"
+          cible={props.data.nom}
+          lati={props.data.coordonnees[0]}
+          long={props.dara.coordonnees[1]}
+          onClick={props.EcouteInfo}
+        >
           {props.data.nom}
         </h2>
       </div>

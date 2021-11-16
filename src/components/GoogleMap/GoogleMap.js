@@ -4,6 +4,7 @@ import GoogleMapReact from "google-map-react";
 import env from "react-dotenv";
 import MarkerRecherche from "../Marker/MarkerRecherche";
 import Marker from "../Marker/Marker";
+import MarkerFavori from "../Marker/MarkerFavori";
 import "./GoogleMap.css";
 import customStylesLite from "./CustomStyleLite";
 import customStylesDark from "./CustomStylesDark";
@@ -37,6 +38,7 @@ function GoogleMap(props) {
           );
         })}
         {/* Marker pour input recherche */}
+        {props.info ? <MarkerFavori /> : ""}
         <MarkerRecherche lat={props.latRecherche} lng={props.lngRecherche} />
       </GoogleMapReact>
     </div>

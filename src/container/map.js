@@ -9,7 +9,8 @@ import GoogleMapSelection from "../components/GoogleMapSelection/GoogleMapSelect
 import Footer from "../components/Footer/Footer";
 import LogoContext from "../contexts/LogoContext";
 
-function Map({ markers }) {
+function Map(props) {
+  console.log(props.info);
   /* State pour input recherche */
   const [adresse, setAdresse] = useState("");
   /* State pour changement de thème de couleur de la map */
@@ -33,7 +34,7 @@ function Map({ markers }) {
    * Utilisation du LogoContext pour gérer la couleur du logo en fonction de la page où on est
    */
   const { setLogoColor } = useContext(LogoContext);
-  const [mapPoint, setMapPoint] = useState(markers);
+  const [mapPoint, setMapPoint] = useState(props.markers);
 
   /* Clé Google Map */
   const key = process.env.REACT_APP_API_KEY;
@@ -44,7 +45,7 @@ function Map({ markers }) {
   useEffect(() => {
     setLogoColor("logo-black");
     const newMapPoint = [];
-    markers.forEach((marker) => {
+    props.markers.forEach((marker) => {
       checkboxFilter.forEach((filter) => {
         if (filter.check === true && marker.type === filter.name) {
           newMapPoint.push(marker);
@@ -52,7 +53,7 @@ function Map({ markers }) {
       });
     });
     setMapPoint(newMapPoint);
-  }, [checkboxFilter, markers]);
+  }, [checkboxFilter, props.markers]);
 
   /**
    * Fonction pour filtrer les markers sur la Google map selon la catégorie selectionnée
@@ -112,6 +113,7 @@ function Map({ markers }) {
           markers={mapPoint}
           latRecherche={latRecherche}
           lngRecherche={lngRecherche}
+          info={props.info}
         />
       </div>
       {/* ---------------------------------------------------- */}
