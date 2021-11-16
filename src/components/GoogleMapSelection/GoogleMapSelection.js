@@ -41,6 +41,17 @@ function GoogleMapSelection(props) {
             <label for={filter.name}>{filter.name}</label>
           </div>
         ))}
+        <div className="inputLabel">
+          <input
+            className="input"
+            type="checkbox"
+            name="aucun"
+            defaultChecked={props.showMarkers}
+            checked={!props.showMarkers}
+            onChange={props.handleClick}
+          />
+          <label for="Aucun">Tout Désélectionner</label>
+        </div>
       </div>
       {/* Bouton pour le changement de  thème de la map */}
       <div className="divbouton">

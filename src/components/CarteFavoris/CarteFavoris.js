@@ -59,8 +59,8 @@ function CarteFavoris(props) {
         <h2
           className="favoris-titre"
           cible={props.data.nom}
-          lati={props.data.coordonnees[0]}
-          long={props.dara.coordonnees[1]}
+          lattitude={props.data.coordonnees[1]}
+          longitude={props.data.coordonnees[0]}
           onClick={props.EcouteInfo}
         >
           {props.data.nom}

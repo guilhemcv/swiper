@@ -1,6 +1,7 @@
 /* eslint-disable arrow-body-style */
 import React from "react";
 import GoogleMapReact from "google-map-react";
+import { useHistory } from "react-router";
 import env from "react-dotenv";
 import MarkerRecherche from "../Marker/MarkerRecherche";
 import Marker from "../Marker/Marker";
@@ -28,17 +29,20 @@ function GoogleMap(props) {
         defaultZoom={13}
       >
         {/* MArker pour fetch */}
-        {props.markers.map((marker) => {
-          return (
-            <Marker
-              lat={marker.coordonnees[1]}
-              lng={marker.coordonnees[0]}
-              data={marker}
-            />
-          );
-        })}
+        {props.showMarkers
+          ? props.markers.map((marker) => {
+              return (
+                <Marker
+                  lat={marker.coordonnees[1]}
+                  lng={marker.coordonnees[0]}
+                  data={marker}
+                />
+              );
+            })
+          : ""}
+        <MarkerFavori lat={props.favoriLattitude} lng={props.favoriLongitude} />
+
         {/* Marker pour input recherche */}
-        {props.info ? <MarkerFavori /> : ""}
         <MarkerRecherche lat={props.latRecherche} lng={props.lngRecherche} />
       </GoogleMapReact>
     </div>

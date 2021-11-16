@@ -56,8 +56,9 @@ input {
 .inputLabel {
     margin: 0.8rem auto;
     justify-content: center;
-    width: 100px;
+    width: 200px;
 }
+
 
 .divbouton {
     margin: 90px auto;
@@ -130,7 +131,7 @@ input {
     .inputLabel {
         margin: 0.8rem auto;
         justify-content: center;
-        width: 100px;
+        width: 200px;
     }
     
 

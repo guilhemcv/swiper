@@ -24,7 +24,9 @@ import imageSport from "./Assets/Images/Markers/sport.png";
 function App() {
   const [isChecked, setIsChecked] = React.useState("");
   const [logoColor, setLogoColor] = React.useState("logo-white");
-  const [info, setInfo] = React.useState("");
+  const [favoriNom, setFavoriNom] = React.useState(0);
+  const [favoriLattitude, setFavoriLattitude] = React.useState(0);
+  const [favoriLongitude, setFavoriLongitude] = React.useState(0);
   const [markers, setMarkers] = useState([]);
   const parkingTableauVide = [];
   const sportTableauVide = [];
@@ -37,12 +39,14 @@ function App() {
   const parcTableauVide = [];
   let fetchIndex = 0;
 
-  /* const history = useHistory(); */
   const EcouteInfo = (event) => {
-    setInfo(event.target.getAttribute("cible"));
-    console.log(info);
-    /* history.push("/map"); */
+    setFavoriNom(event.target.getAttribute("cible"));
+    setFavoriLattitude(parseFloat(event.target.getAttribute("lattitude")));
+    setFavoriLongitude(parseFloat(event.target.getAttribute("longitude")));
   };
+  console.log(favoriNom);
+  console.log(favoriLattitude);
+  console.log(favoriLongitude);
 
   // On utilise une fonction sur l'état du menu burger pour le fermer lorsqu'on clique sur un lien
   function handleIsChecked() {
@@ -404,7 +408,13 @@ function App() {
           <Switch>
             <Route path="/swipe" component={Swipe} />
             <Route path="/map">
-              <Map markers={markers} EcouteInfo={EcouteInfo} info={info} />
+              <Map
+                markers={markers}
+                EcouteInfo={EcouteInfo}
+                favoriNom={favoriNom}
+                favoriLattitude={favoriLattitude}
+                favoriLongitude={favoriLongitude}
+              />
             </Route>
             <Route path="/favoris">
               <Favoris markers={markers} EcouteInfo={EcouteInfo} />

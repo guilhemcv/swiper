@@ -1,5 +1,5 @@
 import React from "react";
-import imageRecherche from "../../Assets/Images/Markers/recherche.png";
+import imageFavori from "../../Assets/Images/Markers/favoris.png";
 
 function MarkerFavori() {
   return (
@@ -10,9 +10,9 @@ function MarkerFavori() {
     >
       <img
         className="marker"
-        src={imageRecherche}
-        width="60px"
-        alt="recherche"
+        src={imageFavori}
+        width="70px"
+        alt="favoris"
       ></img>
     </div>
   );

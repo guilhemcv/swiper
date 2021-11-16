@@ -10,7 +10,7 @@ import Footer from "../components/Footer/Footer";
 import LogoContext from "../contexts/LogoContext";
 
 function Map(props) {
-  console.log(props.info);
+  console.log(props.favoriNom);
   /* State pour input recherche */
   const [adresse, setAdresse] = useState("");
   /* State pour changement de thème de couleur de la map */
@@ -38,6 +38,11 @@ function Map(props) {
 
   /* Clé Google Map */
   const key = process.env.REACT_APP_API_KEY;
+
+  const [showMarkers, setShowMarkers] = React.useState(true);
+  const handleClick = () => {
+    setShowMarkers(!showMarkers);
+  };
 
   /**
    * UseEffect pour la couleur du logo et les filtres des markers
@@ -106,6 +111,8 @@ function Map(props) {
           checkboxFilter={checkboxFilter}
           updateCheckboxFilter={updateCheckboxFilter}
           textInput={textInput}
+          showMarkers={showMarkers}
+          handleClick={handleClick}
         />
         <GoogleMap
           changeTheme={changeTheme}
@@ -113,7 +120,11 @@ function Map(props) {
           markers={mapPoint}
           latRecherche={latRecherche}
           lngRecherche={lngRecherche}
-          info={props.info}
+          favoriNom={props.favoriNom}
+          favoriLattitude={props.favoriLattitude}
+          favoriLongitude={props.favoriLongitude}
+          showMarkers={showMarkers}
+          handleClick={handleClick}
         />
       </div>
       {/* ---------------------------------------------------- */}

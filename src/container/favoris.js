@@ -6,7 +6,6 @@ import CarteFavoris from "../components/CarteFavoris/CarteFavoris";
 import LogoContext from "../contexts/LogoContext";
 
 function Favoris(props) {
-  console.log(props.markers);
   // Utilisation du LogoContext pour gérer la couleur du logo en fonction de la page où on est
   const { setLogoColor } = useContext(LogoContext);
 
