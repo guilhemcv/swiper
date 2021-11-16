@@ -121,7 +121,7 @@ function App() {
               coordonnees: [parcnettoyes.location[1], parcnettoyes.location[0]],
               type: "parcs",
               img: imageParcs,
-              site_web: parcnettoyes.siteweb,
+              site: parcnettoyes.siteweb,
               jeux_enfants: parcnettoyes.jeux_enfants,
               acces: parcnettoyes.acces_transport_commun,
             });
@@ -216,7 +216,7 @@ function App() {
               ],
               type: "piscine",
               img: imagePiscine,
-              site_web: piscinesnettoyes.web,
+              site: piscinesnettoyes.web,
               descriptif: piscinesnettoyes.infos_complementaires,
             });
           });
@@ -344,7 +344,7 @@ function App() {
               type: "sport",
               img: imageSport,
               categorie: sportNettoyes.categorie,
-              site_web: sportNettoyes.url_nantesfr,
+              site: sportNettoyes.url_nantesfr,
             });
           });
           if (fetchIndex === 9) {
