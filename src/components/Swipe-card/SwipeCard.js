@@ -1,7 +1,7 @@
+/* eslint-disable no-nested-ternary */
 import React, { useState, useMemo, useRef, useEffect } from "react";
 import TinderCard from "react-tinder-card";
 import "./SwipeCard.css";
-import axios from "axios";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faThumbsUp,
@@ -48,16 +48,17 @@ function Advanced({ markers }) {
       createCards(allPlaces);
       setCurrentIndex(9);
       currentIndexRef.current = 9;
+      updateCurrentIndex(9);
     }
   }, [currentIndex]);
 
   // on Memoize nos objets dans un tableau
   const childRefs = useMemo(
     () =>
-      Array(newPlace.length)
+      Array(allPlaces.length)
         .fill(0)
         .map((i) => React.createRef()),
-    [newPlace]
+    [allPlaces]
   );
   console.log(allPlaces);
   console.log(newPlace);
@@ -106,26 +107,25 @@ function Advanced({ markers }) {
     <div className="swipe-card">
       <InputSelect />
       <div className="cardContainer">
-        {newPlace.length > 0 &&
-          newPlace.map((place, index) => (
-            <TinderCard
-              ref={childRefs[index]}
-              className="swipe"
-              key={place.name}
-              onSwipe={(dir) => swiped(dir, place.nom, index)}
-              onCardLeftScreen={() => outOfFrame(place.nom, index)}
-              preventSwipe={["up", "down"]}
+        {newPlace.map((place, index) => (
+          <TinderCard
+            ref={childRefs[index]}
+            className="swipe"
+            key={place.name}
+            onSwipe={(dir) => swiped(dir, place.nom, index)}
+            onCardLeftScreen={() => outOfFrame(place.nom, index)}
+            preventSwipe={["up", "down"]}
+          >
+            <div
+              style={{
+                backgroundImage: `url(${getRandomImage(index)})`,
+              }}
+              className="card"
             >
-              <div
-                style={{
-                  backgroundImage: `url(${getRandomImage(index)})`,
-                }}
-                className="card"
-              >
-                <h3>{place.nom}</h3>
-              </div>
-            </TinderCard>
-          ))}
+              <h3>{place.nom}</h3>
+            </div>
+          </TinderCard>
+        ))}
       </div>
       <div className="buttons">
         <button
@@ -150,15 +150,13 @@ function Advanced({ markers }) {
           <FontAwesomeIcon icon={faThumbsUp} />
         </button>
       </div>
-      {/* {lastDirection ? (
-        <h2 key={lastDirection} className="infoText">
-          Vous avez swipe à {lastDirection}
-        </h2>
+      {lastDirection === "left" ? (
+        <h2 className="infoText">!isFavorite</h2>
+      ) : lastDirection === "right" ? (
+        <h2 className="infoText">isFavorite</h2>
       ) : (
-        <h2 className="infoText">
-          Swipez pour faire apparaître le bouton annuler
-        </h2>
-      )} */}
+        <h2 className="infoText"></h2>
+      )}
     </div>
   );
 }
