@@ -1,10 +1,17 @@
-import { logDOM } from "@testing-library/react";
 import React, { useState } from "react";
-import Popup from "../Popup/Popup";
+import { logDOM } from "@testing-library/react";
+import {
+  popupContent,
+  popupHead,
+  popupText,
+  popupSite,
+  popupButton,
+  popupAfter,
+} from "../Popup/PopupStyles";
 
 function Marker(props) {
+  /* state pour affichage popup au clique du marker */
   const [popup, setPopup] = useState(false);
-  // console.log(props);
 
   return (
     <div
@@ -19,43 +26,38 @@ function Marker(props) {
         width="35px"
         onClick={() => setPopup(true)}
       />
+      {/* Affichage du popup  */}
       {popup && (
-        <div
-          style={{
-            border: "1px solid black",
-            borderRadius: "5px",
-            backgroundColor: "white",
-            position: "absolute",
-            top: 5,
-            right: 5,
-            width: "auto",
-            textAlign: "center",
-            paddingRight: "20px",
-            paddingLeft: "20px",
-          }}
-        >
-          <h2 style={{ fontSize: "1.5rem" }}>{props.data.nom}</h2>
-          <p style={{ fontSize: "1rem" }}>{props.data.commune}</p>
-          <p style={{ fontSize: "0.8rem" }}>{props.data.adresse}</p>
-          <p style={{ fontSize: "0.8rem" }}>{props.data.places}</p>
-          <p style={{ fontSize: "0.8rem" }}>{props.data.telephone}</p>
-          <a
-            href={props.data.site_web}
-            style={{ fontSize: "0.8rem", color: "blue" }}
-          />
+        <div onClose={() => setPopup(false)} style={popupContent}>
+          <button
+            type="button"
+            onClick={() => setPopup(false)}
+            style={popupButton}
+          >
+            {/* croix pour fermer le popup */}X
+          </button>
+          {/* Recuperation des donnees pour les affichar dans popup */}
+          <h2 style={popupHead}>{props.data.nom}</h2>
+          <p style={popupText}>{props.data.commune}</p>
+          <p style={popupText}>{props.data.adresse}</p>
+          {`${props.data.places}` ? (
+            <p style={popupText}>Nombre de places : {props.data.places}</p>
+          ) : (
+            " "
+          )}
+          <p style={popupText}>{props.data.telephone}</p>
+          <a href={props.data.site_web} style={popupSite} target="_blank">
+            Voir le site internet
+          </a>
+          <p style={popupText}>{props.data.jeux_enfants}</p>
+          <p style={popupText}>{props.data.acces}</p>
+          <p style={popupText}>{props.data.descriptif}</p>
+          <p style={popupText}>{props.data.capacite}</p>
+          <p style={popupText}>{props.data.categorie}</p>
+          {/* Style pour fleche du bas du popup */}
+          <span style={popupAfter}></span>
         </div>
       )}
-      {/* <Popup
-        position={props.data.coordonnees}
-        onCloseClick={() => {
-          setSelectedMarker(null);
-        }}
-      >
-        <div>
-          <h2>{props.data.nom}</h2>
-          <p>{props.data.commune}</p>
-        </div>
-      </Popup> */}
       ;
     </div>
   );
