@@ -10,6 +10,15 @@ import Swipe from "./container/swipe";
 import NotFound from "./components/NotFound/NotFound";
 import "./components/MenuBurger/MenuBurger.css";
 import LogoContext from "./contexts/LogoContext";
+import imageParking from "./Assets/Images/Markers/parking.png";
+import imageParcs from "./Assets/Images/Markers/parc.png";
+import imageMusee from "./Assets/Images/Markers/musee.png";
+import imageCinema from "./Assets/Images/Markers/cinema.png";
+import imageRestaurant from "./Assets/Images/Markers/restaurant.png";
+import imageSpectacle from "./Assets/Images/Markers/spectacle.png";
+import imagePiscine from "./Assets/Images/Markers/piscine.png";
+import imageBicloo from "./Assets/Images/Markers/bicloo.png";
+import imageSport from "./Assets/Images/Markers/sport.png";
 
 function App() {
   const [isChecked, setIsChecked] = React.useState("");
@@ -81,8 +90,7 @@ function App() {
               nom: parkingnettoyes.nom,
               coordonnees: parkingnettoyes.geo_shape.coordinates,
               type: "parking",
-              img: "path",
-              imgWidth: "35px",
+              img: imageParking,
               places: parkingnettoyes.nb_places,
             });
           });
@@ -109,10 +117,9 @@ function App() {
               commune: parcnettoyes.commune,
               adresse: parcnettoyes.adresse,
               nom: parcnettoyes.nom_complet,
-              coordonnees: parcnettoyes.location,
+              coordonnees: [parcnettoyes.location[1], parcnettoyes.location[0]],
               type: "parcs",
-              img: "path",
-              imgWidth: "35px",
+              img: imageParcs,
               site_web: parcnettoyes.siteweb,
               jeux_enfants: parcnettoyes.jeux_enfants,
               acces: parcnettoyes.acces_transport_commun,
@@ -145,9 +152,8 @@ function App() {
                 museesnettoyes.gmaplongitude0,
                 museesnettoyes.gmaplatitude0,
               ],
-              type: "musees",
-              img: "path",
-              imgWidth: "35px",
+              type: "musee",
+              img: imageMusee,
               site: museesnettoyes.commweb,
             });
           });
@@ -176,8 +182,7 @@ function App() {
               nom: spectaclesnettoyes.nom,
               coordonnees: spectaclesnettoyes.geo_shape.coordinates,
               type: "spectacle",
-              img: "path",
-              imgWidth: "35px",
+              img: imageSpectacle,
             });
           });
           if (fetchIndex === 9) {
@@ -204,10 +209,12 @@ function App() {
               commune: piscinesnettoyes.commune,
               adresse: piscinesnettoyes.adresse,
               nom: piscinesnettoyes.nom_complet,
-              coordonnees: piscinesnettoyes.location,
+              coordonnees: [
+                piscinesnettoyes.location[1],
+                piscinesnettoyes.location[0],
+              ],
               type: "piscine",
-              img: "path",
-              imgWidth: "35px",
+              img: imagePiscine,
               site_web: piscinesnettoyes.web,
               descriptif: piscinesnettoyes.infos_complementaires,
             });
@@ -239,9 +246,8 @@ function App() {
               adresse: cinemasnettoyes.adresse,
               telephone: cinemasnettoyes.telephone,
               coordonnees: cinemasnettoyes.geo_shape.coordinates,
-              type: "cinémas",
-              img: "path",
-              imgWidth: "35px",
+              type: "cinema",
+              img: imageCinema,
             });
           });
           if (fetchIndex === 9) {
@@ -274,9 +280,8 @@ function App() {
                 restaurantsnettoyes.longitude,
                 restaurantsnettoyes.latitude,
               ],
-              type: "restaurants",
-              img: "path",
-              imgWidth: "35px",
+              type: "restaurant",
+              img: imageRestaurant,
             });
           });
           if (fetchIndex === 9) {
@@ -306,8 +311,7 @@ function App() {
               adresse: biclooNettoye.adresse,
               coordonnees: biclooNettoye.geo_shape.coordinates,
               type: "bicloo",
-              img: "path",
-              imgWidth: "35px",
+              img: imageBicloo,
               capacite: biclooNettoye.capacite,
             });
           });
@@ -337,8 +341,7 @@ function App() {
               adresse: sportNettoyes.adresse,
               coordonnees: sportNettoyes.geo_shape.coordinates,
               type: "sport",
-              img: "path",
-              imgWidth: "35px",
+              img: imageSport,
               categorie: sportNettoyes.categorie,
               site_web: sportNettoyes.url_nantesfr,
             });
@@ -394,7 +397,9 @@ function App() {
             <Route path="/swipe">
               <Swipe markers={markers} />
             </Route>
-            <Route path="/map" component={Map} />
+            <Route path="/map">
+              <Map markers={markers} />
+            </Route>
             <Route path="/favoris" component={Favoris} />
             <Route exact path="/" component={Accueil} />
             <Route component={NotFound} />

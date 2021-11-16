@@ -12,11 +12,11 @@
 
 .selection {
     display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    align-items: center;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
     width: 90%;
-    height: 20rem;
+    height: auto;
     margin: 1rem auto -7rem auto;
     padding: 1rem;
     background-color: white;
@@ -24,6 +24,8 @@
     font-size: 2rem;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
+
+
 
 .selection label {
     font-size: 1.3rem;
@@ -46,17 +48,15 @@
     width: 90%;
     border: none;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-
 }
 
-.input {
-    margin-right: 2rem;
-    margin-left: 1rem;
+input {
+    margin-right: 10px;
 }
-
 .inputLabel {
-    margin: 1rem 0;
-    text-align: left;
+    margin: 0.8rem auto;
+    justify-content: center;
+    width: 100px;
 }
 
 .divbouton {
@@ -90,7 +90,7 @@
     text-align: center;
 }
 
-@media screen and (max-width: 400px) {
+/* @media screen and (max-width: 400px) {
     .selection{
         flex-direction: column;
         height: auto;
@@ -101,15 +101,16 @@
     .divbouton {
         margin: 90px auto;
     }
-}
+} */
 
 
-@media screen and (min-width: 1300px) {
+@media screen and (min-width: 700px) {
     .selection {
         display: flex;
-        flex-direction: row;
-        justify-content: space-around;
-        align-items: center;
+        flex-direction: column;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: flex-start;
         width: 40rem;
         height: 25rem;
         margin: 5rem auto;
@@ -122,6 +123,16 @@
     .selection label {
         font-size: 1.3rem;
     }
+
+    input {
+        margin-right: 10px;
+    }
+    .inputLabel {
+        margin: 0.8rem auto;
+        justify-content: center;
+        width: 100px;
+    }
+    
 
     .selection-recherche {
         margin-bottom: 2rem;
@@ -161,7 +172,7 @@
     
 }
 
-@media screen and (min-width:700px) {
+/* @media screen and (min-width:700px) {
     .switchtheme:hover {
         transform: scale(1.1);
         cursor: pointer;
@@ -172,4 +183,13 @@
         cursor: pointer;
 
     }
-}
+    .selection {
+        height: 25rem;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-content: space-around;
+        align-items: flex-start;
+    }
+} */

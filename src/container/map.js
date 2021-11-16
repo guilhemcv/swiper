@@ -1,3 +1,4 @@
+/* eslint-disable consistent-return */
 import "./map.css";
 import React, { useState, useEffect, useContext } from "react";
 import env from "react-dotenv";
@@ -8,33 +9,77 @@ import GoogleMapSelection from "../components/GoogleMapSelection/GoogleMapSelect
 import Footer from "../components/Footer/Footer";
 import LogoContext from "../contexts/LogoContext";
 
-function Map() {
-  // Utilisation du LogoContext pour gérer la couleur du logo en fonction de la page où on est
+function Map({ markers }) {
+  /* State pour input recherche */
+  const [adresse, setAdresse] = useState("");
+  /* State pour changement de thème de couleur de la map */
+  const [changeTheme, setChangeTheme] = useState(false);
+  /* State pour définir les lattitudes et longitudes issues de la barre de recherche d'adresse */
+  const [latRecherche, setLatRecherche] = useState("");
+  const [lngRecherche, setLngRecherche] = useState("");
+  /* State pour filtres sur Google Map */
+  const [checkboxFilter, setCheckboxFilter] = useState([
+    { name: "musee", check: true },
+    { name: "cinema", check: true },
+    { name: "spectacle", check: true },
+    { name: "restaurant", check: true },
+    { name: "parc", check: true },
+    { name: "sport", check: true },
+    { name: "piscine", check: true },
+    { name: "parking", check: true },
+    { name: "bicloo", check: true },
+  ]);
+  /**
+   * Utilisation du LogoContext pour gérer la couleur du logo en fonction de la page où on est
+   */
   const { setLogoColor } = useContext(LogoContext);
+  const [mapPoint, setMapPoint] = useState(markers);
 
+  /* Clé Google Map */
+  const key = process.env.REACT_APP_API_KEY;
+
+  /**
+   * UseEffect pour la couleur du logo et les filtres des markers
+   */
   useEffect(() => {
     setLogoColor("logo-black");
-  });
+    const newMapPoint = [];
+    markers.forEach((marker) => {
+      checkboxFilter.forEach((filter) => {
+        if (filter.check === true && marker.type === filter.name) {
+          newMapPoint.push(marker);
+        }
+      });
+    });
+    setMapPoint(newMapPoint);
+  }, [checkboxFilter, markers]);
 
-  /* State pour bouton switch de changement theme google map */
-  const [changeTheme, setChangeTheme] = useState(false);
+  /**
+   * Fonction pour filtrer les markers sur la Google map selon la catégorie selectionnée
+   * @ params : index
+   */
+  const updateCheckboxFilter = (index) => {
+    const newCheckboxFilter = [...checkboxFilter];
+    newCheckboxFilter[index].check = !newCheckboxFilter[index].check;
+    setCheckboxFilter(newCheckboxFilter);
+  };
+
+  /**
+   * Fonction pour appliquer un changement de thème pour la Google Map
+   */
   const ChangeColorTheme = () => {
     setChangeTheme(!changeTheme);
   };
 
-  /* State pour input recherche */
-  const [adresse, setAdresse] = useState("");
+  /**
+   * Geocodage pour transformer l'adresse renseignée dans le champs de recherche en coordonnées GPS
+   */
   const textInput = React.createRef();
   const onClickButton = () => {
     setAdresse(textInput.current.value);
   };
-
-  /* Geocodage pour transformer input barre recherche en coordonnées Lat et Long afin de cibler le lieu sur la carte */
-  const [latRecherche, setLatRecherche] = useState("");
-  const [lngRecherche, setLngRecherche] = useState("");
-
-  /*   Geocode.setLanguage("fr");
-  Geocode.setApiKey(env.REACT_APP_API_KEY);
+  Geocode.setLanguage("fr");
+  Geocode.setApiKey("");
   Geocode.setRegion("fr");
   Geocode.setLocationType("ROOFTOP");
   Geocode.enableDebug();
@@ -47,7 +92,7 @@ function Map() {
     (error) => {
       console.error(error);
     }
-  ); */
+  );
 
   return (
     <div className="map">
@@ -57,9 +102,17 @@ function Map() {
           changeTheme={changeTheme}
           ChangeColorTheme={ChangeColorTheme}
           onClickButton={onClickButton}
+          checkboxFilter={checkboxFilter}
+          updateCheckboxFilter={updateCheckboxFilter}
           textInput={textInput}
         />
-        <GoogleMap />
+        <GoogleMap
+          changeTheme={changeTheme}
+          ChangeColorTheme={ChangeColorTheme}
+          markers={mapPoint}
+          latRecherche={latRecherche}
+          lngRecherche={lngRecherche}
+        />
       </div>
       {/* ---------------------------------------------------- */}
 
