@@ -14,7 +14,7 @@ function NotFound() {
     <div className="div404">
       <div className="flex404">
         <h1 className="title404">4</h1>
-        <img className="image404 heartbeat" src={img404} alt="404" />
+        <img className="image404 rotate-scale-up" src={img404} alt="404" />
         <h1 className="title404">4</h1>
       </div>
       <h2 className="title2404">
