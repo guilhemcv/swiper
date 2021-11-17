@@ -18,7 +18,9 @@ function CarteFavoris(props) {
   if (
     props.data.type === "parking" ||
     props.data.type === "bicloo" ||
-    props.data.type === "parcs"
+    props.data.type === "parcs" ||
+    props.data.type === "sport" ||
+    props.data.type === "piscine"
   ) {
     return "";
   }
@@ -37,12 +39,6 @@ function CarteFavoris(props) {
   }
   if (props.data.type === "spectacle") {
     image = imageSpectacle;
-  }
-  if (props.data.type === "sport") {
-    image = imageSport;
-  }
-  if (props.data.type === "piscine") {
-    image = imagePiscine;
   }
   return (
     <div className="favoris-card">
@@ -63,6 +59,7 @@ function CarteFavoris(props) {
           cible={props.data.nom}
           lattitude={props.data.coordonnees[1]}
           longitude={props.data.coordonnees[0]}
+          type={props.data.type}
           onClick={props.EcouteInfo}
         >
           {props.data.nom}

@@ -27,6 +27,7 @@ function App() {
   const [favoriNom, setFavoriNom] = React.useState(0);
   const [favoriLattitude, setFavoriLattitude] = React.useState(0);
   const [favoriLongitude, setFavoriLongitude] = React.useState(0);
+  const [favoriType, setFavoriType] = React.useState(0);
   const [markers, setMarkers] = useState([]);
   const parkingTableauVide = [];
   const sportTableauVide = [];
@@ -39,14 +40,16 @@ function App() {
   const parcTableauVide = [];
   let fetchIndex = 0;
 
+  /**
+   * Fonction qui permet de récupérer les éléments de l'objet marker au click sur un favori
+   * @param {*} event
+   */
   const EcouteInfo = (event) => {
     setFavoriNom(event.target.getAttribute("cible"));
     setFavoriLattitude(parseFloat(event.target.getAttribute("lattitude")));
     setFavoriLongitude(parseFloat(event.target.getAttribute("longitude")));
+    setFavoriType(event.target.getAttribute("type"));
   };
-  console.log(favoriNom);
-  console.log(favoriLattitude);
-  console.log(favoriLongitude);
 
   // On utilise une fonction sur l'état du menu burger pour le fermer lorsqu'on clique sur un lien
   function handleIsChecked() {
@@ -414,6 +417,7 @@ function App() {
                 favoriNom={favoriNom}
                 favoriLattitude={favoriLattitude}
                 favoriLongitude={favoriLongitude}
+                favoriType={favoriType}
               />
             </Route>
             <Route path="/favoris">

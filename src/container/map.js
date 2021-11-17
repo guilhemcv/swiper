@@ -10,7 +10,6 @@ import Footer from "../components/Footer/Footer";
 import LogoContext from "../contexts/LogoContext";
 
 function Map(props) {
-  console.log(props.favoriNom);
   /* State pour input recherche */
   const [adresse, setAdresse] = useState("");
   /* State pour changement de thème de couleur de la map */
@@ -122,6 +121,7 @@ function Map(props) {
           favoriNom={props.favoriNom}
           favoriLattitude={props.favoriLattitude}
           favoriLongitude={props.favoriLongitude}
+          favoriType={props.favoriType}
           showMarkers={showMarkers}
           handleClick={handleClick}
         />
