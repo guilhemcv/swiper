@@ -1,42 +1,106 @@
+.heartbeat {
+	animation: heartbeat 1.5s ease-in-out infinite both;
+}
+
+/**
+ * ----------------------------------------
+ * animation heartbeat
+ * ----------------------------------------
+ */
+ @keyframes heartbeat {
+  from {
+    transform: scale(1);
+    transform-origin: center center;
+    animation-timing-function: ease-out;
+  }
+  10% {
+    transform: scale(0.91);
+    animation-timing-function: ease-in;
+  }
+  17% {
+    transform: scale(0.98);
+    animation-timing-function: ease-out;
+  }
+  33% {
+    transform: scale(0.87);
+    animation-timing-function: ease-in;
+  }
+  45% {
+    transform: scale(1);
+    animation-timing-function: ease-out;
+  }
+}
+
+
 .div404 {
   display: flex;
   flex-direction: column;
   align-items: center;
+  background-color: #08A2FF;
+  height: 100vh;
+}
 
+.flex404 {
+  display: flex;
+  align-items: center;
+  margin-top: 20rem;
 }
 
 .title404 {
-  color: black;
-  padding: 20rem auto 0 auto;
-  margin-bottom: 5rem;
-  margin-top: 20rem;
-  font-size: 3rem;
-  text-align: center;
+  color: white;
+  padding: 0 auto;
+  margin-top: 0;
+  margin-bottom: 0;
+  font-size: 10rem;
 }
-
 .image404 {
-  width: 80%;
+  height: 100px;
+}
+.title2404 {
+  color: white;
+  padding: 2rem auto 0 auto;
+  margin-bottom: 5rem;
+  margin-top: 5rem;
+  font-size: 2rem;
+  text-align: center;
+
 }
 
 
 
-@media screen and (min-width: 800px) {
+@media screen and (min-width: 1030px) {
   .div404 {
     display: flex;
     flex-direction: column;
     align-items: center;
+    background-color: #08A2FF;
+    height: 100vh;
   
+  }
+  .flex404 {
+    display: flex;
+    align-items: center;
+    margin-top: 0;
   }
   
   .title404 {
-    color: black;
-    padding: 20rem auto 0 auto;
+    color: white;
+    padding: 0 auto;
+    margin-top: 0;
+    margin-bottom: 0;
+    font-size: 45rem;
+  }
+  .title2404 {
+    color: white;
+    padding: 2rem auto 0 auto;
     margin-bottom: 5rem;
-    margin-top: 20rem;
+    margin-top: 5rem;
     font-size: 5rem;
+    text-align: center;
+
   }
   
   .image404 {
-    width: 400px;
+    height: 400px;
   }
 }
