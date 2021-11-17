@@ -61,5 +61,7 @@ window.env = {
   "SECURITYSESSIONID": "186b2",
   "npm_node_execpath": "/usr/local/bin/node",
   "npm_config_prefix": "/usr/local",
-  "COLORTERM": "truecolor"
+  "COLORTERM": "truecolor",
+  "REACT_APP_API_KEY": "",
+  "REACT_METEO_API_KEY": "2aed266dbd13eb51768f8ca86b3086ae"
 };

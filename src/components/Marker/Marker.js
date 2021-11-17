@@ -85,7 +85,6 @@ function Marker(props) {
           <span style={popupAfter}></span>
         </div>
       )}
-      ;
     </div>
   );
 }
