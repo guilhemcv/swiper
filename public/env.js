@@ -59,5 +59,7 @@ window.env = {
   "HOMEBREW_CELLAR": "/opt/homebrew/Cellar",
   "npm_node_execpath": "/usr/local/bin/node",
   "npm_config_prefix": "/usr/local",
-  "COLORTERM": "truecolor"
+  "COLORTERM": "truecolor",
+  "REACT_APP_API_KEY": "AIzaSyAvATmVZLKn5v6qbfj0xHzHRVeqqr4cvdA",
+  "REACT_METEO_API_KEY": "2aed266dbd13eb51768f8ca86b3086ae"
 };

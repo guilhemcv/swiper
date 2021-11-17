@@ -30,7 +30,7 @@ function Footer() {
         <OpenWeather />
       </div>
       <div className="footer-bas">
-        <a href="politique.html">
+        <a href="mentions.html" target="_blank">
           <p className="mentions">
             Mentions légales / Politiques de confidentialité
           </p>
