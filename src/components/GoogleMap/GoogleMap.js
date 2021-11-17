@@ -40,7 +40,12 @@ function GoogleMap(props) {
               );
             })
           : ""}
-        <MarkerFavori lat={props.favoriLattitude} lng={props.favoriLongitude} />
+        <MarkerFavori
+          lat={props.favoriLattitude}
+          lng={props.favoriLongitude}
+          favoriNom={props.favoriNom}
+          favoriType={props.favoriType}
+        />
 
         {/* Marker pour input recherche */}
         <MarkerRecherche lat={props.latRecherche} lng={props.lngRecherche} />
