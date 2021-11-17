@@ -272,7 +272,6 @@ function App() {
           data.records.forEach((record) => {
             const restaurantsnettoyes = record.fields;
             restaurantsTableauVide.push({
-              site: restaurantsnettoyes.commweb,
               commune: restaurantsnettoyes.commune,
               nom: restaurantsnettoyes.nomoffre,
               adresse: restaurantsnettoyes.adresse2,
@@ -343,7 +342,7 @@ function App() {
               coordonnees: sportNettoyes.geo_shape.coordinates,
               type: "sport",
               img: imageSport,
-              categorie: sportNettoyes.categorie,
+              categorie: sportNettoyes.type,
               site: sportNettoyes.url_nantesfr,
             });
           });
