@@ -102,7 +102,6 @@ function Map(props) {
 
   return (
     <div className="map">
-      {/* Carte + sélection catégorie --------------------------------- */}
       <div className="selectionAndMap">
         <GoogleMapSelection
           changeTheme={changeTheme}
@@ -127,11 +126,7 @@ function Map(props) {
           handleClick={handleClick}
         />
       </div>
-      {/* ---------------------------------------------------- */}
-
-      {/* Footer --------------------------------- */}
       <Footer />
-      {/* ---------------------------------------------------- */}
     </div>
   );
 }

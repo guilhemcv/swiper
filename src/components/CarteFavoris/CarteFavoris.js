@@ -23,7 +23,9 @@ function CarteFavoris(props) {
     return "";
   }
   let image = "";
-
+  /**
+   * Selection de l'image adéquate en fonction de la catégorie
+   */
   if (props.data.type === "restaurant") {
     image = imageRestaurant;
   }
