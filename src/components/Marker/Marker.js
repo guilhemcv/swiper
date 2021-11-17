@@ -7,34 +7,11 @@ import {
   popupSite,
   popupButton,
   popupAfter,
-  popupTextPiscine,
 } from "../Popup/PopupStyles";
 
 function Marker(props) {
   /* state pour affichage popup au clique du marker */
   const [popup, setPopup] = useState(false);
-
-  /*  Fonction pour retirer balises HTML des donnees du popup Piscine */
-  const cleanHtml = (str) => {
-    const search = "<";
-    const replacer = new RegExp(search, "g");
-    const search2 = ">";
-    const replacer2 = new RegExp(search2, "g");
-
-    let cleanString = [];
-    str
-      .replace(replacer, "||<")
-      .replace(replacer2, ">||")
-      .split("||")
-      .forEach((prtStr) => {
-        if (!prtStr.includes("<")) {
-          cleanString.push(prtStr);
-        }
-      });
-
-    cleanString = cleanString.join(" ");
-    return cleanString;
-  };
 
   return (
     <div
@@ -91,13 +68,6 @@ function Marker(props) {
           )}
           {props.data.acces ? (
             <p style={popupText}>Moyen de transport : {props.data.acces}</p>
-          ) : (
-            " "
-          )}
-          {props.data.descriptif ? (
-            <p style={popupTextPiscine}>
-              Infos : {cleanHtml(props.data.descriptif)}
-            </p>
           ) : (
             " "
           )}

@@ -53,11 +53,6 @@ const popupAfter = {
   textAlign: "center",
 };
 
-// Style du texte popup Piscine
-
-const popupTextPiscine = {
-  fontSize: "0.6rem",
-};
 export {
   popupContent,
   popupHead,
@@ -65,5 +60,4 @@ export {
   popupSite,
   popupButton,
   popupAfter,
-  popupTextPiscine,
 };
