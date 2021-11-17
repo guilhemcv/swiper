@@ -100,6 +100,7 @@ function App() {
           data.records.forEach((record) => {
             const parkingnettoyes = record.fields;
             parkingTableauVide.push({
+              id: parkingnettoyes.id,
               commune: parkingnettoyes.commune,
               adresse: parkingnettoyes.adresse,
               nom: parkingnettoyes.nom,
@@ -135,7 +136,7 @@ function App() {
               coordonnees: [parcnettoyes.location[1], parcnettoyes.location[0]],
               type: "parcs",
               img: imageParcs,
-              site_web: parcnettoyes.siteweb,
+              site: parcnettoyes.siteweb,
               jeux_enfants: parcnettoyes.jeux_enfants,
               acces: parcnettoyes.acces_transport_commun,
             });
@@ -230,7 +231,7 @@ function App() {
               ],
               type: "piscine",
               img: imagePiscine,
-              site_web: piscinesnettoyes.web,
+              site: piscinesnettoyes.web,
               descriptif: piscinesnettoyes.infos_complementaires,
             });
           });
@@ -286,7 +287,6 @@ function App() {
           data.records.forEach((record) => {
             const restaurantsnettoyes = record.fields;
             restaurantsTableauVide.push({
-              site: restaurantsnettoyes.commweb,
               commune: restaurantsnettoyes.commune,
               nom: restaurantsnettoyes.nomoffre,
               adresse: restaurantsnettoyes.adresse2,
@@ -357,8 +357,8 @@ function App() {
               coordonnees: sportNettoyes.geo_shape.coordinates,
               type: "sport",
               img: imageSport,
-              categorie: sportNettoyes.categorie,
-              site_web: sportNettoyes.url_nantesfr,
+              categorie: sportNettoyes.type,
+              site: sportNettoyes.url_nantesfr,
             });
           });
           if (fetchIndex === 9) {

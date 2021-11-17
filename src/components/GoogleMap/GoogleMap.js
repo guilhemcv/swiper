@@ -1,5 +1,5 @@
 /* eslint-disable arrow-body-style */
-import React from "react";
+import React, { useEffect, useState } from "react";
 import GoogleMapReact from "google-map-react";
 import { useHistory } from "react-router";
 import env from "react-dotenv";
