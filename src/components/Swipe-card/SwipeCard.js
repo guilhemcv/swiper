@@ -116,53 +116,59 @@ function Advanced(props) {
 
   return (
     <div className="swipe-card">
-      <div className="cardContainer">
-        {newPlace.length > 0
-          ? newPlace.map((place, index) => (
-              <TinderCard
-                ref={childRefs[index]}
-                className="swipe"
-                key={place.nom}
-                onSwipe={(dir) => swiped(dir, place.nom, index)}
-                onCardLeftScreen={() => outOfFrame(place.nom, index)}
-                preventSwipe={["up", "down"]}
-              >
-                <div
-                  style={{
-                    backgroundImage: `url(${getRandomImage(index)})`,
-                  }}
-                  className="card"
-                >
-                  <h3>{place.nom}</h3>
-                </div>
-              </TinderCard>
-            ))
-          : ""}
-      </div>
-      <div className="buttons">
-        <button
-          className="button-dislike"
-          style={{ backgroundColor: !canSwipe && "#c3c4d3" }}
-          onClick={() => swipe("left")}
-        >
-          <FontAwesomeIcon icon={faThumbsDown} />
-        </button>
-        <button
-          className="button-back"
-          style={{ backgroundColor: !canGoBack && "#c3c4d3" }}
-          onClick={() => goBack()}
-        >
-          <FontAwesomeIcon icon={faUndo} />
-        </button>
-        <button
-          className="button-like"
-          style={{ backgroundColor: !canSwipe && "#c3c4d3" }}
-          onClick={() => swipe("right")}
-        >
-          <FontAwesomeIcon icon={faThumbsUp} />
-        </button>
-        {lastDirection === "right" ? addFavoris() : ""}
-      </div>
+      {props.value != "all" ? (
+        <div className="superContainer">
+          <div className="cardContainer">
+            {newPlace.length > 0
+              ? newPlace.map((place, index) => (
+                  <TinderCard
+                    ref={childRefs[index]}
+                    className="swipe"
+                    key={place.nom}
+                    onSwipe={(dir) => swiped(dir, place.nom, index)}
+                    onCardLeftScreen={() => outOfFrame(place.nom, index)}
+                    preventSwipe={["up", "down"]}
+                  >
+                    <div
+                      style={{
+                        backgroundImage: `url(${getRandomImage(index)})`,
+                      }}
+                      className="card"
+                    >
+                      <h3>{place.nom}</h3>
+                    </div>
+                  </TinderCard>
+                ))
+              : ""}
+          </div>
+          <div className="buttons">
+            <button
+              className="button-dislike"
+              style={{ backgroundColor: !canSwipe && "#c3c4d3" }}
+              onClick={() => swipe("left")}
+            >
+              <FontAwesomeIcon icon={faThumbsDown} />
+            </button>
+            <button
+              className="button-back"
+              style={{ backgroundColor: !canGoBack && "#c3c4d3" }}
+              onClick={() => goBack()}
+            >
+              <FontAwesomeIcon icon={faUndo} />
+            </button>
+            <button
+              className="button-like"
+              style={{ backgroundColor: !canSwipe && "#c3c4d3" }}
+              onClick={() => swipe("right")}
+            >
+              <FontAwesomeIcon icon={faThumbsUp} />
+            </button>
+            {lastDirection === "right" ? addFavoris() : ""}
+          </div>
+        </div>
+      ) : (
+        <h2>Sélectionnez une catégorie</h2>
+      )}
     </div>
   );
 }

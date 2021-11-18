@@ -41,6 +41,7 @@ const popupButton = {
   left: "185px",
   backgroundColor: "white",
   border: "none",
+  cursor: "pointer",
 };
 
 // Style de la fleche du bas du popup
