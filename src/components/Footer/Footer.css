@@ -1,0 +1,159 @@
+
+
+h2 {
+    font-size: 2rem;
+}
+
+h3 {
+    font-size: 1.7rem;
+}
+
+p {
+    font-size: 1rem;
+}
+
+a {
+    color: black;
+    text-decoration: underline;
+}
+
+.footer-contact {
+    margin: 0 auto;
+    text-align: center;
+}
+.footer {
+    background-color: white;
+    height: 29rem;
+    margin: 0 auto;
+    position: relative;
+}
+.footer-contact h2{
+    text-align: justify;
+    margin-left: 2rem;
+}
+.footer-contact p{
+    text-align: justify;
+    margin-left: 2rem;
+}
+
+.footer-haut {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-content: space-between;
+}
+
+.footer-reseaux {
+    margin: 2rem auto;
+    display: flex;
+    justify-content: space-between;
+    width: 15rem;
+
+}
+
+.footer-logo {
+    width: 3rem;
+}
+
+.footer-meteo {
+    width: 20rem;
+    height: 10rem;
+    background: linear-gradient(to bottom right, #4AADEB, #0AA2FF);
+    display: flex;
+    justify-content: space-around;
+    margin: 0 auto;
+    align-items: center;
+    border-radius: 1rem;
+    color: white;
+
+}
+.footer-image-meteo {
+    width: 4rem;
+    height: auto;
+}
+.mentions{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.footer-copyright {
+    margin: 1rem;
+    color: gray;
+    font-style: italic;
+    font-size: 1rem;
+    text-align: center;
+}
+
+.footer-legal {
+    background-color: red;
+}
+
+
+@media screen and (min-width: 800px){
+
+    .footer {
+        height: 19rem;
+    }
+    .footer-copyright {
+        margin: 0 10px 0 0;
+    }
+
+    .footer-contact {
+        margin: 0;
+    }
+
+    .footer-haut {
+        text-align: center;
+        display: flex;
+        flex-direction: row;
+        align-content: space-between;
+        align-items: center;
+        padding: 2rem;
+        
+    }
+
+    .footer-meteo {
+        margin: 0;
+    }
+
+    .footer-mention {
+        width: 30rem;
+        display: flex;
+        justify-content: space-around;
+    }
+
+    .footer-bas {
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: center;
+    }
+
+     /* DEBUT POPUP */
+
+
+    .popup-content {
+        margin: auto;
+        background: rgb(255, 255, 255);
+        width: 50%;
+        padding: 5px;
+      }
+      .popup-arrow {
+        color: rgb(255, 255, 255);
+      }
+      [role='tooltip'].popup-content {
+        width: 800px;
+        box-shadow: rgba(0, 0, 0, 0.16) 0px 0px 3px;
+        overflow: scroll;
+      }
+      
+      .popup-overlay {
+        background: rgba(0, 0, 0, 0.5);
+      }
+      [data-popup='tooltip'].popup-overlay {
+        background: transparent;
+      }
+      /* FIN POPUP */
+}
+    

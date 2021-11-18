@@ -1,44 +1,25 @@
-/*----------------------------------
-        CSS Coralie
-----------------------------------*/
+.titre-favoris {
+  z-index: 1;
+  position: relative;
+  color: black;
+  font-size: 3rem;
+  padding-left: 2rem;
+  padding-top: 10rem;
+  margin-bottom: 5rem;
+  text-decoration: underline;
+}
+.container-favoris {
+        padding-top: 100px;
+        min-height: 50vh;
+}
 
-
-
-
-/*----------------------------------
-        Fin CSS Coralie
-----------------------------------*/
-
-/*----------------------------------
-        CSS Maxime
-----------------------------------*/
-
-
-
-
-/*----------------------------------
-        Fin CSS Maxime
-----------------------------------*/
-
-/*----------------------------------
-        CSS Guilhem
-----------------------------------*/
-
-
-
-
-/*----------------------------------
-        Fin CSS Guilhem
-----------------------------------*/
-
-
-/*----------------------------------
-        CSS Lucas
-----------------------------------*/
-
-
-
-
-/*----------------------------------
-        Fin CSS Lucas
-----------------------------------*/
+.footer-favoris {
+  margin-top: 100px;
+}
+.flex-favoris {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  width: 90%;
+  margin: 0 auto;
+}

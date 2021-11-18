@@ -1,0 +1,150 @@
+.mapselection-titre {
+  text-align: center;
+  text-decoration: underline;
+}
+
+.barreRecherche {
+  height: 40rem;
+  margin: 10rem auto 0;
+  width: 90%;
+}
+
+.selection {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  width: 90%;
+  height: auto;
+  margin: 1rem auto -7rem auto;
+  padding: 1rem;
+  background-color: white;
+  border-radius: 2rem;
+  font-size: 2rem;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.selection label {
+  font-size: 1.3rem;
+}
+
+.selection-recherche {
+  margin-bottom: 2rem;
+  width: 90%;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.input-recherche {
+  margin-top: 2rem;
+  text-align: center;
+  border-radius: 2rem;
+  margin-bottom: 2rem;
+  height: 4rem;
+  width: 90%;
+  border: none;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+input {
+  margin-right: 10px;
+}
+.inputLabel {
+  margin: 0.8rem auto;
+  justify-content: center;
+  width: 200px;
+}
+
+.divbouton {
+  margin: 90px auto;
+  text-align: center;
+}
+.rechercheadresse {
+  width: 20rem;
+  height: 3rem;
+  border-radius: 2rem;
+  border: none;
+  background-color: #08a2ff;
+  color: white;
+  font-family: "Roboto", sans-serif;
+  font-size: 1.3rem;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.switchtheme {
+  width: 20rem;
+  height: 3rem;
+  border-radius: 2rem;
+  border: none;
+  background-color: #08a2ff;
+  color: white;
+  font-family: "Roboto", sans-serif;
+  font-size: 1.3rem;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  text-align: center;
+}
+
+@media screen and (min-width: 700px) {
+  .selection {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+    width: 40rem;
+    height: 25rem;
+    margin: 5rem auto;
+    padding: 1rem;
+    background-color: white;
+    border-radius: 2rem;
+    font-size: 2rem;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  }
+  .selection label {
+    font-size: 1.3rem;
+  }
+
+  input {
+    margin-right: 10px;
+  }
+  .inputLabel {
+    margin: 0.8rem auto;
+    justify-content: center;
+    width: 200px;
+  }
+
+  .selection-recherche {
+    margin-bottom: 2rem;
+    width: 30rem;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .barreRecherche {
+    height: 40rem;
+    margin: 10rem 0;
+    width: 50%;
+  }
+  .input-recherche {
+    margin: 5rem auto 1rem auto;
+    text-align: center;
+    border-radius: 20px;
+    height: 4rem;
+    width: 30rem;
+    border: none;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  }
+  .switchtheme:hover {
+    transform: scale(1.1);
+  }
+
+  .rechercheadresse:hover {
+    transform: scale(1.1);
+  }
+  .divbouton {
+    margin: 0 auto;
+    text-align: center;
+  }
+}
