@@ -39,7 +39,7 @@ We had to create a dynamic app using at least one external API.
 
 ### Links
 
-- In progress
+https://swiper-nantes.netlify.app/
 
 
 ## Process
@@ -61,6 +61,3 @@ We had to create a dynamic app using at least one external API.
 - Website - [Lucas Rossolini](https://www.linkedin.com/in/lucas-rossolini/)
 - Website - [Guilhem SEYVET](https://www.linkedin.com/in/guilhem-seyvet/)
 
-## Site
-
-https://swiper-nantes.netlify.app/
