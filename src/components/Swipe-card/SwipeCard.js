@@ -15,7 +15,6 @@ function Advanced(props) {
   const [newPlace, setNewPlace] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(29);
   const [lastDirection, setLastDirection] = useState();
-  const [position, setPosition] = useState(30);
 
   const canGoBack = currentIndex < newPlace.length - 1;
   const canSwipe = currentIndex >= 0;
@@ -95,13 +94,20 @@ function Advanced(props) {
     }
     return image;
   };
-
+  console.log(currentIndex);
   function addFavoris() {
     const actualFavoris = JSON.parse(sessionStorage.getItem("Favoris")) || [];
     const mesFavoris = [...actualFavoris];
-    const foundFav = mesFavoris.some(
-      (fav) => fav.nom === newPlace[currentIndex + 1].nom
-    );
+    let foundFav = false;
+    if (currentIndex !== 29) {
+      foundFav = mesFavoris.some(
+        (fav) => fav.nom === newPlace[currentIndex + 1].nom
+      );
+    } else {
+      foundFav = mesFavoris.some(
+        (fav) => fav.nom === newPlace[currentIndex].nom
+      );
+    }
     if (!foundFav) {
       mesFavoris.push(newPlace[currentIndex + 1]);
       let session = true;
@@ -116,7 +122,7 @@ function Advanced(props) {
 
   return (
     <div className="swipe-card">
-      {props.value != "all" ? (
+      {props.value !== "all" ? (
         <div className="superContainer">
           <div className="cardContainer">
             {newPlace.length > 0
