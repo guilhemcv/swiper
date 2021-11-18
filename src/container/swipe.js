@@ -5,7 +5,7 @@ import Footer from "../components/Footer/Footer";
 import SwipeCard from "../components/Swipe-card/SwipeCard";
 import LogoContext from "../contexts/LogoContext";
 
-function Swipe() {
+function Swipe({ markers }) {
   // Utilisation du LogoContext pour gérer la couleur du logo en fonction de la page où on est
   const { logoColor, setLogoColor } = useContext(LogoContext);
 
@@ -19,7 +19,7 @@ function Swipe() {
       {/* ---------------------------------------------------- */}
 
       {/* Carte swipe + boutons --------------------------------- */}
-      <SwipeCard />
+      <SwipeCard markers={markers} />
       {/* ---------------------------------------------------- */}
 
       {/* Footer --------------------------------- */}

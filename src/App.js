@@ -409,7 +409,9 @@ function App() {
             </nav>
           </div>
           <Switch>
-            <Route path="/swipe" component={Swipe} />
+            <Route path="/swipe">
+              <Swipe markers={markers} />
+            </Route>
             <Route path="/map">
               <Map
                 markers={markers}
