@@ -134,7 +134,7 @@ function App() {
               adresse: parcnettoyes.adresse,
               nom: parcnettoyes.nom_complet,
               coordonnees: [parcnettoyes.location[1], parcnettoyes.location[0]],
-              type: "parcs",
+              type: "parc",
               img: imageParcs,
               site: parcnettoyes.siteweb,
               jeux_enfants: parcnettoyes.jeux_enfants,
