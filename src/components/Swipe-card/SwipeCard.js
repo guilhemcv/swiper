@@ -89,7 +89,8 @@ function Advanced({ markers }) {
   // On utilise le lien source d'unsplash pour obtenir une image aléatoire pour chaque carte
   // eslint-disable-next-line consistent-return
   const getRandomImage = (index) => {
-    const image = `https://source.unsplash.com/600x60${index}/?museum}`;
+    const i = index % 9 || 9;
+    const image = `https://source.unsplash.com/600x60${i}/?museum}`;
     return image;
   };
 
