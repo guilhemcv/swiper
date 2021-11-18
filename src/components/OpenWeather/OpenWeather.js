@@ -31,7 +31,6 @@ function OpenWeather() {
         {
           /* icône description du temps récupéré */
         }
-        console.log(data.weather[0].icon);
       });
   }, []);
 

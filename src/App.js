@@ -209,7 +209,6 @@ function App() {
       });
   };
   /* Fetch API pour markers piscines */
-  /* Coordonées inversées */
   const getPiscine = () => {
     axios
       .get(

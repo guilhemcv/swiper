@@ -50,7 +50,6 @@ function Marker(props) {
           ) : (
             " "
           )}
-
           {props.data.site ? (
             <a href={props.data.site} style={popupSite} target="_blank">
               Voir le site internet
@@ -58,7 +57,6 @@ function Marker(props) {
           ) : (
             " "
           )}
-
           {props.data.jeux_enfants ? (
             <p style={popupText}>
               Jeux pour enfants : {props.data.jeux_enfants}
