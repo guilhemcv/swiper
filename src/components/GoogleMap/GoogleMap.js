@@ -21,7 +21,7 @@ function GoogleMap(props) {
             ? { styles: customStylesDark }
             : { styles: customStylesLite }
         }
-        bootstrapURLKeys={{ key: process.env.REACT_APP_API_KEY }}
+        bootstrapURLKeys={{ key: env.REACT_APP_API_KEY }}
         defaultCenter={center}
         defaultZoom={13}
       >
