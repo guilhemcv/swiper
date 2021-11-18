@@ -22,6 +22,7 @@ function Advanced(props) {
   // utilisé pour la clôture de outOfFrame
   const currentIndexRef = useRef(currentIndex);
 
+  // on crée 30 cartes à partir du filtre
   function createCards(places) {
     const actualPlaces = [];
     for (let i = 0; i < 30; i += 1) {
@@ -30,6 +31,7 @@ function Advanced(props) {
     setNewPlace(actualPlaces);
   }
 
+  // création des cartes à chaque changement de catégories
   useEffect(() => {
     const places = props.markers.filter((el) => el.type === props.value);
     setAllPLaces(places);
@@ -94,14 +96,15 @@ function Advanced(props) {
     }
     return image;
   };
-  console.log(currentIndex);
+
+  // ajout des cartes likées aux favoris
   function addFavoris() {
-    const actualFavoris = JSON.parse(sessionStorage.getItem("Favoris")) || [];
-    const mesFavoris = [...actualFavoris];
+    const actualFavoris = JSON.parse(sessionStorage.getItem("Favoris")) || []; // on récupère le tableau Favoris enregistré en sessionStorage
+    const mesFavoris = [...actualFavoris]; // on crée un tableau mesFavoris à partir de ce tableau
     let foundFav = false;
     if (currentIndex !== 29) {
       foundFav = mesFavoris.some(
-        (fav) => fav.nom === newPlace[currentIndex + 1].nom
+        (fav) => fav.nom === newPlace[currentIndex + 1].nom // Lors du swipe à droite on vérifie si l'élément swipé est déjà enregistré en favoris
       );
     } else {
       foundFav = mesFavoris.some(
@@ -109,7 +112,7 @@ function Advanced(props) {
       );
     }
     if (!foundFav) {
-      mesFavoris.push(newPlace[currentIndex + 1]);
+      mesFavoris.push(newPlace[currentIndex + 1]); // si l'élément n'est pas déjà en favoris on l'ajoute
       let session = true;
       const intervalId = setTimeout(() => {
         if (session) {
