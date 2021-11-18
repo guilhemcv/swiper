@@ -12,7 +12,7 @@ function Footer() {
         <div className="footer-contact">
           <h2>Nous contacter</h2>
           <br />
-          <a href="https://www.guithub.com/guilhemcv" target="_blank">
+          <a href="https://github.com/guilhemcv" target="_blank">
             <p>Guilhem</p>
           </a>
           <a href="https://github.com/Coucoralie" target="_blank">
