@@ -1,15 +1,19 @@
 import React from "react";
 import "./InputSelect.css";
 
-function InputSelect() {
+function InputSelect(props) {
   return (
-    <div className="select-container">
-      <select name="select-categories" id="select-categories">
-        <option value="">Choisir une catégorie</option>
-        <option value="musees">Musées</option>
-        <option value="cinemas">Cinémas</option>
-        <option value="restaurants">Restaurants</option>
-        <option value="spectacles">Salles de spectacle</option>
+    <div className="selectFav-container">
+      <select
+        name="selectFav-categories"
+        id="selectFav-categories"
+        value={props.value}
+        onChange={props.handleChange}
+      >
+        <option value="all">Choisir une catégorie :</option>
+        <option value="musee">Musées</option>
+        <option value="restaurant">Restaurants</option>
+        <option value="spectacle">Salles de spectacle</option>
       </select>
     </div>
   );

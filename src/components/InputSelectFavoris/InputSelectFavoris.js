@@ -12,7 +12,7 @@ function InputSelectFavoris(props) {
       >
         <option value="all">Choisir une catégorie :</option>
         <option value="musee">Musées</option>
-        <option value="cinema">Cinémas</option>
+        {/* <option value="cinema">Cinémas</option> */}
         <option value="restaurant">Restaurants</option>
         <option value="spectacle">Salles de spectacle</option>
       </select>
