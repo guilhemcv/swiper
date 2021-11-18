@@ -22,7 +22,7 @@ function Footer() {
             <p>Lucas</p>
           </a>
           <a href="https://github.com/maxime-baillon" target="_blank">
-            <p>Maxime</p>
+            <p className="prenom">Maxime</p>
           </a>
         </div>
         <div className="footer-reseaux">
