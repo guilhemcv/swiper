@@ -17,6 +17,7 @@ p {
 a {
     color: black;
     text-decoration: underline;
+    
 }
 
 .footer-contact {
@@ -34,7 +35,7 @@ a {
     margin-left: 2rem;
 }
 .footer-contact p{
-    text-align: justify;
+    text-align: center;
     margin-left: 2rem;
 }
 
@@ -104,6 +105,10 @@ a {
 
     .footer-contact {
         margin: 0;
+    }
+    .footer-contact p{
+        text-align: justify;
+        margin-left: 2rem;
     }
 
     .footer-haut {
