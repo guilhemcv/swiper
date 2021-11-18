@@ -51,7 +51,6 @@ We had to create a dynamic app using at least one external API.
 - CSS custom properties
 - Prettier / EsLint
 - API
-- Firebase
 - Google Map
 
 
@@ -61,3 +60,7 @@ We had to create a dynamic app using at least one external API.
 - Website - [Maxime Baillon](https://www.github.com/maxime-baillon)
 - Website - [Lucas Rossolini](https://www.linkedin.com/in/lucas-rossolini/)
 - Website - [Guilhem SEYVET](https://www.linkedin.com/in/guilhem-seyvet/)
+
+## Site
+
+https://swiper-nantes.netlify.app/
