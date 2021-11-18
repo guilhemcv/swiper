@@ -14,6 +14,9 @@ function Favoris(props) {
   // State pour filtrer les favoris par catégories
   const [value, setValue] = React.useState("all");
 
+  // Récupération du SessionStorage pour affichage
+  const favFiltres = JSON.parse(sessionStorage.getItem("Favoris"));
+
   /**
    * Fonction qui permet de filtrer les favoris par catégorie
    * @param {*} event
@@ -31,18 +34,20 @@ function Favoris(props) {
       <div className="container-favoris">
         <InputSelectFavoris value={value} handleChange={handleChange} />
         <div className="flex-favoris">
-          {props.markers.map((marker) => {
-            if (value === "all") {
-              return (
-                <CarteFavoris data={marker} EcouteInfo={props.EcouteInfo} />
-              );
-            }
-            if (marker.type === value) {
-              return (
-                <CarteFavoris data={marker} EcouteInfo={props.EcouteInfo} />
-              );
-            }
-          })}
+          {favFiltres != null
+            ? favFiltres.map((fav) => {
+                if (value === "all") {
+                  return (
+                    <CarteFavoris data={fav} EcouteInfo={props.EcouteInfo} />
+                  );
+                }
+                if (fav.type === value) {
+                  return (
+                    <CarteFavoris data={fav} EcouteInfo={props.EcouteInfo} />
+                  );
+                }
+              })
+            : ""}
         </div>
       </div>
       <div className="footer-favoris">

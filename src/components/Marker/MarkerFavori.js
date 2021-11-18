@@ -8,7 +8,7 @@ import {
   popupSite,
   popupButton,
   popupAfter,
-} from "../Popup/PopupStyle";
+} from "../Popup/PopupStyles";
 
 function MarkerFavori(props) {
   /* state pour affichage popup au clique du marker */
