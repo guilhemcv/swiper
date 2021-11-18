@@ -10,12 +10,12 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import InputSelect from "../InputSelect/InputSelect";
 
-function Advanced({ markers }) {
+function Advanced(props) {
   const [allPlaces, setAllPLaces] = useState([]);
   const [newPlace, setNewPlace] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(29);
   const [lastDirection, setLastDirection] = useState();
-  const [position, setPosition] = useState(0);
+  const [position, setPosition] = useState(30);
 
   const canGoBack = currentIndex < newPlace.length - 1;
   const canSwipe = currentIndex >= 0;
@@ -28,20 +28,20 @@ function Advanced({ markers }) {
   function createCards(places) {
     const actualPlaces = [];
     console.log(position);
-    for (let i = position; i < position + 30; i += 1) {
+    for (let i = 0; i < 30; i += 1) {
       actualPlaces.push(places[i]);
     }
     setNewPlace(actualPlaces);
-    setPosition(position + 30);
   }
 
   useEffect(() => {
-    const places = markers.filter((el) => el.type === "musee");
+    console.log("Use effect in Swipe Card");
+    const places = props.markers.filter((el) => el.type === props.value);
     setAllPLaces(places);
     if (places.length > 0) {
       createCards(places);
     }
-  }, [markers]);
+  }, [props.value]);
 
   // on Memoize nos objets dans un tableau
   const childRefs = useMemo(
@@ -89,47 +89,62 @@ function Advanced({ markers }) {
   // On utilise le lien source d'unsplash pour obtenir une image aléatoire pour chaque carte
   // eslint-disable-next-line consistent-return
   const getRandomImage = (index) => {
+    let image = "";
     const i = index % 9 || 9;
-    const image = `https://source.unsplash.com/600x60${i}/?museum}`;
+    if (props.value === "musee") {
+      image = `https://source.unsplash.com/600x60${i}/?museum}`;
+    }
+    if (props.value === "restaurant") {
+      image = `https://source.unsplash.com/600x60${i}/?restaurant}`;
+    }
+    if (props.value === "spectacle") {
+      image = `https://source.unsplash.com/600x60${i}/?concert}`;
+    }
     return image;
   };
 
-  const addFavoris = () => {
+  function addFavoris() {
     const actualFavoris = JSON.parse(sessionStorage.getItem("Favoris")) || [];
     const mesFavoris = [...actualFavoris];
-    mesFavoris.push(newPlace[currentIndex + 1]);
-    let session = true;
-    const intervalId = setTimeout(() => {
-      if (session) {
-        sessionStorage.setItem("Favoris", JSON.stringify(mesFavoris));
-      }
-      session = false;
-    }, 200);
-  };
+    const foundFav = mesFavoris.some(
+      (fav) => fav.nom === newPlace[currentIndex + 1].nom
+    );
+    if (!foundFav) {
+      mesFavoris.push(newPlace[currentIndex + 1]);
+      let session = true;
+      const intervalId = setTimeout(() => {
+        if (session) {
+          sessionStorage.setItem("Favoris", JSON.stringify(mesFavoris));
+        }
+        session = false;
+      }, 200);
+    }
+  }
 
   return (
     <div className="swipe-card">
-      <InputSelect />
       <div className="cardContainer">
-        {newPlace.map((place, index) => (
-          <TinderCard
-            ref={childRefs[index]}
-            className="swipe"
-            key={place.name}
-            onSwipe={(dir) => swiped(dir, place.nom, index)}
-            onCardLeftScreen={() => outOfFrame(place.nom, index)}
-            preventSwipe={["up", "down"]}
-          >
-            <div
-              style={{
-                backgroundImage: `url(${getRandomImage(index)})`,
-              }}
-              className="card"
-            >
-              <h3>{place.nom}</h3>
-            </div>
-          </TinderCard>
-        ))}
+        {newPlace.length > 0
+          ? newPlace.map((place, index) => (
+              <TinderCard
+                ref={childRefs[index]}
+                className="swipe"
+                key={place.nom}
+                onSwipe={(dir) => swiped(dir, place.nom, index)}
+                onCardLeftScreen={() => outOfFrame(place.nom, index)}
+                preventSwipe={["up", "down"]}
+              >
+                <div
+                  style={{
+                    backgroundImage: `url(${getRandomImage(index)})`,
+                  }}
+                  className="card"
+                >
+                  <h3>{place.nom}</h3>
+                </div>
+              </TinderCard>
+            ))
+          : ""}
       </div>
       <div className="buttons">
         <button
