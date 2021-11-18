@@ -19,7 +19,7 @@ function OpenWeather() {
     }
     axios
       .get(
-        `http://api.openweathermap.org/data/2.5/weather?q=Nantes,fr&APPID=${key}&units=metric`
+        `https://api.openweathermap.org/data/2.5/weather?q=Nantes,fr&APPID=${key}&units=metric`
       )
       .then((response) => response.data)
       .then((data) => {
@@ -45,7 +45,7 @@ function OpenWeather() {
         </div>
         {/* Affichage de l'icône */}
         {sky != null ? (
-          <img src={`http://openweathermap.org/img/wn/${sky}@2x.png`} />
+          <img src={`https://openweathermap.org/img/wn/${sky}@2x.png`} />
         ) : (
           ""
         )}
