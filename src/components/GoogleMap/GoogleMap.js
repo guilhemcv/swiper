@@ -40,6 +40,7 @@ function GoogleMap(props) {
               );
             })
           : ""}
+        {/* Marker pour afficher les favoris */}
         <MarkerFavori
           lat={props.favoriLattitude}
           lng={props.favoriLongitude}

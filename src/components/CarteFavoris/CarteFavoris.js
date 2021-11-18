@@ -14,7 +14,7 @@ function CarteFavoris(props) {
   const Redirect = () => {
     history.push("/map");
   };
-
+  // pour ne pas afficher parc, sport, piscine
   if (
     props.data.type === "parking" ||
     props.data.type === "bicloo" ||

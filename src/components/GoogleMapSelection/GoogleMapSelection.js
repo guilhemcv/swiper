@@ -41,6 +41,7 @@ function GoogleMapSelection(props) {
             <label for={filter.name}>{filter.name}</label>
           </div>
         ))}
+        {/* input pour tout déselectionner */}
         <div className="inputLabel">
           <input
             className="input"

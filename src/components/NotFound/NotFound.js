@@ -5,7 +5,7 @@ import img404 from "../../Assets/Images/24.png";
 
 function NotFound() {
   const history = useHistory();
-
+  // Redirection au bout de 5secondes sur la page d'accueil
   setTimeout(() => {
     history.push("/");
   }, 5000);

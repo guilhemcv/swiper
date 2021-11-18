@@ -92,7 +92,6 @@ function Map(props) {
     (response) => {
       setLatRecherche(response.results[0].geometry.location.lat);
       setLngRecherche(response.results[0].geometry.location.lng);
-      console.log(latRecherche, lngRecherche);
     },
     (error) => {
       console.error(error);
