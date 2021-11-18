@@ -11,10 +11,19 @@ function Footer() {
       <div className="footer-haut">
         <div className="footer-contact">
           <h2>Nous contacter</h2>
-          <p>02 02 02 02 02</p>
-          <p>contact@swiper.fr</p>
           <br />
-          <p>9 rue des Olivettes, 44000 Nantes</p>
+          <a href="https://www.guithub.com/guilhemcv" target="_blank">
+            <p>Guilhem</p>
+          </a>
+          <a href="https://github.com/Coucoralie" target="_blank">
+            <p>Coralie</p>
+          </a>
+          <a href="https://github.com/lucas-rossolini" target="_blank">
+            <p>Lucas</p>
+          </a>
+          <a href="https://github.com/maxime-baillon" target="_blank">
+            <p>Maxime</p>
+          </a>
         </div>
         <div className="footer-reseaux">
           <a href="https://www.facebook.com" target="_blank">
