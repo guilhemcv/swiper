@@ -11,7 +11,7 @@ import customStylesLite from "./CustomStyleLite";
 import customStylesDark from "./CustomStylesDark";
 
 /* API Google */
-const key = process.;
+const key = process.env.REACT_APP_API_KEY;
 
 /* fonction affichage de la Google Map */
 function GoogleMap(props) {
@@ -24,7 +24,7 @@ function GoogleMap(props) {
             ? { styles: customStylesDark }
             : { styles: customStylesLite }
         }
-        bootstrapURLKeys={ key }
+        bootstrapURLKeys={{ key }}
         defaultCenter={center}
         defaultZoom={13}
       >
