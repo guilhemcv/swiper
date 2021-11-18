@@ -1,56 +1,44 @@
 /* eslint-disable no-nested-ternary */
 import React, { useState, useMemo, useRef, useEffect } from "react";
 import TinderCard from "react-tinder-card";
-import "./SwipeCard.css";
+import "../Swipe-card/SwipeCard.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faThumbsUp,
   faThumbsDown,
   faUndo,
 } from "@fortawesome/free-solid-svg-icons";
-import InputSelect from "../InputSelect/InputSelect";
 
-function Advanced({ markers }) {
-  const [allPlaces, setAllPLaces] = useState([]);
-  const [newPlace, setNewPlace] = useState([]);
-  const [currentIndex, setCurrentIndex] = useState(29);
+function TinderCardContainer({ newPlace, createCards }) {
+  const [currentIndex, setCurrentIndex] = useState(9);
   const [lastDirection, setLastDirection] = useState();
-  const [position, setPosition] = useState(0);
 
   const canGoBack = currentIndex < newPlace.length - 1;
   const canSwipe = currentIndex >= 0;
-
   console.log(currentIndex);
 
   // utilisé pour la clôture de outOfFrame
   const currentIndexRef = useRef(currentIndex);
 
-  function createCards(places) {
-    const actualPlaces = [];
-    console.log(position);
-    for (let i = position; i < position + 30; i += 1) {
-      actualPlaces.push(places[i]);
-    }
-    setNewPlace(actualPlaces);
-    setPosition(position + 30);
-  }
-
   useEffect(() => {
-    const places = markers.filter((el) => el.type === "musee");
-    setAllPLaces(places);
-    if (places.length > 0) {
-      createCards(places);
+    if (newPlace.length > 0 && currentIndex === 0) {
+      createCards();
+      updateCurrentIndex(9);
     }
-  }, [markers]);
+    return function cleanUp() {
+      childRefs = [];
+    };
+  }, [currentIndex]);
 
   // on Memoize nos objets dans un tableau
-  const childRefs = useMemo(
+  let childRefs = useMemo(
     () =>
-      Array(allPlaces.length)
+      Array(newPlace.length)
         .fill(0)
         .map((i) => React.createRef()),
-    [allPlaces]
+    [newPlace]
   );
+  console.log(childRefs);
 
   // Mise à jour de l'index après chaque mouvement de carte
   const updateCurrentIndex = (val) => {
@@ -71,7 +59,7 @@ function Advanced({ markers }) {
   };
 
   const swipe = async (dir) => {
-    console.log(`currentIndex ${childRefs[currentIndex].current}`);
+    // console.log(`currentIndex ${childRefs[currentIndex].current}`);
 
     if (canSwipe && currentIndex < newPlace.length) {
       await childRefs[currentIndex].current.swipe(dir); // Swipe de la carte !
@@ -87,28 +75,13 @@ function Advanced({ markers }) {
   };
 
   // On utilise le lien source d'unsplash pour obtenir une image aléatoire pour chaque carte
-  // eslint-disable-next-line consistent-return
   const getRandomImage = (index) => {
     const image = `https://source.unsplash.com/600x60${index}/?museum}`;
     return image;
   };
 
-  const addFavoris = () => {
-    const actualFavoris = JSON.parse(sessionStorage.getItem("Favoris")) || [];
-    const mesFavoris = [...actualFavoris];
-    mesFavoris.push(newPlace[currentIndex + 1]);
-    let session = true;
-    const intervalId = setTimeout(() => {
-      if (session) {
-        sessionStorage.setItem("Favoris", JSON.stringify(mesFavoris));
-      }
-      session = false;
-    }, 200);
-  };
-
   return (
     <div className="swipe-card">
-      <InputSelect />
       <div className="cardContainer">
         {newPlace.map((place, index) => (
           <TinderCard
@@ -152,12 +125,16 @@ function Advanced({ markers }) {
         >
           <FontAwesomeIcon icon={faThumbsUp} />
         </button>
-        {lastDirection === "right"
-          ? addFavoris()
-          : console.log(newPlace[currentIndex + 1])}
       </div>
+      {lastDirection === "left" ? (
+        <h2 className="infoText">!isFavorite</h2>
+      ) : lastDirection === "right" ? (
+        <h2 className="infoText">isFavorite</h2>
+      ) : (
+        <h2 className="infoText"></h2>
+      )}
     </div>
   );
 }
 
-export default Advanced;
+export default TinderCardContainer;
