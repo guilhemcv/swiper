@@ -20,14 +20,11 @@ function Advanced(props) {
   const canGoBack = currentIndex < newPlace.length - 1;
   const canSwipe = currentIndex >= 0;
 
-  console.log(currentIndex);
-
   // utilisé pour la clôture de outOfFrame
   const currentIndexRef = useRef(currentIndex);
 
   function createCards(places) {
     const actualPlaces = [];
-    console.log(position);
     for (let i = 0; i < 30; i += 1) {
       actualPlaces.push(places[i]);
     }
@@ -35,7 +32,6 @@ function Advanced(props) {
   }
 
   useEffect(() => {
-    console.log("Use effect in Swipe Card");
     const places = props.markers.filter((el) => el.type === props.value);
     setAllPLaces(places);
     if (places.length > 0) {
@@ -65,14 +61,11 @@ function Advanced(props) {
   };
 
   const outOfFrame = (name, idx) => {
-    console.log(`${name} (${idx}) left the screen!`, currentIndexRef.current);
     // prise en compte du cas où l'utilisateur cliquerait sur retour avant la disparition de la carte
-    // currentIndexRef.current >= idx && childRefs[idx].current.restoreCard();
+    currentIndexRef.current >= idx && childRefs[idx].current.restoreCard();
   };
 
   const swipe = async (dir) => {
-    console.log(`currentIndex ${childRefs[currentIndex].current}`);
-
     if (canSwipe && currentIndex < newPlace.length) {
       await childRefs[currentIndex].current.swipe(dir); // Swipe de la carte !
     }
@@ -168,9 +161,7 @@ function Advanced(props) {
         >
           <FontAwesomeIcon icon={faThumbsUp} />
         </button>
-        {lastDirection === "right"
-          ? addFavoris()
-          : console.log(newPlace[currentIndex + 1])}
+        {lastDirection === "right" ? addFavoris() : ""}
       </div>
     </div>
   );
