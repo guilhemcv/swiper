@@ -3,18 +3,32 @@
   width: 98%;
   margin: 24rem auto;
   display: flex;
+  flex-direction: column;
   justify-content: right;
 }
 
- @media screen and (max-width: 400px) {
+.bouton-map {
+  width: 20rem;
+  height: 3rem;
+  border-radius: 2rem;
+  border: none;
+  background-color: #08a2ff;
+  color: white;
+  font-family: "Roboto", sans-serif;
+  font-size: 1.3rem;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  text-align: center;
+  margin: 2rem auto;
+}
+
+@media screen and (max-width: 400px) {
   .googlemap {
     margin: 20rem auto 0 auto;
   }
-} 
+}
 
-@media screen and (min-width : 1300px) {
-
-.googlemap {
+@media screen and (min-width: 1300px) {
+  .googlemap {
     height: 80vh;
     width: 100%;
     margin: 10rem 3rem 5rem auto;
@@ -22,37 +36,20 @@
     justify-content: right;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   }
-
-.markernothover {
-  z-index: 0;
-  position: absolute;
+  .bouton-map:hover {
+    transform: scale(1.1);
 }
 
-.marker:hover {
-  transform: scale(1.5);
-  cursor: pointer;
-  padding-bottom: 10px;
-  z-index: 9999;
-  transition: 0.1s;
-}
-/* Popup style */
+  .markernothover {
+    z-index: 0;
+    position: absolute;
+  }
 
-
-.box {
-  position: relative;
-  width: 300px;
-  margin-top: -100px;
-  margin-left: -180px;
-  height: auto;
-  max-height: 70vh;
-  background: black;
-  color: white  ;
-  border-radius: 20px;
-  padding: 20px;
-  border: 1px solid #999;
-  overflow: auto;
-  text-align: justify;
-}
-
-
+  .marker:hover {
+    transform: scale(1.5);
+    cursor: pointer;
+    padding-bottom: 10px;
+    z-index: 9999;
+    transition: 0.1s;
+  }
 }

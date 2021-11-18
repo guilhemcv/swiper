@@ -19,10 +19,11 @@ a {
 
 .footer-contact {
     margin: 0 auto;
+    text-align: center;
 }
 .footer {
     background-color: white;
-    height: 31rem;
+    height: 29rem;
     margin: 0 auto;
     position: relative;
 }
@@ -78,11 +79,11 @@ a {
 }
 
 .footer-copyright {
-    margin: 2rem;
+    margin: 1rem;
     color: gray;
     font-style: italic;
     font-size: 1rem;
-    text-align: right;
+    text-align: center;
 }
 
 .footer-legal {
@@ -93,7 +94,14 @@ a {
 @media screen and (min-width: 800px){
 
     .footer {
-        height: 21rem;
+        height: 19rem;
+    }
+    .footer-copyright {
+        margin: 0 10px 0 0;
+    }
+
+    .footer-contact {
+        margin: 0;
     }
 
     .footer-haut {

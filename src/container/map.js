@@ -9,7 +9,7 @@ import GoogleMapSelection from "../components/GoogleMapSelection/GoogleMapSelect
 import Footer from "../components/Footer/Footer";
 import LogoContext from "../contexts/LogoContext";
 
-function Map({ markers }) {
+function Map(props) {
   /* State pour input recherche */
   const [adresse, setAdresse] = useState("");
   /* State pour changement de thème de couleur de la map */
@@ -33,10 +33,15 @@ function Map({ markers }) {
    * Utilisation du LogoContext pour gérer la couleur du logo en fonction de la page où on est
    */
   const { setLogoColor } = useContext(LogoContext);
-  const [mapPoint, setMapPoint] = useState(markers);
+  const [mapPoint, setMapPoint] = useState(props.markers);
 
   /* Clé Google Map */
   const key = process.env.REACT_APP_API_KEY;
+
+  const [showMarkers, setShowMarkers] = React.useState(true);
+  const handleClick = () => {
+    setShowMarkers(!showMarkers);
+  };
 
   /**
    * UseEffect pour la couleur du logo et les filtres des markers
@@ -44,7 +49,7 @@ function Map({ markers }) {
   useEffect(() => {
     setLogoColor("logo-black");
     const newMapPoint = [];
-    markers.forEach((marker) => {
+    props.markers.forEach((marker) => {
       checkboxFilter.forEach((filter) => {
         if (filter.check === true && marker.type === filter.name) {
           newMapPoint.push(marker);
@@ -52,7 +57,7 @@ function Map({ markers }) {
       });
     });
     setMapPoint(newMapPoint);
-  }, [checkboxFilter, markers]);
+  }, [checkboxFilter, props.markers]);
 
   /**
    * Fonction pour filtrer les markers sur la Google map selon la catégorie selectionnée
@@ -79,7 +84,7 @@ function Map({ markers }) {
     setAdresse(textInput.current.value);
   };
   Geocode.setLanguage("fr");
-  Geocode.setApiKey("");
+  Geocode.setApiKey(/* "AIzaSyAvATmVZLKn5v6qbfj0xHzHRVeqqr4cvdA" */);
   Geocode.setRegion("fr");
   Geocode.setLocationType("ROOFTOP");
   Geocode.enableDebug();
@@ -96,7 +101,6 @@ function Map({ markers }) {
 
   return (
     <div className="map">
-      {/* Carte + sélection catégorie --------------------------------- */}
       <div className="selectionAndMap">
         <GoogleMapSelection
           changeTheme={changeTheme}
@@ -105,6 +109,8 @@ function Map({ markers }) {
           checkboxFilter={checkboxFilter}
           updateCheckboxFilter={updateCheckboxFilter}
           textInput={textInput}
+          showMarkers={showMarkers}
+          handleClick={handleClick}
         />
         <GoogleMap
           changeTheme={changeTheme}
@@ -112,13 +118,15 @@ function Map({ markers }) {
           markers={mapPoint}
           latRecherche={latRecherche}
           lngRecherche={lngRecherche}
+          favoriNom={props.favoriNom}
+          favoriLattitude={props.favoriLattitude}
+          favoriLongitude={props.favoriLongitude}
+          favoriType={props.favoriType}
+          showMarkers={showMarkers}
+          handleClick={handleClick}
         />
       </div>
-      {/* ---------------------------------------------------- */}
-
-      {/* Footer --------------------------------- */}
       <Footer />
-      {/* ---------------------------------------------------- */}
     </div>
   );
 }

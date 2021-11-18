@@ -1,6 +1,7 @@
 import "./App.css";
 import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
 import React, { useState, useEffect } from "react";
+import { useHistory } from "react-router";
 import axios from "axios";
 import Logo from "./components/Logo/Logo";
 import Accueil from "./container/accueil";
@@ -23,7 +24,10 @@ import imageSport from "./Assets/Images/Markers/sport.png";
 function App() {
   const [isChecked, setIsChecked] = React.useState("");
   const [logoColor, setLogoColor] = React.useState("logo-white");
-
+  const [favoriNom, setFavoriNom] = React.useState(0);
+  const [favoriLattitude, setFavoriLattitude] = React.useState(0);
+  const [favoriLongitude, setFavoriLongitude] = React.useState(0);
+  const [favoriType, setFavoriType] = React.useState(0);
   const [markers, setMarkers] = useState([]);
   const parkingTableauVide = [];
   const sportTableauVide = [];
@@ -35,6 +39,17 @@ function App() {
   const museesTableauVide = [];
   const parcTableauVide = [];
   let fetchIndex = 0;
+
+  /**
+   * Fonction qui permet de récupérer les éléments de l'objet marker au click sur un favori
+   * @param {*} event
+   */
+  const EcouteInfo = (event) => {
+    setFavoriNom(event.target.getAttribute("cible"));
+    setFavoriLattitude(parseFloat(event.target.getAttribute("lattitude")));
+    setFavoriLongitude(parseFloat(event.target.getAttribute("longitude")));
+    setFavoriType(event.target.getAttribute("type"));
+  };
 
   // On utilise une fonction sur l'état du menu burger pour le fermer lorsqu'on clique sur un lien
   function handleIsChecked() {
@@ -85,6 +100,7 @@ function App() {
           data.records.forEach((record) => {
             const parkingnettoyes = record.fields;
             parkingTableauVide.push({
+              id: parkingnettoyes.id,
               commune: parkingnettoyes.commune,
               adresse: parkingnettoyes.adresse,
               nom: parkingnettoyes.nom,
@@ -120,7 +136,7 @@ function App() {
               coordonnees: [parcnettoyes.location[1], parcnettoyes.location[0]],
               type: "parcs",
               img: imageParcs,
-              site_web: parcnettoyes.siteweb,
+              site: parcnettoyes.siteweb,
               jeux_enfants: parcnettoyes.jeux_enfants,
               acces: parcnettoyes.acces_transport_commun,
             });
@@ -215,7 +231,7 @@ function App() {
               ],
               type: "piscine",
               img: imagePiscine,
-              site_web: piscinesnettoyes.web,
+              site: piscinesnettoyes.web,
               descriptif: piscinesnettoyes.infos_complementaires,
             });
           });
@@ -271,7 +287,6 @@ function App() {
           data.records.forEach((record) => {
             const restaurantsnettoyes = record.fields;
             restaurantsTableauVide.push({
-              site: restaurantsnettoyes.commweb,
               commune: restaurantsnettoyes.commune,
               nom: restaurantsnettoyes.nomoffre,
               adresse: restaurantsnettoyes.adresse2,
@@ -342,8 +357,8 @@ function App() {
               coordonnees: sportNettoyes.geo_shape.coordinates,
               type: "sport",
               img: imageSport,
-              categorie: sportNettoyes.categorie,
-              site_web: sportNettoyes.url_nantesfr,
+              categorie: sportNettoyes.type,
+              site: sportNettoyes.url_nantesfr,
             });
           });
           if (fetchIndex === 9) {
@@ -398,9 +413,18 @@ function App() {
               <Swipe markers={markers} />
             </Route>
             <Route path="/map">
-              <Map markers={markers} />
+              <Map
+                markers={markers}
+                EcouteInfo={EcouteInfo}
+                favoriNom={favoriNom}
+                favoriLattitude={favoriLattitude}
+                favoriLongitude={favoriLongitude}
+                favoriType={favoriType}
+              />
             </Route>
-            <Route path="/favoris" component={Favoris} />
+            <Route path="/favoris">
+              <Favoris markers={markers} EcouteInfo={EcouteInfo} />
+            </Route>
             <Route exact path="/" component={Accueil} />
             <Route component={NotFound} />
           </Switch>
