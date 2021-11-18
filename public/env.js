@@ -62,6 +62,6 @@ window.env = {
   "npm_node_execpath": "/usr/local/bin/node",
   "npm_config_prefix": "/usr/local",
   "COLORTERM": "truecolor",
-  "REACT_APP_API_KEY": "",
-  "REACT_METEO_API_KEY": "2aed266dbd13eb51768f8ca86b3086ae"
+  "REACT_APP_API_KEY": "AIzaSyC_flXIPKEq-TBSsU80X7as_JSpRtxXIRU",
+  "REACT_METEO_API_KEY": "dfcd33232bf9ba05e89083b9018bc0c1"
 };

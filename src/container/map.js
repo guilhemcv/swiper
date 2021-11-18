@@ -84,7 +84,7 @@ function Map(props) {
     setAdresse(textInput.current.value);
   };
   Geocode.setLanguage("fr");
-  Geocode.setApiKey(/* "AIzaSyAvATmVZLKn5v6qbfj0xHzHRVeqqr4cvdA" */);
+  Geocode.setApiKey(env.REACT_APP_API_KEY);
   Geocode.setRegion("fr");
   Geocode.setLocationType("ROOFTOP");
   Geocode.enableDebug();

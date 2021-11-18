@@ -24,7 +24,7 @@ function GoogleMap(props) {
             ? { styles: customStylesDark }
             : { styles: customStylesLite }
         }
-        /* bootstrapURLKeys={{ key }} */
+        bootstrapURLKeys={{ key }}
         defaultCenter={center}
         defaultZoom={13}
       >
