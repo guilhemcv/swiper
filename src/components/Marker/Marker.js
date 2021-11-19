@@ -17,6 +17,7 @@ function Marker(props) {
     <div
       style={{
         transform: "translate(-50%, -50%)",
+        zIndex: 1,
       }}
     >
       <img
