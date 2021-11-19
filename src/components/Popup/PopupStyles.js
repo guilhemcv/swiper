@@ -14,6 +14,7 @@ const popupContent = {
   borderRadius: "5px",
   right: "-120px",
   top: "-145px",
+  zIndex: 100,
 };
 // Style du h2 popup
 const popupHead = {
